@@ -30,7 +30,9 @@ if(isset($_GET['page_admin']) && in_array($_GET['page_admin'], $page_adminList))
 //si requete ajax on ne passe pas par skel et content
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
 	require('apps/'.$page.'.php');
-}else{
+}
+else
+{
 	require('apps/skel.php');
 }
 ?>
