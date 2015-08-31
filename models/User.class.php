@@ -9,6 +9,7 @@ class User{
 	private $date;
 	private $description;
 	private $id_permission;
+	private $date_register;
 
 	// getter
 	public function getId(){
@@ -31,6 +32,9 @@ class User{
 	}
 	public function getIdPermission(){
 		return $this->id_permission;
+	}
+	public function getDateRegister(){
+		return $this->date_register;
 	}
 
 	// setter
