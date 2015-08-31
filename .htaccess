@@ -1,0 +1,10 @@
+RewriteEngine On
+Options +FollowSymLinks
+#ligne suivante à retirer pour empecher l acces aux repertoires
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^([a-zA-Z0-9_:\-]+)/?$ index.php?page=$1 [L]
+RewriteRule ^category/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=category&category=$1 [L]
+RewriteRule ^topic/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=topic&topic=$1 [L]
+
