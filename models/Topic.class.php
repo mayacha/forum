@@ -25,6 +25,7 @@ private $id_category;
 			$this->name=$name;
 		else throw new Exception("Le nom du Topic est trop court");
 	}
+	
 	public function setIdCategory($id_category)
 	{
 		$this->id_category=$id_category;

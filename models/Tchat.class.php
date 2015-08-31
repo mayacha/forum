@@ -28,6 +28,7 @@ private $content;
 	{
 		$this->id_user=$id_user;
 	}
+	
 	public function setContent()
 	{
 		if($content !="")
