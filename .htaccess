@@ -7,4 +7,5 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^([a-zA-Z0-9_:\-]+)/?$ index.php?page=$1 [L]
 RewriteRule ^category/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=category&category=$1 [L]
 RewriteRule ^topic/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=topic&topic=$1 [L]
+RewriteRule ^admin/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=admin&page_admin=$1 [L]
 
