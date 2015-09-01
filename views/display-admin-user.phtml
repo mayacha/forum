@@ -1,1 +1,15 @@
 <h2 class="text-center">Utilisateurs</h2>
+<!-- DEBUT afficahge liste des catégories -->
+<fieldset class="wrapper-list-users">
+	<legend>Liste des utilisateurs :</legend>
+<div class="bg-danger"><?=$error?></div>
+<div class="bg-success"><?=$success?></div>
+	<div class="wrapper-title-user row">
+		<div class="col-sm-2">Avatar :</div>
+		<div class="col-sm-2">Login :</div>
+		<div class="col-sm-4">Adresse mail :</div>
+		<div class="col-sm-2">Rang :</div>
+	</div>
+	<?php require('apps/display-admin-users.php'); ?>
+</fieldset>
+<!-- FIN afficahge liste des catégories -->

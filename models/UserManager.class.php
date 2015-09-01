@@ -71,7 +71,6 @@ class UserManager
 	{
 		$request = "SELECT * FROM user WHERE id='".intval($id)."'";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
 		$user = mysqli_fetch_object($res);
 		if($user==null)
 		{
@@ -79,15 +78,13 @@ class UserManager
 		}
 		else
 		{
-			$resultat[] = $user;
-			return $resultat;
+			return $user;
 		}
 	}
 	public function selectByLogin($login)
 	{
 		$request = "SELECT * FROM user WHERE login='".$login."'";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
 		$user = mysqli_fetch_object($res);
 		if($user==null)
 		{
@@ -95,20 +92,22 @@ class UserManager
 		}
 		else
 		{
-			$resultat[] = $user;
-			return $resultat;
+			return $user;
 		}
 	}
-	public function selectAll()
-	{
+	public function selectAll(){
 		$request = "SELECT * FROM user";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
-		while ($user = mysqli_fetch_object($res))
-		{
-			$resultat[] = $user;
+		if($res){
+			$resultat = array();
+			while ($user = mysqli_fetch_object($res, 'User', array($this->link)))
+			{
+				$resultat[] = $user;
+			}
+			return $resultat;
+		}else{
+			throw new Exception("Internal server error");
 		}
-		return $resultat;
 	}
 	//Pour connaitre le niveau de permission
 	public function getPermissionLevel($id_permission){
@@ -123,7 +122,6 @@ class UserManager
 		}
 		if($id_permission==4){
 			return $permissionLevel="deleted";
-			throw new Exception("Vous avez demandé la suppression de votre compte");
 		}
 	}
 

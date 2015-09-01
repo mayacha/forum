@@ -1,6 +1,6 @@
 <?php
-$categoryManager = new CategoryManager($link);
-$categories = $categoryManager->selectAll();
+$manager = new CategoryManager($link);
+$categories = $manager->selectAll();
 foreach($categories as $category){
 	$id = $category->getId();
 	$name = $category->getName();

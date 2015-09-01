@@ -1,0 +1,8 @@
+<div class="wrapper-user row">
+	<div class="col-sm-1"><img src="public/img/<?=htmlentities($avatar)?>" class="img-responsive center-block"></div>
+	<div class="col-sm-3"><?=htmlentities($login)?></div>
+	<div class="col-sm-4"><?=htmlentities($email)?></div>
+	<div class="col-sm-2"><?=htmlentities($permission)?></div>
+	<div class="col-sm-2"><button class="btn btn-info btn-sm btn-update-user" title="Modifier la catégorie"><span class="glyphicon glyphicon-pencil"></span></button></div>
+	<?php require('views/display-admin-user-form-modif.phtml'); ?>
+</div>
