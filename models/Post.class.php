@@ -9,6 +9,8 @@ class Post
 	private $content;
 	private $id_topic;
 	private $id_user;
+	private $reported;
+	private $deleted;
 
 
 	// Méthodes de la class Post
@@ -39,6 +41,16 @@ class Post
 		return $this->id_user;
 	}
 
+	public function getReported()
+	{
+		return $this->reported;
+	}
+
+	public function getDeleted()
+	{
+		return $this->deleted;
+	}
+
 	// SETTER
 
 	public function setTitle($content)
@@ -66,6 +78,16 @@ class Post
 	public function setId_user($id_user)
 	{
 		$this->id_user=$id_user;
+	}
+
+	public function setReported($reported)
+	{
+		$this->reported=$reported;
+	}
+
+	public function setDeleted($deleted)
+	{
+		$this->deleted=$deleted;
 	}
 
 }
