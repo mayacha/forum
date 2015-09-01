@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Cani-Goût</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<!-- menu principal -->
+			<ul class="nav navbar-nav">
+		        <li><a href="accueil">Accueil</a></li>
+		        <?php require('apps/display-navbar-categories.php'); ?>
+		    </ul>
+			<!-- FIN menu principal -->
+		    <!-- menu déroulant inscription+connexion/utilisateur/admin -->
+			<ul class="nav navbar-nav navbar-right">
+				<?php if(!isset($_SESSION['login'])){ ?>
+				<li><a href="register">S'inscrire</a></li>
+				<?php }?>
+		        <li class="dropdown dropdown-module">
+				<?php if(isset($_SESSION['login'], $_SESSION['permission'])){ 
+						if($_SESSION['permission'] == "admin"){
+	        				require('views/navbar-admin.phtml');
+						}
+						else
+						{
+	        				require('views/navbar-user.phtml');
+						}
+        			}
+        			else
+        			{
+        				require('views/navbar-login.phtml');
+        			} ?>
+				</li>
+		    </ul>
+		    <!-- FIN menu déroulant connexion/utilisateur/admin -->
+		</div>
+	</div>
+		<div class="container-fluid">
+			<form class="navbar-form navbar-left navbar-search" action="search" method="post">
+				<input type="text" name="search-nav" class="form-control" placeholder="Recherche">
+				<button type="submit" class="search"><span class="glyphicon glyphicon-search"></span></button>
+			</form>
+		</div>
+	</div>
+</nav>
