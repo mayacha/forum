@@ -1,10 +1,22 @@
 <?php
 // récupération des catégories pour affichage dans le menu
-require('apps/categories.php');
-$result = getAllCategories($link);
-$category = "";
-while($res = mysqli_fetch_assoc($result)){
-	$category = htmlentities($res['name']); // nom categorie
-	require('views/navbar-category.phtml'); // affichage
+$manager = new CategoryManager($link);
+try
+{
+	$categories = $manager-> selectAll();
+
+	$i=0;
+	while($i < count($categories))
+	{
+		$category = htmlentities($categories[$i]->getName()); // nom categorie
+		require('views/navbar-category.phtml'); // affichage
+		$i++;
+	}
 }
+catch(Exception $exception)
+{
+ header('Location:error');
+}
+	
+
 ?>

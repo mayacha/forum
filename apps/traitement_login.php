@@ -8,10 +8,11 @@ $success = "";
 if(isset($_POST['login'], $_POST['password']))
 {
 	require('models/UserManager.class.php');
+	$manager = new UserManager($link);
 		try
 		{
 		$user = $manager->selectByLogin($_POST['login']);
-		verifPassword($_POST['password']);
+		$user->verifPassword($_POST['password']);
 		$_SESSION['login'] = $resultat['login'];
 		$_SESSION['id_user'] = $resultat['id'];
 		GetPermissionLevel($resultat['id_permission']);

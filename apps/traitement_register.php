@@ -3,6 +3,7 @@ $login='';
 $email='';
 $birthdate='';
 require('models/UserManager.class.php');
+$manager = new UserManager($link);
 
 if(isset($_POST['login'],$_POST['email'],$_POST['birthdate'],$_POST['password'],$_POST['check-password']))
 {
@@ -19,7 +20,7 @@ if(isset($_POST['login'],$_POST['email'],$_POST['birthdate'],$_POST['password'],
 	}
 	else
 	{
-		$error="les mots de passe saisis ne correspondent pas"
+		$error="les mots de passe saisis ne correspondent pas";
 	}
 }	
 ?>
