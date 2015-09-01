@@ -1,11 +1,12 @@
 <?php
 require('fonctions.php');
+require('models/CategoryManager.class.php');
 session_start();
 $link = connectDB();
 $error = "";
 $success = "";
-//var_dump($_POST);
-// var_dump($_GET);
+var_dump($_POST);
+var_dump($_GET);
 // var_dump($_SESSION);
 // var_dump($_SERVER);
 $traitementList = array('register','login','logout','post','topic','account');
@@ -18,7 +19,7 @@ if (isset($_GET['page']) && in_array($_GET['page'], $pageList))
 
 $traitementListAdmin = array('admin_category');
 if (isset($_GET['page_admin']) && in_array($_GET['page_admin'], $traitementListAdmin))
-	require('apps/traitement_'.$_GET['admin_page'].'.php');
+	require('apps/traitement_'.$_GET['page_admin'].'.php');
 
 $page_adminList=array();
 if(isset($_GET['page_admin']) && in_array($_GET['page_admin'], $page_adminList))
