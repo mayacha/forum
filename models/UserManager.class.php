@@ -1,4 +1,5 @@
 <?php
+require('models/User.class.php');
 class UserManager
 {
 	private $link;
@@ -7,10 +8,19 @@ class UserManager
 	{
 		$this->link = $link;
 	}
-	public function create($login,$email,$password,$avatar,$date,$description)
+	public function create($info)
 	{
-		$request="INSERT INTO user (login,email,password,avatar,date,description) VALUES ('".$login."','".$email."','".$password."','".$avatar."','".$date."','".$description."')";	
-		$res= mysqli_query($this->link, $request);
+		if(isset($info['login'],$info['email'],$info['password'],$info['birthdate'],$info['description'],$info['avatar']))
+		{
+			$login=mysqli_real_escape_string($this->link, $user->getLogin());
+			$email=mysqli_real_escape_string($this->link, $user->getEmail());
+			$password=setPassword();
+			$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
+			$description=mysqli_real_escape_string($this->link, $user->getDescription());
+			$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
+
+			$request="INSERT INTO user (login,email,password,avatar,birthdate,description) VALUES ('".$login."','".$email."','".$password."','".$avatar."','".$birthdate."','".$description."')";	
+			$res= mysqli_query($this->link, $request);
 			if ($res === false)
 			{
 				$error="une erreur est survenue";
@@ -21,32 +31,26 @@ class UserManager
 				$success="Bienvenu parmis nous !";
 				return $success;
 			}
+		}
 	}
-	public function delete($id)
+	public function update($user)
 	{
-		$request="UPDATE user SET id_permission='4' WHERE id='".$id."'";
-		$res= mysqli_query($this->link, $request);
-			if ($res === false)
-			{
-				$error="une erreur est survenue";
-				return $error;
-			}
-			else
-			{
-				$success="Ce compte a bien été désactivé";
-				return $success;
-			}
-	}
-	public function update($id, $email, $password, $login, $description, $avatar)
-	{
-		$request = "UPDATE user SET name='".$name."', firstname='".$firstname."', email='".$email."', password='".$password."' WHERE user.id = ".$id.";";
+		$login=mysqli_real_escape_string($this->link, $user->getLogin());
+		$email=mysqli_real_escape_string($this->link, $user->getEmail());
+		$password=modifPassword();
+		$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
+		$description=mysqli_real_escape_string($this->link, $user->getDescription());
+		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
+
+		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."',birthdate='".$birthdate."',description='".$description."',avatar='".$avatar."' WHERE id = ".$id.";";
 		$res = mysqli_query($this->link, $request);
 		if ($res === false){
 			$message = mysqli_error($this->link);
 			$code = mysqli_errno($this->link);
 			if($code == 1062){
 				$prob = substr($message, -6, -1);
-				if($prob == "email"){
+				if($prob == "email")
+				{
 					$error="email non valide";
 					return $error;
 				}
@@ -65,12 +69,19 @@ class UserManager
 	}
 	public function selectById($id)
 	{
-		$request = "SELECT * FROM user WHERE id='".$id."'";
+		$request = "SELECT * FROM user WHERE id='".intval($id)."'";
 		$res = mysqli_query($this->link, $request);
 		$resultat = array();
 		$user = mysqli_fetch_object($res);
-		$resultat[] = $user;
-		return $resultat;
+		if($user==null)
+		{
+			throw new Exception("Cet identifiant n'existe pas");
+		}
+		else
+		{
+			$resultat[] = $user;
+			return $resultat;
+		}
 	}
 	public function selectByLogin($login)
 	{
@@ -78,8 +89,15 @@ class UserManager
 		$res = mysqli_query($this->link, $request);
 		$resultat = array();
 		$user = mysqli_fetch_object($res);
-		$resultat = $user;
-		return $resultat;
+		if($user==null)
+		{
+			throw new Exception("Ce login n'existe pas");
+		}
+		else
+		{
+			$resultat[] = $user;
+			return $resultat;
+		}
 	}
 	public function selectAll()
 	{
@@ -92,5 +110,43 @@ class UserManager
 		}
 		return $resultat;
 	}
+	//Pour connaitre le niveau de permission
+	public function getPermissionLevel($id_permission){
+		if($id_permission==1){
+			return $permissionLevel="admin";
+		}
+		if($id_permission==2){
+			return $permissionLevel="moderateur";
+		}
+		if($id_permission==3){
+			return $permissionLevel="membre";
+		}
+		if($id_permission==4){
+			return $permissionLevel="deleted";
+			throw new Exception("Vous avez demandé la suppression de votre compte");
+		}
+	}
+
+	//Pour désactiver un compte
+	public function delete($id)
+	{
+		$request="UPDATE user SET id_permission='4' WHERE id='".$id."'";
+		$res= mysqli_query($this->link, $request);
+			if ($res === false)
+			{
+				$error="une erreur est survenue";
+				return $error;
+			}
+			else
+			{
+				$success="Ce compte a bien été désactivé";
+				return $success;
+			}
+	}
+	//Pour bannir un utilisateur
+	// public function ban()
+	// {
+	// 	$Request="INSERT INTO ban "
+	// }
 }
 ?>
