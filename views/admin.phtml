@@ -1,0 +1,62 @@
+<div class="wrapper-todo">
+	<h4 class="title-todo btn btn-default">A faire :</h4>
+	<script src="public/scripts/jquery-2.1.4.min.js"></script>
+	<script>$(".title-todo").on("click", function(){$(".todolist").toggle();});</script>
+	<div class="todolist" style="display:none;">
+		<ul>
+			<li>Catégories 
+				<ul>
+					<li>Affichage liste</li>
+					<li>Création</li>
+					<li>Modification</li>
+					<li>Suppression</li>
+				</ul>
+			</li>
+			<li>Utilisateurs 
+				<ul>
+					<li>Affichage liste</li>
+					<li>Modification permission</li>
+					<li>Ban (h)</li>
+				</ul>
+			</li>
+			<li>Messages signalés 
+				<ul>
+					<li>Affichage liste</li>
+					<li>Edition</li>
+					<li>Suppression</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="wrapper-admin-categories">
+	<h2 class="text-center">Catégories</h2>
+	<!-- DEBUT afficahge liste des catégories -->
+	<fieldset class="wrapper-list-categories">
+		<legend>Liste des catégories :</legend>
+		<div class="wrapper-title-category row">
+			<div class="col-sm-3">Titre :</div>
+			<div class="col-sm-5">Description :</div>
+		</div>
+		<?php require('apps/display-admin-categories.php'); ?>
+	</fieldset>
+	<!-- FIN afficahge liste des catégories -->
+	<!-- DEBUT formulaire ajout catégorie -->
+	<fieldset class="wrapper-add-category">
+		<legend>Ajouter une catégorie : </legend>
+		<div class="row">
+		<?php require('views/display-admin-category-form-add.phtml'); ?>
+		</div>
+	</fieldset>
+	<!-- FIN formulaire ajout catégorie -->
+	<!-- DEBUT formulaire modification catégorie -->
+	<fieldset class="wrapper-add-category">
+		<legend>Modifier la catégorie : </legend>
+		<div class="row">
+		<?php require('views/display-admin-category-form-modif.phtml'); ?>
+		</div>
+	</fieldset>
+	<!-- FIN formulaire modification catégorie -->
+</div>
