@@ -6,7 +6,7 @@ class User{
 	private $email;
 	private $password;
 	private $avatar;
-	private $date;
+	private $birthdate;
 	private $description;
 	private $id_permission;
 	private $date_register;
@@ -25,7 +25,7 @@ class User{
 		return $this->avatar;
 	}
 	public function getDate(){
-		return $this->date;
+		return $this->birthdate;
 	}
 	public function getDescription(){
 		return $this->description;
@@ -46,13 +46,20 @@ class User{
 		}
 	}
 	public function setEmail($email){
-		$this->email = $email;
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)==false)
+		{
+			throw new Exception("Votre email n'est pas valide");
+		}
+		else
+		{
+			$this->email = $email;
+		}
 	}
 	public function setAvatar($avatar){
 		$this->avatar = $avatar;
 	}
-	public function setDate($date){
-		$this->date = $date;
+	public function setBirthdate($birthdate){
+		$this->date = $birthdate;
 	}
 	public function setDescrition($description){
 		$this->description = $description;
@@ -63,16 +70,36 @@ class User{
 
 	// other
 	public function verifPassword($password){
-		return password_verify($password, $this->password);
+		$res=password_verify($password, $this->password);
+		if($res==false)
+		{
+			throw new Exception("Mot de passe incorrect");
+		}
+
+	}
+	public function setPassword($password){
+		if (strlen($password) > 5)
+		{
+			$this->password = password_hash($password, PASSWORD_BCRIPT, array("cost"=>11));
+		}
+		else
+		{
+			throw new Exception("Le mot de passe doit contenir 6 caractères minimum.");
+		}
 	}
 	public function modifPassword($oldPassword, $newPassword){
 		if (strlen($password) > 5){
 			if($this->verifPassword($oldPassword)){
 				$this->password = password_hash($newPassword, PASSWORD_BCRIPT, array("cost"=>11));
-			}else{
-				return false;
 			}
-		}else{
+			else
+			{
+				throw new Exception("Votre mot de passe actuel est incorrect...");
+			}
+		}
+
+		else
+		{
 			throw new Exception("Le mot de passe doit contenir 6 caractères minimum.");
 		}
 	}
