@@ -28,7 +28,7 @@ class CategoryManager
 	public function update($category){
 		$name = mysqli_real_escape_string($this->link, $category->getName());
 		$description = mysqli_real_escape_string($this->link, $category->getDescription());
-		$request = "UPDATE category SET name = '".$name."', description = '".$description."';";
+		$request = "UPDATE category SET name = '".$name."', description = '".$description."' WHERE id='".$category->getId()."';";
 		mysqli_query($this->link, $request);
 	}
 	public function select($id){
