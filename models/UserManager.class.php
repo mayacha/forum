@@ -71,32 +71,28 @@ class UserManager
 	{
 		$request = "SELECT * FROM user WHERE id='".intval($id)."'";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
-		$user = mysqli_fetch_object($res);
+		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
 			throw new Exception("Cet identifiant n'existe pas");
 		}
 		else
 		{
-			$resultat[] = $user;
-			return $resultat;
+			return $user;
 		}
 	}
 	public function selectByLogin($login)
 	{
 		$request = "SELECT * FROM user WHERE login='".$login."'";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
-		$user = mysqli_fetch_object($res);
+		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
 			throw new Exception("Ce login n'existe pas");
 		}
 		else
 		{
-			$resultat[] = $user;
-			return $resultat;
+			return $user;
 		}
 	}
 	public function selectAll()

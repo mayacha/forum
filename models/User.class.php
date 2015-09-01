@@ -10,6 +10,12 @@ class User{
 	private $description;
 	private $id_permission;
 	private $date_register;
+	private $link;
+
+	public function __construct($link)
+	{
+		$this->link = $link;
+	}
 
 	// getter
 	public function getId(){
