@@ -96,31 +96,31 @@ public function __construct($link)
 
 	}
 
-	public function select ($id)
-	{
-		$request="SELECT * FROM post WHERE id_topic='".intval($id)."'";
-		$res=mysqli_query($this->link, $request);
-		if($res)
-			{
-			$post=mysqli_fetch_object($res, 'Post', array($this->link));
-			return $post;
-			}
-			else 
-			{
-				throw new Exception('aucun post');
-			}
-	}
 
-	// public function selectAll()
-	// {
-	// 	$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
-	// 	$res=mysqli_query($this->link, $request);
-	// 	$listPosts=array();
-	// 	while ($post=mysqli_fetch_object($res, 'Post', array($this->link)))
-	// 	{
-	// 		$listPosts[]=$post;
-	// 	}
-	// 	return $listPosts;
-	// }
+		public function getAuthor()
+		{
+			$manager = new UserManager($this->link);
+			$author = $manager->selectById($this->id_user);
+			return $author;
+		}
+
+		public function selectAll()
+		{
+			$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
+			$res=mysqli_query($link, $request);
+			if($res)
+			{
+				$listPost=array();
+				while($post=mysqli_fetch_object($res, 'Post', array($this->link)))
+				{
+					$listPost[]=$post;
+				}
+				return $listPost;
+			}
+			else
+			{
+				throw new Exception('rien !');
+			}
+		}
 }
 ?>
