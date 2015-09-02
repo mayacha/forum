@@ -16,7 +16,6 @@ if(isset($_POST['login'],$_POST['email'],$_POST['password'],$_POST['check-passwo
 			$user->setPassword($_POST['password']);
 			$res= $manager->create($user);
 			header('Location:home');
-			echo $res;
 		}
 		catch (Exception $exception)
 		{
