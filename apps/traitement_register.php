@@ -1,5 +1,5 @@
 <?php
-$login='';
+$flogin='';
 $email='';
 
 $manager = new UserManager($link);
@@ -15,21 +15,22 @@ if(isset($_POST['login'],$_POST['email'],$_POST['password'],$_POST['check-passwo
 			$user->setEmail($_POST['email']);
 			$user->setPassword($_POST['password']);
 			$res= $manager->create($user);
-			// header('Location:home');
+			header('Location:home');
 			echo $res;
 		}
 		catch (Exception $exception)
 		{
-			$login=$_POST['login'];
+			$flogin=$_POST['login'];
 			$email=$_POST['email'];
 			$error = $exception->getMessage();
 		}
 	}
 	else
 	{
-		$login=$_POST['login'];
+		$flogin=$_POST['login'];
 		$email=$_POST['email'];
 		$error="les mots de passe saisis ne correspondent pas";
 	}
 }
+
 ?>
