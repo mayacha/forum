@@ -38,5 +38,16 @@ class Category{
 			throw new Exception("La description de la catégorie doit contenir au moins 10 caractères.");
 		}
 	}
+
+	public function select($id){
+		$request = "SELECT * FROM topic WHERE id='".intval($id)."'";
+		$res = mysqli_query($this->link, $request);
+		if($res){
+			$topic = mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
+		}else{
+			throw new Exception("Internal server error");
+		}
+	}
 }
 ?>

@@ -81,34 +81,36 @@ public function __construct($link)
 			}
 	}
 
-	public function delete ($id)
+	public function update($post)
 	{
-		$request="DELETE FROM post WHERE id='".intval($id)."'";
-		mysqli_query($this->link, $request);
-	}
-
-	public function update ($post)
-	{
-		$content=mysqli_real_escape_string($this->link, $post->getContent());
 		$title=mysqli_real_escape_string($this->link, $post->getTitle());
-		$request="UPDATE post SET content='".$content."', title='".$title."'";
+		$content=mysqli_real_escape_string($this->link, $post->getContent());
+		$reported=mysqli_real_escape_string($this->link, $post->getReported());
+		$deleted=mysqli_real_escape_string($this->link, $post->getDeleted());
+		$request="UPDATE post SET title='".$title."', content='".$content."', reported=".$reported.", deleted=".$deleted." WHERE id = ".$post->getId();
 		mysqli_query($this->link, $request);
-
 	}
 
-	public function select ($id)
+	public function select($id)
 	{
 		$request="SELECT * FROM post WHERE id_topic='".intval($id)."'";
 		$res=mysqli_query($this->link, $request);
 		if($res)
-			{
+		{
 			$post=mysqli_fetch_object($res, 'Post', array($this->link));
-			return $post;
-			}
-			else 
-			{
-				throw new Exception('aucun post');
-			}
+		return $post;
+		}
+		else 
+		{
+			throw new Exception('aucun post');
+		}
+	}
+
+	public function getCategory()
+	{
+		$manager = new CategoryManager($this->link);
+		$category = $manager->select($this->id_category);
+		return $category;
 	}
 
 	// public function selectAll()

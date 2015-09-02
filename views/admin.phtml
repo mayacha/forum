@@ -32,24 +32,24 @@
 	</div>
 
 	<!-- Menu administration -->
-	<nav class="nav-admin list-group">
-		<a href="#users" class="list-group-item nav-admin-users active">Gestion des utilisateurs</a>
-		<a href="#categories" class="list-group-item nav-admin-categories">Gestion des catégories</a>
-		<a href="#posts" class="list-group-item nav-admin-posts">Gestion des messages signalés</a>
-	</nav>
+	<ul class="nav-admin list-group">
+		<li data-target="users" class="list-group-item nav-admin-users active">Gestion des utilisateurs</li>
+		<li data-target="categories" class="list-group-item nav-admin-categories">Gestion des catégories</li>
+		<li data-target="posts" class="list-group-item nav-admin-posts">Messages signalés</li>
+	</ul>
 
 	<!-- Gestion catégories -->
-	<div class="wrapper-admin-users">
+	<div class="wrapper-admin-users" id="users">
 		<?php require('views/display-admin-user.phtml'); ?>
 	</div>
 
 	<!-- Gestion catégories -->
-	<div class="wrapper-admin-categories">
+	<div class="wrapper-admin-categories" id="categories">
 		<?php require('views/display-admin-category.phtml'); ?>
 	</div>
 
 	<!-- Gestion messages signalés -->
-	<div class="wrapper-admin-posts">
+	<div class="wrapper-admin-posts" id="posts">
 		<?php require('views/display-admin-post.phtml'); ?>
 	</div>
 </div>

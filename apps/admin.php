@@ -5,5 +5,7 @@ $errorAddCat = "";
 $successAddCat = "";
 $errorUser = "";
 $successUser = "";
+$errorPost = "";
+$successPost = "";
 require('views/admin.phtml');
 ?>
