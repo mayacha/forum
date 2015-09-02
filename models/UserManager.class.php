@@ -1,5 +1,4 @@
 <?php
-require('models/User.class.php');
 class UserManager
 {
 	private $link;
@@ -8,41 +7,39 @@ class UserManager
 	{
 		$this->link = $link;
 	}
-	public function create($info)
+	public function create($user)
 	{
-		if(isset($info['login'],$info['email'],$info['password'],$info['birthdate'],$info['description'],$info['avatar']))
-		{
-			$login=mysqli_real_escape_string($this->link, $user->getLogin());
-			$email=mysqli_real_escape_string($this->link, $user->getEmail());
-			$password=setPassword();
-			$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
-			$description=mysqli_real_escape_string($this->link, $user->getDescription());
-			$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
+		$login=mysqli_real_escape_string($this->link, $user->getLogin());
+		$email=mysqli_real_escape_string($this->link, $user->getEmail());
+		$password=mysqli_real_escape_string($this->link, $user->getPassword());
+		
 
-			$request="INSERT INTO user (login,email,password,avatar,birthdate,description) VALUES ('".$login."','".$email."','".$password."','".$avatar."','".$birthdate."','".$description."')";	
-			$res= mysqli_query($this->link, $request);
-			if ($res === false)
-			{
-				$error="une erreur est survenue";
-				return $error;
-			}
-			else
-			{
-				$success="Bienvenu parmis nous !";
-				return $success;
-			}
+		$request="INSERT INTO user (login,email,password) VALUES ('".$login."','".$email."','".$password."')";	
+		echo $request;
+		$res= mysqli_query($this->link, $request);
+		if ($res === false)
+		{
+			$error="une erreur est survenue";
+			return $error;
+		}
+		else
+		{
+			$success="Bienvenu parmis nous !";
+			return $success;
 		}
 	}
 	public function update($user)
 	{
+		$id=mysqli_real_escape_string($this->link, $user->getId());
 		$login=mysqli_real_escape_string($this->link, $user->getLogin());
 		$email=mysqli_real_escape_string($this->link, $user->getEmail());
-		$password=modifPassword();
+		$password=$user->getPassword();
+		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
 		$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
 		$description=mysqli_real_escape_string($this->link, $user->getDescription());
-		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
+		$id_permission=intval($user->getIdPermission());
 
-		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."',birthdate='".$birthdate."',description='".$description."',avatar='".$avatar."' WHERE id = ".$id.";";
+		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."' ,avatar='".$avatar."', birthdate='".$birthdate."',description='".$description."',id_permission='".$id_permission."' WHERE id = ".$id.";";
 		$res = mysqli_query($this->link, $request);
 		if ($res === false){
 			$message = mysqli_error($this->link);
@@ -95,16 +92,19 @@ class UserManager
 			return $user;
 		}
 	}
-	public function selectAll()
-	{
+	public function selectAll(){
 		$request = "SELECT * FROM user";
 		$res = mysqli_query($this->link, $request);
-		$resultat = array();
-		while ($user = mysqli_fetch_object($res))
-		{
-			$resultat[] = $user;
+		if($res){
+			$resultat = array();
+			while ($user = mysqli_fetch_object($res, 'User', array($this->link)))
+			{
+				$resultat[] = $user;
+			}
+			return $resultat;
+		}else{
+			throw new Exception("Internal server error");
 		}
-		return $resultat;
 	}
 	//Pour connaitre le niveau de permission
 	public function getPermissionLevel($id_permission){
@@ -119,7 +119,6 @@ class UserManager
 		}
 		if($id_permission==4){
 			return $permissionLevel="deleted";
-			throw new Exception("Vous avez demandé la suppression de votre compte");
 		}
 	}
 

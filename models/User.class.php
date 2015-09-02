@@ -10,8 +10,9 @@ class User{
 	private $description;
 	private $id_permission;
 	private $date_register;
-	private $link;
 
+	private $link;
+ 
 	public function __construct($link)
 	{
 		$this->link = $link;
@@ -30,7 +31,7 @@ class User{
 	public function getAvatar(){
 		return $this->avatar;
 	}
-	public function getDate(){
+	public function getBirthdate(){
 		return $this->birthdate;
 	}
 	public function getDescription(){
@@ -42,6 +43,9 @@ class User{
 	public function getDateRegister(){
 		return $this->date_register;
 	}
+	public function getPassword(){
+		return $this->password;
+	}
 
 	// setter
 	public function setLogin($login){
@@ -52,7 +56,7 @@ class User{
 		}
 	}
 	public function setEmail($email){
-		if(filter_var($email, FILTER_VALIDATE_EMAIL)==false)
+		if(filter_var($email, FILTER_VALIDATE_EMAIL) == false)
 		{
 			throw new Exception("Votre email n'est pas valide");
 		}
@@ -71,7 +75,7 @@ class User{
 		$this->description = $description;
 	}
 	public function setIdPermission($id_permission){
-		$this->id_permission = $id_permission;
+		$this->id_permission = intval($id_permission);
 	}
 
 	// other
@@ -86,7 +90,7 @@ class User{
 	public function setPassword($password){
 		if (strlen($password) > 5)
 		{
-			$this->password = password_hash($password, PASSWORD_BCRIPT, array("cost"=>11));
+			$this->password = password_hash($password, PASSWORD_BCRYPT, array("cost"=>11));
 		}
 		else
 		{
@@ -96,7 +100,7 @@ class User{
 	public function modifPassword($oldPassword, $newPassword){
 		if (strlen($password) > 5){
 			if($this->verifPassword($oldPassword)){
-				$this->password = password_hash($newPassword, PASSWORD_BCRIPT, array("cost"=>11));
+				$this->password = password_hash($newPassword, PASSWORD_BCRYPT, array("cost"=>11));
 			}
 			else
 			{
