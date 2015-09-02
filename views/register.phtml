@@ -10,12 +10,12 @@
 	<div class="form-group">
 		<label for="password">Mot de passe : </label>
 		<input type="password" name="password" id="password" class="form-control">
-		<input type="password" name="check-password" class="form-control">
+		<input type="password" name="check-password" class="form-control" placeholder="Saisir le mot de passe une 2ème fois">
 	</div>
-	<button>s'inscrire</button>
+	<button class="btn btn-default pull-right">s'inscrire</button>
 	
 	<div class="message">
-		<div class="error"><?=$error?></div>
-		<div class="success"><?=$success?></div>
+		<div class="bg-danger"><?=$error?></div>
+		<div class="bg-success"><?=$success?></div>
 	</div>
 </form>

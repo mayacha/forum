@@ -1,5 +1,5 @@
 <?php
-require('models/Category.class.php');
+
 class CategoryManager
 {
 	private $link;

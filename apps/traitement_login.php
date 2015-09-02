@@ -7,15 +7,17 @@ $success = "";
 // si le formulaire est envoyé
 if(isset($_POST['login'], $_POST['password']))
 {
-	require('models/UserManager.class.php');
 	$manager = new UserManager($link);
 		try
 		{
 		$user = $manager->selectByLogin($_POST['login']);
 		$user->verifPassword($_POST['password']);
-		$_SESSION['login'] = $resultat['login'];
-		$_SESSION['id_user'] = $resultat['id'];
-		GetPermissionLevel($resultat['id_permission']);
+		$login = $user->getLogin();
+		$id = $user->getId();
+		$id_permission = $user->getIdPermission();
+		$_SESSION['login'] = $login;
+		$_SESSION['id_user'] = $id;
+		$permissionLevel = $manager->getPermissionLevel($id_permission);
 		$_SESSION['permission'] = $permissionLevel;
 			// on recharge la page actuelle
 			if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
@@ -31,6 +33,7 @@ if(isset($_POST['login'], $_POST['password']))
 		}
 		catch(Exception $exception)
 		{
+
 			$error = $exception->getMessage();
 		}
 }
