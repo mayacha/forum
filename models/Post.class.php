@@ -97,7 +97,12 @@ class Post
 
 	// OTHER
 
-
+	public function getAuthor()
+	{
+		$manager = new UserManager($this->link);
+		$author = $manager->select($this->id_user);
+		return $author;
+	}
 }
 
 ?>
