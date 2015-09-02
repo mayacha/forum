@@ -1,8 +1,8 @@
 <div class="wrapper-category row">
-	<div class="col-sm-3"><?=htmlentities($name)?></div>
-	<div class="col-sm-5"><?=htmlentities($description)?></div>
-	<div class="col-sm-2"><button class="btn btn-info btn-sm btn-update-category" title="Modifier la catégorie"><span class="glyphicon glyphicon-pencil"></span></button></div>
-	<div class="col-sm-2"><button class="btn btn-danger btn-sm btn-delete-category" title="Supprimer la catégorie"><span class="glyphicon glyphicon-remove"></span></button></div>
+	<div class="col-sm-3 vmiddle"><?=htmlentities($name)?></div><!--
+	--><div class="col-sm-5 vmiddle"><?=htmlentities($description)?></div><!--
+	--><div class="col-sm-2 vmiddle"><button class="btn btn-info btn-sm btn-update-category" title="Modifier la catégorie"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
+	--><div class="col-sm-2 vmiddle"><button class="btn btn-danger btn-sm btn-delete-category" title="Supprimer la catégorie"><span class="glyphicon glyphicon-remove"></span></button></div>
 	<?php require('views/display-admin-category-form-modif.phtml'); ?>
 	<?php require('views/display-admin-category-form-delete.phtml'); ?>
 </div>

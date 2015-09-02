@@ -1,0 +1,8 @@
+<div class="wrapper-user row">
+	<div class="col-sm-1 vmiddle"><img src="public/img/<?=htmlentities($avatar)?>" class="img-responsive center-block"></div><!--
+	--><div class="col-sm-3 vmiddle"><?=htmlentities($login)?></div><!--
+	--><div class="col-sm-4 vmiddle"><?=htmlentities($email)?></div><!--
+	--><div class="col-sm-2 vmiddle"><?=htmlentities($permission)?></div><!--
+	--><div class="col-sm-2 vmiddle"><button class="btn btn-info btn-sm btn-update-user" title="Modifier le rang"><span class="glyphicon glyphicon-pencil"></span></button></div>
+</div>
+<?php require('views/display-admin-user-form-modif.phtml'); ?>
