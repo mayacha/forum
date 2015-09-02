@@ -41,7 +41,14 @@ $('#changelog').click(function(e){
         e.preventDefault();
         $('#birth').slideToggle(200);
     });
-
+ $('#changedescription').click(function(e){
+        e.preventDefault();
+        $('#description').slideToggle(200);
+    });
+  $('#changeavatar').click(function(e){
+        e.preventDefault();
+        $('#avatar').slideToggle(200);
+    });
 
 
 
