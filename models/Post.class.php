@@ -12,7 +12,11 @@ class Post
 	private $reported;
 	private $deleted;
 
-
+	// Constructeur
+	public function __construct($link)
+	{
+		$this->link=$link;
+	}
 	// Méthodes de la class Post
 	//GETTER
 
@@ -89,6 +93,10 @@ class Post
 	{
 		$this->deleted=$deleted;
 	}
+
+
+	// OTHER
+
 
 }
 
