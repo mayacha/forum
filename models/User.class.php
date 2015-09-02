@@ -31,7 +31,7 @@ class User{
 	public function getAvatar(){
 		return $this->avatar;
 	}
-	public function getDate(){
+	public function getBirthdate(){
 		return $this->birthdate;
 	}
 	public function getDescription(){
@@ -43,6 +43,9 @@ class User{
 	public function getDateRegister(){
 		return $this->date_register;
 	}
+	public function getPassword(){
+		return $this->password;
+	}
 
 	// setter
 	public function setLogin($login){
@@ -53,7 +56,7 @@ class User{
 		}
 	}
 	public function setEmail($email){
-		if(filter_var($email, FILTER_VALIDATE_EMAIL)==false)
+		if(filter_var($email, FILTER_VALIDATE_EMAIL) == false)
 		{
 			throw new Exception("Votre email n'est pas valide");
 		}
@@ -72,7 +75,7 @@ class User{
 		$this->description = $description;
 	}
 	public function setIdPermission($id_permission){
-		$this->id_permission = $id_permission;
+		$this->id_permission = intval($id_permission);
 	}
 
 	// other

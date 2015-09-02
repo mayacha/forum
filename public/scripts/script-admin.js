@@ -14,3 +14,7 @@ $('.btn-cancel-delete-category').on("click", function(event){
 });
 
 /*** gestion utilisateurs ***/ 
+// bouton modifier
+$('.btn-update-user').on("click", function(){
+	$(this).parent().parent().find('+ .js-user-form-modif').toggle("slow");
+});

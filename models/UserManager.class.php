@@ -1,5 +1,4 @@
 <?php
-require('models/User.class.php');
 class UserManager
 {
 	private $link;
@@ -35,14 +34,16 @@ class UserManager
 	}
 	public function update($user)
 	{
+		$id=mysqli_real_escape_string($this->link, $user->getId());
 		$login=mysqli_real_escape_string($this->link, $user->getLogin());
 		$email=mysqli_real_escape_string($this->link, $user->getEmail());
-		$password=modifPassword();
+		$password=$user->getPassword();
+		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
 		$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
 		$description=mysqli_real_escape_string($this->link, $user->getDescription());
-		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
+		$id_permission=intval($user->getIdPermission());
 
-		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."',birthdate='".$birthdate."',description='".$description."',avatar='".$avatar."' WHERE id = ".$id.";";
+		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."' ,avatar='".$avatar."', birthdate='".$birthdate."',description='".$description."',id_permission='".$id_permission."' WHERE id = ".$id.";";
 		$res = mysqli_query($this->link, $request);
 		if ($res === false){
 			$message = mysqli_error($this->link);
@@ -71,7 +72,7 @@ class UserManager
 	{
 		$request = "SELECT * FROM user WHERE id='".intval($id)."'";
 		$res = mysqli_query($this->link, $request);
-		$user = mysqli_fetch_object($res);
+		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
 			throw new Exception("Cet identifiant n'existe pas");
@@ -85,7 +86,7 @@ class UserManager
 	{
 		$request = "SELECT * FROM user WHERE login='".$login."'";
 		$res = mysqli_query($this->link, $request);
-		$user = mysqli_fetch_object($res);
+		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
 			throw new Exception("Ce login n'existe pas");

@@ -1,41 +1,55 @@
-<div class="wrapper-todo">
-	<h4 class="title-todo btn btn-default">A faire :</h4>
-	<script src="public/scripts/jquery-2.1.4.min.js"></script>
-	<script>$(".title-todo").on("click", function(){$(".todolist").toggle();});</script>
-	<div class="todolist" style="display:none;">
-		<ul>
-			<li>Catégories 
-				<ul>
-					<li>Affichage liste</li>
-					<li>Création</li>
-					<li>Modification</li>
-					<li>Suppression</li>
-				</ul>
-			</li>
-			<li>Utilisateurs 
-				<ul>
-					<li>Affichage liste</li>
-					<li>Modification permission</li>
-					<li>Ban (h)</li>
-				</ul>
-			</li>
-			<li>Messages signalés 
-				<ul>
-					<li>Affichage liste</li>
-					<li>Edition</li>
-					<li>Suppression</li>
-				</ul>
-			</li>
-		</ul>
+<div class="wrapper-admin">
+	<div class="wrapper-todo">
+		<h4 class="title-todo btn btn-default">A faire :</h4>
+		<script src="public/scripts/jquery-2.1.4.min.js"></script>
+		<script>$(".title-todo").on("click", function(){$(".todolist").toggle();});</script>
+		<div class="todolist" style="display:none;">
+			<ul>
+				<li>Catégories 
+					<ul>
+						<li>Affichage liste</li>
+						<li>Création</li>
+						<li>Modification</li>
+						<li>Suppression</li>
+					</ul>
+				</li>
+				<li>Utilisateurs 
+					<ul>
+						<li>Affichage liste</li>
+						<li>Modification permission</li>
+						<li>Ban (h)</li>
+					</ul>
+				</li>
+				<li>Messages signalés 
+					<ul>
+						<li>Affichage liste</li>
+						<li>Edition</li>
+						<li>Suppression</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>
 
-<!-- Gestion catégories -->
-<div class="wrapper-admin-users">
-	<?php require('views/display-admin-user.phtml'); ?>
-</div>
+	<!-- Menu administration -->
+	<nav class="nav-admin list-group">
+		<a href="#users" class="list-group-item nav-admin-users active">Gestion des utilisateurs</a>
+		<a href="#categories" class="list-group-item nav-admin-categories">Gestion des catégories</a>
+		<a href="#posts" class="list-group-item nav-admin-posts">Gestion des messages signalés</a>
+	</nav>
 
-<!-- Gestion catégories -->
-<div class="wrapper-admin-categories">
-	<?php require('views/display-admin-category.phtml'); ?>
+	<!-- Gestion catégories -->
+	<div class="wrapper-admin-users">
+		<?php require('views/display-admin-user.phtml'); ?>
+	</div>
+
+	<!-- Gestion catégories -->
+	<div class="wrapper-admin-categories">
+		<?php require('views/display-admin-category.phtml'); ?>
+	</div>
+
+	<!-- Gestion messages signalés -->
+	<div class="wrapper-admin-posts">
+		<?php require('views/display-admin-post.phtml'); ?>
+	</div>
 </div>

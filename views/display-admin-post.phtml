@@ -1,0 +1,16 @@
+<h2 class="text-center">Messages signalés</h2>
+<!-- DEBUT afficahge liste des messages signalés -->
+<fieldset class="wrapper-list-posts">
+	<legend>Liste des messages signalés :</legend>
+<div class="bg-danger"><?=$error?></div>
+<div class="bg-success"><?=$success?></div>
+	<div class="wrapper-title-post row">
+		<div class="col-sm-2">Titre :</div>
+		<div class="col-sm-4">Message :</div>
+		<div class="col-sm-2">Auteur :</div>
+		<div class="col-sm-2">Topic :</div>
+		<div class="col-sm-2">Lien :</div>
+	</div>
+	<?php require('apps/display-admin-posts.php'); ?>
+</fieldset>
+<!-- FIN afficahge liste des messages signalés -->
