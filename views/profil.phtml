@@ -11,9 +11,10 @@
 		<a class="btn btn-info btn-xs" id="changeavatar" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="avatar" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<input class="form-control" name="avatar" type="file">
+				<input id="hiddenfile" name="avatar" type="file">
+				<!-- <input type="text" id="selectedfile" value="choisissez un fichier" onclick="getfile();"> -->
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
@@ -24,8 +25,8 @@
 		<a class="btn btn-info btn-xs" id="changedescription" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="description" method="post">
 			<div class="form-group">
-				<textarea class="form-control" name="description"></textarea>
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<textarea class="" name="description"></textarea>
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
@@ -37,8 +38,8 @@
 		<a class="btn btn-info btn-xs" id="changelog" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="login" method="post">
 			<div class="form-group">
-				<input class="form-control" name="changelog" type="text">
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<input class="" name="changelog" type="text">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
@@ -48,10 +49,10 @@
 		<a class="btn btn-info btn-xs" id="changemdp" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="mdp" method="post">
 			<div class="form-group">
-				<input class="form-control" name="exmdp" type="password" placeholder="Mot de passe actuel">
-				<input class="form-control" name="changemdp" type="password" placeholder="Nouveau mot de passe">
-				<input class="form-control" name="checkmdp" type="password" placeholder="Confirmation">
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<input class="" name="exmdp" type="password" placeholder="Mot de passe actuel">
+				<input class="" name="changemdp" type="password" placeholder="Nouveau mot de passe">
+				<input class="" name="checkmdp" type="password" placeholder="Confirmation">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
@@ -61,8 +62,8 @@
 		<a class="btn btn-info btn-xs" id="changemail" href="">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="email" method="post">
 			<div class="form-group">
-				<input class="form-control" name="changemail" type="text">
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<input class="" name="changemail" type="text">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
@@ -71,8 +72,8 @@
 		<a class="btn btn-info btn-xs" id="changedate" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="birth" method="post">
 			<div class="form-group">
-				<input class="form-control" name="birthdate" type="date">
-				<button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				<input class="" name="birthdate" type="date">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
