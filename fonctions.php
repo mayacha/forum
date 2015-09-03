@@ -43,8 +43,8 @@ function uploadAvatar(){
 	     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 	     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier)) //renvoi TRUE
 	     {
-	          $success='Upload effectué avec succès !';
-	          return $success;
+	          
+	          return $fichier;
 	     }
 	     else //Sinon (la fonction renvoie FALSE).
 	     {
