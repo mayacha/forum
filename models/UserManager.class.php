@@ -35,7 +35,7 @@ class UserManager
 		$email=mysqli_real_escape_string($this->link, $user->getEmail());
 		$password=$user->getPassword();
 		$avatar=mysqli_real_escape_string($this->link, $user->getAvatar());
-		$birthdate=mysqli_real_escape_string($this->link, $user->getBirthdate());
+		$birthdate=$user->getBirthdate();
 		$description=mysqli_real_escape_string($this->link, $user->getDescription());
 		$id_permission=intval($user->getIdPermission());
 

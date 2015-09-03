@@ -69,10 +69,10 @@ class User{
 		$this->avatar = $avatar;
 	}
 	public function setBirthdate($birthdate){
-		$this->date = $birthdate;
+		$this->birthdate = $birthdate;
 	}
-	public function setDescrition($description){
-		$this->description = mysqli_real_escape_string($description);
+	public function setDescription($description){
+		$this->description = $description;
 	}
 	public function setIdPermission($id_permission){
 		$this->id_permission = intval($id_permission);
