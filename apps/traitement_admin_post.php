@@ -1,17 +1,36 @@
 <?php
 $errorPost = "";
 $successPost = "";
+$managerP = new Topic($link);
+$managerF = new Forum($link);
 // validation post
 if(isset($_POST['valid'], $_POST['id'])){
-	$managerF = new Forum($link);
 	$post = $managerF->getPostById($_POST['id']);
 	if ($post){
 		try{
 			$post->setReported("0");
-			$managerP = new Topic($link);
 			$managerP->update($post);
 			$successPost = "Message validé.";
-			echo "succes";
+			echo "success";
+			exit;
+		}catch(Exception $e){
+			$errorPost = $e->getMessage();
+			echo "error";
+			exit;
+		}
+	}
+}
+// modification post
+if(isset($_POST['modif'], $_POST['id'], $_POST['title'], $_POST['content'])){
+	$post = $managerF->getPostById($_POST['id']);
+	if ($post){
+		try{
+			$post->setTitle($_POST['title']);
+			$post->setContent($_POST['content']);
+			$post->setReported("0");
+			$managerP->update($post);
+			$successPost = "Message modifié.";
+			echo "success";
 			exit;
 		}catch(Exception $e){
 			$errorPost = $e->getMessage();
@@ -22,33 +41,18 @@ if(isset($_POST['valid'], $_POST['id'])){
 }
 // suppression post
 if(isset($_POST['delete'], $_POST['id'])){
-	$managerF = new Forum($link);
 	$post = $managerF->getPostById($_POST['id']);
 	if ($post){
 		try{
 			$post->setDeleted("1");
-			$managerP = new Topic($link);
 			$managerP->update($post);
 			$successPost = "Message supprimé.";
+			echo "success";
+			exit;
 		}catch(Exception $e){
 			$errorPost = $e->getMessage();
-		}
-	}
-}
-// modification post
-if(isset($_POST['modif'], $_POST['id'], $_POST['title'], $_POST['content'])){
-	$managerF = new Forum($link);
-	$post = $managerF->getPostById($_POST['id']);
-	if ($post){
-		try{
-			$post->setTitle($_POST['title']);
-			$post->setContent($_POST['content']);
-			$post->setReported("0");
-			$managerP = new Topic($link);
-			$managerP->update($post);
-			$successPost = "Message modifié.";
-		}catch(Exception $e){
-			$errorPost = $e->getMessage();
+			echo "error";
+			exit;
 		}
 	}
 }

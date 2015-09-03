@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Topic{
 
 private $id;
