@@ -9,3 +9,5 @@ RewriteRule ^category/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=category&catego
 RewriteRule ^topic/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=topic&topic=$1 [L]
 RewriteRule ^admin/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=admin&page_admin=$1 [L]
 
+
+RewriteRule ^(.+)/(.+)/?$ index.php?page=singlecategory&category=$1&topic=$2 [L]
