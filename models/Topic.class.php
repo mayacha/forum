@@ -107,7 +107,7 @@ public function __construct($link)
 		public function selectAll()
 		{
 			$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
-			$res=mysqli_query($link, $request);
+			$res=mysqli_query($this->link, $request);
 			if($res)
 			{
 				$listPost=array();
@@ -122,5 +122,7 @@ public function __construct($link)
 				throw new Exception('rien !');
 			}
 		}
+
+	
 }
 ?>

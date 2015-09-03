@@ -41,6 +41,23 @@ class CategoryManager
 			throw new Exception("Internal server error");
 		}
 	}
+
+	public function selectByName($name)
+	{
+		$request="SELECT * FROM category WHERE name='".$name."'";
+		$res=mysqli_query($this->link, $request);
+		if($res)
+		{
+			$category=mysqli_fetch_object($res, 'Category', array($this->link));
+			return $category;
+		}
+		else
+		{
+			throw new Exception("Error Processing Request");
+			
+		}
+	}
+
 	public function selectAll(){
 		$request = "SELECT * FROM category";
 		$res = mysqli_query($this->link, $request);

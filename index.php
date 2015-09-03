@@ -12,10 +12,10 @@ function my_autoloader($className)
 spl_autoload_register('my_autoloader');
 
 
-$traitementList = array('register','login','logout','post','topic','account');
+$traitementList = array('register','login','logout','topic','account');
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');
-$pageList = array('home','category','topic','profil','register','account','admin');
+$pageList = array('home','category','topic','profil','register','account','admin','singlecategory');
 $page = 'home';
 if (isset($_GET['page']) && in_array($_GET['page'], $pageList))
 	$page = $_GET['page'];
