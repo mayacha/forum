@@ -1,0 +1,10 @@
+<div class="row" id="category-<?=$category->getId()?>">
+	<div class="col-sm-3 vmiddle"><?=htmlentities($category->getName())?></div><!--
+	--><div class="col-sm-7 vmiddle"><?=htmlentities($category->getDescription())?></div><!--
+	--><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-category" title="Modifier la catégorie"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
+	--><div class="col-sm-1 vmiddle"><button class="btn btn-danger btn-sm btn-delete-category" title="Supprimer la catégorie"><span class="glyphicon glyphicon-remove"></span></button></div>
+</div>
+<div class="row">
+	<?php require('views/display-admin-category-form-modif.phtml'); ?>
+	<?php require('views/display-admin-category-form-delete.phtml'); ?>
+</div>
