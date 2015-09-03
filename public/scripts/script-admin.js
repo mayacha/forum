@@ -20,64 +20,93 @@ $(".nav-admin .list-group-item").on("click", function(event){
 
 /*** gestion catégories ***/
 // bouton modifier
-$('.btn-update-category').on("click", function(){
-	if($(this).parent().parent().find('.js-category-form-delete').hasClass("displayed")){
-		$(this).parent().parent().find('.js-category-form-delete').toggle("slow");
-		$(this).parent().parent().find('.js-category-form-delete').toggleClass("displayed");
-	}
+$('.btn-modif-category').on("click", function(){
+	$(this).parent().parent().find('.displayed').toggle("slow");
+	$(this).parent().parent().find('.displayed').toggleClass("displayed");
 	$(this).parent().parent().find('.js-category-form-modif').toggle("slow");
 	$(this).parent().parent().find('.js-category-form-modif').toggleClass("displayed");
 });
 // bouton supprimer
 $('.btn-delete-category').on("click", function(){
-	if($(this).parent().parent().find('.js-category-form-modif').hasClass("displayed")){
-		$(this).parent().parent().find('.js-category-form-modif').toggle("slow");
-		$(this).parent().parent().find('.js-category-form-modif').toggleClass("displayed");
-	}
+	$(this).parent().parent().find('.displayed').toggle("slow");
+	$(this).parent().parent().find('.displayed').toggleClass("displayed");
 	$(this).parent().parent().find('.js-category-form-delete').toggle("slow");
 	$(this).parent().parent().find('.js-category-form-delete').toggleClass("displayed");
+});
+// bouton annuler modification
+$('.btn-cancel-modif-category').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
 });
 // bouton annuler suppression
 $('.btn-cancel-delete-category').on("click", function(event){
     event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
 	$(this).parent().parent().toggle("slow");
 });
 
 
 /*** gestion utilisateurs ***/ 
 // bouton modifier
-$('.btn-update-user').on("click", function(){
-	$(this).parent().parent().find('+ .js-user-form-modif').toggle("slow");
-	$(this).parent().parent().find('+ .js-user-form-modif').toggleClass("displayed");
+$('.btn-modif-user').on("click", function(){
+	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+	$(this).parent().parent().find('+ .row .js-user-form-modif').toggle("slow");
+	$(this).parent().parent().find('+ .row .js-user-form-modif').toggleClass("displayed");
+});
+// bouton bannir
+$('.btn-ban-user').on("click", function(){
+	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+	$(this).parent().parent().find('+ .row .js-user-form-ban').toggle("slow");
+	$(this).parent().parent().find('+ .row .js-user-form-ban').toggleClass("displayed");
+});
+// bouton annuler modification
+$('.btn-cancel-modif-user').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
 });
 
 
 /*** gestion messages signalés ***/
-// bouton modifier
+// bouton valider
 $('.btn-valid-post').on("click", function(){
-	if($(this).parent().parent().find('.js-post-form-delete').hasClass("displayed")){
-		$(this).parent().parent().find('.js-post-form-delete').toggle("slow");
-		$(this).parent().parent().find('.js-post-form-delete').toggleClass("displayed");
-	}
+	$(this).parent().parent().find('.displayed').toggle("slow");
+	$(this).parent().parent().find('.displayed').toggleClass("displayed");
 	$(this).parent().parent().find('.js-post-form-valid').toggle("slow");
 	$(this).parent().parent().find('.js-post-form-valid').toggleClass("displayed");
 });
+// bouton modifier
+$('.btn-modif-post').on("click", function(){
+	$(this).parent().parent().find('.displayed').toggle("slow");
+	$(this).parent().parent().find('.displayed').toggleClass("displayed");
+	$(this).parent().parent().find('.js-post-form-modif').toggle("slow");
+	$(this).parent().parent().find('.js-post-form-modif').toggleClass("displayed");
+});
 // bouton supprimer
 $('.btn-delete-post').on("click", function(){
-	if($(this).parent().parent().find('.js-post-form-valid').hasClass("displayed")){
-		$(this).parent().parent().find('.js-post-form-valid').toggle("slow");
-		$(this).parent().parent().find('.js-post-form-valid').toggleClass("displayed");
-	}
+	$(this).parent().parent().find('.displayed').toggle("slow");
+	$(this).parent().parent().find('.displayed').toggleClass("displayed");
 	$(this).parent().parent().find('.js-post-form-delete').toggle("slow");
 	$(this).parent().parent().find('.js-post-form-delete').toggleClass("displayed");
-});
-// bouton annuler suppression
-$('.btn-cancel-delete-post').on("click", function(event){
-    event.preventDefault();
-	$(this).parent().parent().toggle("slow");
 });
 // bouton annuler validation
 $('.btn-cancel-valid-post').on("click", function(event){
     event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
+});
+// bouton annuler modification
+$('.btn-cancel-modif-post').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
+});
+// bouton annuler suppression
+$('.btn-cancel-delete-post').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
 	$(this).parent().parent().toggle("slow");
 });

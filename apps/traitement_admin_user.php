@@ -9,9 +9,21 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 		try{
 			$user->setIdPermission($_POST['permission']);
 			$manager->update($user);
-			$successCat = "Permission de l'utilisateur modifiée.";
+			$successUser = "Permission de l'utilisateur modifiée.";
 		}catch(Exception $e){
-			$errorCat = $e->getMessage();
+			$errorUser = $e->getMessage();
+		}
+	}
+}
+// ban user
+if(isset($_POST['ban'], $_POST['id'], $_POST['time'])){
+	$user = $manager->selectById($_POST['id']);
+	if ($user){
+		try{
+			$manager->ban($_POST['id'], $_POST['time']);
+			$successUser = "Utilisateur banni.";
+		}catch(Exception $e){
+			$errorUser = $e->getMessage();
 		}
 	}
 }

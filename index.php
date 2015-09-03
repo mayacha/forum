@@ -11,8 +11,8 @@ function my_autoloader($className)
 }
 spl_autoload_register('my_autoloader');
 
-//var_dump($_POST);
-//var_dump($_GET);
+var_dump($_POST);
+var_dump($_GET);
 // var_dump($_SESSION);
 // var_dump($_SERVER);
 $traitementList = array('register','login','logout','post','topic','account');
