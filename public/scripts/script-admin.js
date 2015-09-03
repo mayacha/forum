@@ -225,45 +225,72 @@ addEventsCategory();
 
 
 /*** GESTION MESSAGES SIGNALES ***/
-// bouton valider message
-$('.btn-valid-post').off().on("click", function(){
-	$(this).parent().parent().find('.displayed').toggle("slow");
-	$(this).parent().parent().find('.displayed').toggleClass("displayed");
-	$(this).parent().parent().find('.js-post-form-valid').toggle("slow");
-	$(this).parent().parent().find('.js-post-form-valid').toggleClass("displayed");
-});
-// bouton modifier message
-$('.btn-modif-post').off().on("click", function(){
-	$(this).parent().parent().find('.displayed').toggle("slow");
-	$(this).parent().parent().find('.displayed').toggleClass("displayed");
-	$(this).parent().parent().find('.js-post-form-modif').toggle("slow");
-	$(this).parent().parent().find('.js-post-form-modif').toggleClass("displayed");
-});
-// bouton supprimer message
-$('.btn-delete-post').off().on("click", function(){
-	$(this).parent().parent().find('.displayed').toggle("slow");
-	$(this).parent().parent().find('.displayed').toggleClass("displayed");
-	$(this).parent().parent().find('.js-post-form-delete').toggle("slow");
-	$(this).parent().parent().find('.js-post-form-delete').toggleClass("displayed");
-});
-// bouton annuler validation message
-$('.btn-cancel-valid-post').off().on("click", function(event){
-    event.preventDefault();
-	$(this).parent().parent().toggleClass("displayed");
-	$(this).parent().parent().toggle("slow");
-});
-// bouton annuler modification message
-$('.btn-cancel-modif-post').off().on("click", function(event){
-    event.preventDefault();
-	$(this).parent().parent().toggleClass("displayed");
-	$(this).parent().parent().toggle("slow");
-});
-// bouton annuler suppression message
-$('.btn-cancel-delete-post').off().on("click", function(event){
-    event.preventDefault();
-	$(this).parent().parent().toggleClass("displayed");
-	$(this).parent().parent().toggle("slow");
-});
-
-
+function addEventsPost(){
+	// bouton valider message
+	$('.btn-valid-post').off().on("click", function(){
+		$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+		$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+		$(this).parent().parent().find('+ .row .js-post-form-valid').toggle("slow");
+		$(this).parent().parent().find('+ .row .js-post-form-valid').toggleClass("displayed");
+	});
+	// bouton modifier message
+	$('.btn-modif-post').off().on("click", function(){
+		$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+		$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+		$(this).parent().parent().find('+ .row .js-post-form-modif').toggle("slow");
+		$(this).parent().parent().find('+ .row .js-post-form-modif').toggleClass("displayed");
+	});
+	// bouton supprimer message
+	$('.btn-delete-post').off().on("click", function(){
+		$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+		$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+		$(this).parent().parent().find('+ .row .js-post-form-delete').toggle("slow");
+		$(this).parent().parent().find('+ .row .js-post-form-delete').toggleClass("displayed");
+	});
+	// bouton annuler validation message
+	$('.btn-cancel-valid-post').off().on("click", function(event){
+	    event.preventDefault();
+		$(this).parent().parent().toggleClass("displayed");
+		$(this).parent().parent().toggle("slow");
+	});
+	// bouton annuler modification message
+	$('.btn-cancel-modif-post').off().on("click", function(event){
+	    event.preventDefault();
+		$(this).parent().parent().toggleClass("displayed");
+		$(this).parent().parent().toggle("slow");
+	});
+	// bouton annuler suppression message
+	$('.btn-cancel-delete-post').off().on("click", function(event){
+	    event.preventDefault();
+		$(this).parent().parent().toggleClass("displayed");
+		$(this).parent().parent().toggle("slow");
+	});
+	// bouton valide valide message
+    $(".btn-valid-valid-post").off().on('click', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        validPostAJAX();
+    });
+	// submit valide valide message
+    $(".js-post-form-valid").off().on('submit', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        validPostAJAX(id);
+    });
+};
+//bouton valide supprime utilisateur
+function validPostAJAX(id){
+	var idId = "#post-valid-id-"+id;
+    $.post($(".js-post-form-valid").attr("action"),
+    { valid: "", id: $(idId).val()},
+    function(data){
+        if(data == "error"){
+        	console.log("error");
+        }else{
+        	var idDivPost = "#post-"+id;
+            $(idDivPost).parent().detach();
+        }
+    });
+};
+addEventsPost();
 
