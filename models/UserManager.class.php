@@ -15,7 +15,6 @@ class UserManager
 		
 
 		$request="INSERT INTO user (login,email,password) VALUES ('".$login."','".$email."','".$password."')";	
-		echo $request;
 		$res= mysqli_query($this->link, $request);
 		if ($res === false)
 		{
@@ -138,10 +137,25 @@ class UserManager
 				return $success;
 			}
 	}
+
 	//Pour bannir un utilisateur
-	// public function ban()
-	// {
-	// 	$Request="INSERT INTO ban "
-	// }
+	public function ban($id_user, $time)
+	{
+		$request="INSERT INTO ban (id_user, time) VALUES (".$id_user.", '".$time."')";
+		$res= mysqli_query($this->link, $request);
+		if ($res === false)
+		{
+			throw new Exception("Internal server error");
+		}
+	}
+	// récupérer la date de fin d'un ban , format : TIMESTAMP
+	public function getEndBan($user){
+		$request="SELECT * FROM ban WHERE id_user= ".$user->getId()." ORDER BY id";
+		$res= mysqli_query($this->link, $request);
+		$ban = mysqli_fetch_assoc($res);
+		$endTime = strtotime($ban['date']);
+		$endTime += ($ban['time'] * 3600);
+		return $endTime;
+	}
 }
 ?>

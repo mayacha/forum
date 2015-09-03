@@ -57,21 +57,17 @@ class Post
 
 	// SETTER
 
-	public function setTitle($content)
+	public function setTitle($title)
 	{
-			$this->title=$title;
-	
+		$this->title=$title;
 	}
 
 	public function setContent($content)
 	{
-		
-		if (strlen($content > 0))
-		
+		if (strlen($content) > 0)
 			$this->content=$content;
-
 		else
-			throw new Exception("texte vide");
+			throw new Exception("Il faut remplir le message.");
 	}
 
 	public function setId_topic($id_topic)
@@ -100,8 +96,14 @@ class Post
 	public function getAuthor()
 	{
 		$manager = new UserManager($this->link);
-		$author = $manager->select($this->id_user);
+		$author = $manager->selectById($this->id_user);
 		return $author;
+	}
+	public function getTopic()
+	{
+		$manager = new Category($this->link);
+		$topic = $manager->select($this->id_topic);
+		return $topic;
 	}
 }
 

@@ -1,0 +1,19 @@
+<h2 class="text-center">Catégories</h2>
+<!-- DEBUT formulaire ajout catégorie -->
+<fieldset class="wrapper-add-category">
+	<legend>Ajouter une catégorie :</legend>
+	<div class="row">
+	<?php require('views/display-admin-category-form-add.phtml'); ?>
+	</div>
+</fieldset>
+<!-- FIN formulaire ajout catégorie -->
+<!-- DEBUT afficahge liste des catégories -->
+<fieldset class="wrapper-list-categories">
+	<legend>Liste des catégories :</legend>
+	<div class="wrapper-title-category row">
+		<div class="col-sm-3">Titre</div>
+		<div class="col-sm-7">Description </div>
+	</div>
+	<?php require('apps/display-admin-categories.php'); ?>
+</fieldset>
+<!-- FIN afficahge liste des catégories -->

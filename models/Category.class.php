@@ -39,8 +39,16 @@ class Category{
 			throw new Exception("La description de la catégorie doit contenir au moins 10 caractères.");
 		}
 	}
-
-	//other
+	public function select($id){
+		$request = "SELECT * FROM topic WHERE id='".intval($id)."'";
+		$res = mysqli_query($this->link, $request);
+		if($res){
+			$topic = mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
+		}else{
+			throw new Exception("Internal server error");
+		}
+	}
 
 	public function create($name)
 	{
@@ -76,21 +84,6 @@ class Category{
 		$name=mysqli_real_escape_string($this->link, $topic->getName());
 		$request="UPDATE topic SET name='".$name."'";
 		mysqli_query($this->link, $request);
-	}
-
-	public function select($id)
-	{
-		$request="SELECT * FROM topic WHERE id_category='".intval($id)."'";
-		$res=mysqli_query($this->link, $request);
-		if($res)
-			{
-			$topic=mysqli_fetch_object($res, 'Topic', array($this->link));	
-			return $topic;
-			}
-			else
-			{
-				throw new Exception ('topic inexistant');
-			}
 	}
 
 	public function selectAll()
