@@ -2,7 +2,7 @@ $('document').ready(function(){
        // connexion AJAX
         function connexionAJAX(){
             $.post('login',
-            { email: $("#email").val(), password: $("#password").val()},
+            { login: $("#login").val(), password: $("#password").val()},
             function(data){
                 if(data == "reload"){
                     window.location.reload();
