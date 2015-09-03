@@ -1,5 +1,4 @@
 <section class="profil row">
-	<?php var_dump($login);?>
 <h2><span class="glyphicon glyphicon-user"></span>Votre profil</h2>
 <div class="message">
 	<div class="bg-danger"><p><?=$error?></p></div>
@@ -12,7 +11,7 @@
 		<a class="btn btn-info btn-xs" id="changeavatar" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="avatar" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<input class=" form-control btn btn-danger" name="avatar" type="file">
+				<input class="form-control" name="avatar" type="file">
 				<input type="hidden" name="MAX_FILE_SIZE" value="100000">
 				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
