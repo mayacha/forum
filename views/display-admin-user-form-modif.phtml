@@ -1,5 +1,5 @@
 <form action="admin/admin_user" method="post" class=" col-md-8 col-md-offset-2 form-inline js-user-form-modif">
-	<input name="id" value="<?=$id?>" hidden>
+	<input name="id" value="<?=$user->getId()?>" hidden>
 	<div class="form-group">
 		<label for="user-modif-permission" class="sr-only">Nouvelle permission :</label>
 		<select type="text" class="form-control" id="user-modif-permission" name="permission" placeholder="Titre de la catégorie">

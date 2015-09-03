@@ -18,6 +18,36 @@ $(".nav-admin .list-group-item").on("click", function(event){
 
 });
 
+
+/*** GESTION UTILISATEURS ***/ 
+// bouton modifier
+$('.btn-modif-user').on("click", function(){
+	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+	$(this).parent().parent().find('+ .row .js-user-form-modif').toggle("slow");
+	$(this).parent().parent().find('+ .row .js-user-form-modif').toggleClass("displayed");
+});
+// bouton bannir
+$('.btn-ban-user').on("click", function(){
+	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
+	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
+	$(this).parent().parent().find('+ .row .js-user-form-ban').toggle("slow");
+	$(this).parent().parent().find('+ .row .js-user-form-ban').toggleClass("displayed");
+});
+// bouton annuler modification
+$('.btn-cancel-modif-user').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
+});
+// bouton annuler ban
+$('.btn-cancel-ban-user').on("click", function(event){
+    event.preventDefault();
+	$(this).parent().parent().toggleClass("displayed");
+	$(this).parent().parent().toggle("slow");
+});
+
+
 /*** GESTION CATEGORIES ***/
 // bouton modifier
 $('.btn-modif-category').on("click", function(){
@@ -41,29 +71,6 @@ $('.btn-cancel-modif-category').on("click", function(event){
 });
 // bouton annuler suppression
 $('.btn-cancel-delete-category').on("click", function(event){
-    event.preventDefault();
-	$(this).parent().parent().toggleClass("displayed");
-	$(this).parent().parent().toggle("slow");
-});
-
-
-/*** GESTION UTILISATEURS ***/ 
-// bouton modifier
-$('.btn-modif-user').on("click", function(){
-	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
-	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
-	$(this).parent().parent().find('+ .row .js-user-form-modif').toggle("slow");
-	$(this).parent().parent().find('+ .row .js-user-form-modif').toggleClass("displayed");
-});
-// bouton bannir
-$('.btn-ban-user').on("click", function(){
-	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
-	$(this).parent().parent().find('+ .row .displayed').toggleClass("displayed");
-	$(this).parent().parent().find('+ .row .js-user-form-ban').toggle("slow");
-	$(this).parent().parent().find('+ .row .js-user-form-ban').toggleClass("displayed");
-});
-// bouton annuler modification
-$('.btn-cancel-modif-user').on("click", function(event){
     event.preventDefault();
 	$(this).parent().parent().toggleClass("displayed");
 	$(this).parent().parent().toggle("slow");

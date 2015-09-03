@@ -1,9 +1,9 @@
 <div class="wrapper-post row">
-	<div class="col-sm-2 vmiddle"><?=htmlentities($title)?></div><!--
-	--><div class="col-sm-4 vmiddle"><?=htmlentities($content)?></div><!--
-	--><div class="col-sm-2 vmiddle"><a href="profil/<?=htmlentities($user)?>"><?=htmlentities($user)?></a></div><!--
-	--><div class="col-sm-3 vmiddle"><?=htmlentities($topic)?></div><!--
-	--><div class="col-sm-1 vmiddle"><a href="<?=htmlentities($category)?>/<?=$topic?>/#<?=$id?>">Voir</a></div>
+	<div class="col-sm-2 vmiddle"><?=htmlentities($post->getTitle())?></div><!--
+	--><div class="col-sm-4 vmiddle"><?=htmlentities($post->getContent())?></div><!--
+	--><div class="col-sm-2 vmiddle"><a href="profil/<?=htmlentities($post->getAuthor()->getLogin())?>"><?=htmlentities($post->getAuthor()->getLogin())?></a></div><!--
+	--><div class="col-sm-3 vmiddle"><?=htmlentities($post->getTopic()->getName())?></div><!--
+	--><div class="col-sm-1 vmiddle"><a href="<?=$linkPost?>">Voir</a></div>
 </div class="row">
 	<div class="col-sm-1 vmiddle"><button class="btn btn-success btn-sm btn-valid-post" title="Valider le message"><span class="glyphicon glyphicon-ok"></span></button></div><!--
 	--><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-post" title="Modifier le message"><span class="glyphicon glyphicon-pencil"></span></button></div><!--

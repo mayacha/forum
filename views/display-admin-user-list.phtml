@@ -1,24 +1,24 @@
 <div class="wrapper-user row">
 	<div class="col-sm-1 vmiddle">
-		<?php if($avatar != ""){ ?>
-		<img src="public/img/<?=htmlentities($avatar)?>" class="img-responsive center-block">
+		<?php if($user->getAvatar() != ""){ ?>
+		<img src="public/img/<?=htmlentities($user->getAvatar())?>" class="img-responsive center-block">
 		<?php } ?>
 	</div><!--
-	--><div class="col-sm-3 vmiddle"><?=htmlentities($login)?> 
+	--><div class="col-sm-3 vmiddle"><?=htmlentities($user->getId())?> 
 	<?php if($endBan != 0){ ?>
 		<span class="text-danger"> (banni)<br /><?=$endBan?></span>
 	<?php } ?>
 	</div><!--
-	--><div class="col-sm-4 vmiddle"><?=htmlentities($email)?></div><!--
-	--><div class="col-sm-2 vmiddle"><?=htmlentities($permission)?></div><!--
+	--><div class="col-sm-4 vmiddle"><?=htmlentities($user->getEmail())?></div><!--
+	--><div class="col-sm-2 vmiddle"><?=htmlentities($manager->getPermissionLevel($user->getIdPermission()))?></div><!--
 	--><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-user" title="Modifier le rang"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
-	--><?php if($permission != "admin" && $endBan == 0){ ?><!--
+	--><?php if($manager->getPermissionLevel($user->getIdPermission()) != "admin" && $endBan == 0){ ?><!--
 	--><div class="col-sm-1 vmiddle"><button class="btn btn-warning btn-sm btn-ban-user" title="Bannir l'utilisateur"><span class="glyphicon glyphicon-remove"></span></button></div>
 	<?php } ?>
 </div>
 <div class="row">
 <?php require('views/display-admin-user-form-modif.phtml'); ?>
-<?php if($permission != "admin"){ 
+<?php if($manager->getPermissionLevel($user->getIdPermission()) != "admin"){ 
 	require('views/display-admin-user-form-ban.phtml');
 } ?>
 </div>

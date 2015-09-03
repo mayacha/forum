@@ -1,7 +1,7 @@
 <form action="admin/admin_user" method="post" class="js-user-form-ban col-md-8 col-md-offset-2 form-inline">
-	<input name="id" value="<?=$id?>" hidden>
+	<input name="id" value="<?=$user->getId()?>" hidden>
 	<div class="form-group">
-		<label for="ban-user-time">Bannir l'utilisateur <?=htmlentities($login)?> pendant </label>
+		<label for="ban-user-time">Bannir l'utilisateur <?=htmlentities($user->getLogin())?> pendant </label>
 		<select name="time" id="ban-user-time" class="form-control">
 			<option value="1">1 heures</option>
 			<option value="2">2 heures</option>

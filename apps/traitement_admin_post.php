@@ -39,6 +39,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['title'], $_POST['content'])){
 		try{
 			$post->setTitle($_POST['title']);
 			$post->setContent($_POST['content']);
+			$post->setReported("0");
 			$managerP = new Topic($link);
 			$managerP->update($post);
 			$successPost = "Message modifié.";

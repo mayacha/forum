@@ -10,6 +10,8 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 			$user->setIdPermission($_POST['permission']);
 			$manager->update($user);
 			$successUser = "Permission de l'utilisateur modifiée.";
+			require('apps/display-admin-users.php');
+			exit;
 		}catch(Exception $e){
 			$errorUser = $e->getMessage();
 		}
