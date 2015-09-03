@@ -8,14 +8,15 @@
 </div>
 <div class="col-xs-4 col-md-5">
 	<div class="profItem">
-		<img class="thumbnail" src="img/<?=$avatar?>" alt="">
+		<img class="thumbnail" src="public/img/<?=$avatar?>" alt="">
 		<a class="btn btn-info btn-xs" id="changeavatar" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="avatar" method="post" enctype="multipart/form-data">
-		<div class="form-group">
-			<input class=" form-control btn btn-danger" name="changeavatar" type="file">
-			<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-			<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
-		</div>
+			<div class="form-group">
+				<input class=" form-control btn btn-danger" name="avatar" type="file">
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000">
+				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
 	</div>
 
 	<div class="profItem">
@@ -24,7 +25,7 @@
 		<a class="btn btn-info btn-xs" id="changedescription" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="description" method="post">
 			<div class="form-group">
-				<textarea class="form-control" name="changedescription"></textarea>
+				<textarea class="form-control" name="description"></textarea>
 				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
@@ -58,7 +59,7 @@
 
 	<div class="profItem">
 		<h4><span class="glyphicon glyphicon-star"></span>Email : <?=$email?></h4>
-		<a class="btn btn-info btn-xs" id="changemail" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<a class="btn btn-info btn-xs" id="changemail" href="">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="email" method="post">
 			<div class="form-group">
 				<input class="form-control" name="changemail" type="text">
@@ -71,32 +72,32 @@
 		<a class="btn btn-info btn-xs" id="changedate" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="birth" method="post">
 			<div class="form-group">
-				<input class="form-control" name="changedate" type="date">
+				<input class="form-control" name="birthdate" type="date">
 				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-ok-circle"></span></button>
 			</div>
 		</form>
 	</div>
 </div>
 </section>
-<section class="contrib row">
+<!-- <section class="contrib row">
 <h2><span class="glyphicon glyphicon-pencil"></span>Vos contributions <?=$contribution?></h2>
 <div class="contribArt">
-	 <?php require('./apps/display_profilArt.php'); ?>
+	 <?php ; ?>
 </div>
 <nav class="pages">
 	<ul class="pagination">
-		<?php require('./apps/display_pagination.php'); ?>
+		<?php ; ?>
 	</ul>
 </nav>
 </section>
 <section class="contribArt">
 <h2><span class="glyphicon glyphicon-thumbs-up"></span>Vos commentaires <?=$commentaires?></h2>
 <div class="contribArt">
-	 <?php require('./apps/.php'); ?>
+	 <?php ; ?>
 </div>
 <nav class="pages">
 	<ul class="pagineur">
-		<?php require('./apps/display_pagination.php'); ?>
+		<?php ; ?>
 	</ul>
 </nav>
-</section>
+</section> -->
