@@ -1,8 +1,8 @@
-<form action="admin/admin_user" method="post" class="js-user-form-ban col-md-8 col-md-offset-2 form-inline">
-	<input name="id" value="<?=$user->getId()?>" hidden>
+<form action="admin_user" method="post" class="js-user-form-ban col-md-8 col-md-offset-2 form-inline">
+	<input name="id" value="<?=$user->getId()?>" hidden id="user-ban-id-<?=$user->getId()?>">
 	<div class="form-group">
-		<label for="ban-user-time">Bannir l'utilisateur <?=htmlentities($user->getLogin())?> pendant </label>
-		<select name="time" id="ban-user-time" class="form-control">
+		<label for="user-ban-time">Bannir l'utilisateur <?=htmlentities($user->getLogin())?> pendant </label>
+		<select name="time" id="user-ban-time-<?=$user->getId()?>" class="form-control">
 			<option value="1">1 heures</option>
 			<option value="2">2 heures</option>
 			<option value="3">3 heures</option>
@@ -11,9 +11,8 @@
 			<option value="24">1 jour</option>
 			<option value="48">2 jours</option>
 			<option value="168">1 semaine</option>
-
 		</select>
-		<button name="ban" type="submit" class="btn btn-default">Bannir</button>
+		<button name="ban" type="submit" class="btn btn-default btn-valid-ban-user">Bannir</button>
 		<button class="btn btn-default btn-cancel-ban-user">Annuler</button>
 	</div>
 </form>
