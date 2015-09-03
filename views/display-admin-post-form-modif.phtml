@@ -2,11 +2,11 @@
 	<input name="id" value="<?=$id?>" hidden>
 	<div class="form-group">
 		<label for="post-modif-title" class="sr-only">Titre du message :</label>
-		<input type="text" class="form-control" id="post-modif-title" name="title" value="<?=$title?>" placeholder="Titre du message">
+		<input type="text" class="form-control" id="post-modif-title" name="title" value="<?=htmlentities($title)?>" placeholder="Titre du message">
 	</div>
 	<div class="form-group">
 		<label for="post-modif-content" class="sr-only">Contenu du message :</label>
-		<textarea type="text" class="form-control" id="post-modif-content" name="content" placeholder="Contenu du message" rows="5"><?=$content?></textarea>
+		<textarea type="text" class="form-control" id="post-modif-content" name="content" placeholder="Contenu du message" rows="5"><?=htmlentities($content)?></textarea>
 	</div>
 	<div class="form-group">
 		<button name="modif" type="submit" class="btn btn-info">Modifier</button>

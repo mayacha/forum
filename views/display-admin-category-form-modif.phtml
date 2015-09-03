@@ -2,11 +2,11 @@
 	<input name="id" value="<?=$id?>" hidden>
 	<div class="form-group">
 		<label for="category-modif-name" class="sr-only">Titre de la catégorie :</label>
-		<input type="text" class="form-control" id="category-modif-name" name="name" value="<?=$name?>" placeholder="Titre de la catégorie">
+		<input type="text" class="form-control" id="category-modif-name" name="name" value="<?=htmlentities($name)?>" placeholder="Titre de la catégorie">
 	</div>
 	<div class="form-group">
 		<label for="category-modif-description" class="sr-only">Description de la catégorie :</label>
-		<textarea type="text" class="form-control" id="category-modif-description" name="description" placeholder="Description de la catégorie" rows="5"><?=$description?></textarea>
+		<textarea type="text" class="form-control" id="category-modif-description" name="description" placeholder="Description de la catégorie" rows="5"><?=htmlentities($description)?></textarea>
 	</div>
 	<div class="form-group">
 		<button name="modif" type="submit" class="btn btn-info">Modifier</button>

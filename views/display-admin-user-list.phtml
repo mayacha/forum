@@ -1,5 +1,9 @@
 <div class="wrapper-user row">
-	<div class="col-sm-1 vmiddle"><img src="public/img/<?=htmlentities($avatar)?>" class="img-responsive center-block"></div><!--
+	<div class="col-sm-1 vmiddle">
+		<?php if($avatar != ""){ ?>
+		<img src="public/img/<?=htmlentities($avatar)?>" class="img-responsive center-block">
+		<?php } ?>
+	</div><!--
 	--><div class="col-sm-3 vmiddle"><?=htmlentities($login)?> 
 	<?php if($endBan != 0){ ?>
 		<span class="text-danger"> (banni)<br /><?=$endBan?></span>

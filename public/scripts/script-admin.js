@@ -1,4 +1,4 @@
-/*** Nav admin ***/
+/*** NAV ADMIN ***/
 $(".nav-admin .list-group-item").on("click", function(event){
     event.preventDefault();
     if(!$(this).hasClass("active)")){
@@ -18,7 +18,7 @@ $(".nav-admin .list-group-item").on("click", function(event){
 
 });
 
-/*** gestion catégories ***/
+/*** GESTION CATEGORIES ***/
 // bouton modifier
 $('.btn-modif-category').on("click", function(){
 	$(this).parent().parent().find('.displayed').toggle("slow");
@@ -47,7 +47,7 @@ $('.btn-cancel-delete-category').on("click", function(event){
 });
 
 
-/*** gestion utilisateurs ***/ 
+/*** GESTION UTILISATEURS ***/ 
 // bouton modifier
 $('.btn-modif-user').on("click", function(){
 	$(this).parent().parent().find('+ .row .displayed').toggle("slow");
@@ -70,7 +70,7 @@ $('.btn-cancel-modif-user').on("click", function(event){
 });
 
 
-/*** gestion messages signalés ***/
+/*** GESTION MESAGES SIGNALES ***/
 // bouton valider
 $('.btn-valid-post').on("click", function(){
 	$(this).parent().parent().find('.displayed').toggle("slow");
