@@ -1,9 +1,9 @@
 <div class="row listPostSingle">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 autor">
-	<?=htmlentities($topic->getAuthor()->getLogin())?>
+	<?=htmlentities($post->getAuthor()->getLogin())?>
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
-		<?=htmlentities($topic->getName())?> 
+		<?=htmlentities($post->getContent())?> 
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 infolastpost">
 		<!-- dernier auteur date -->

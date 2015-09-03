@@ -95,12 +95,12 @@ class Category{
 
 	public function selectByName($name)
 	{
-		$request="SELECT * FROM category WHERE name='".$name."'";
+		$request="SELECT * FROM topic WHERE name='".$name."'";
 		$res=mysqli_query($this->link, $request);
 		if($res)
 		{
-			$category=mysqli_fetch_object($res, 'Category', array($this->link));
-			return $category;
+			$topic=mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
 		}
 		else
 		{

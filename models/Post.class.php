@@ -100,7 +100,7 @@ class Post
 	public function getAuthor()
 	{
 		$manager = new UserManager($this->link);
-		$author = $manager->select($this->id_user);
+		$author = $manager->selectById($this->id_user);
 		return $author;
 	}
 }
