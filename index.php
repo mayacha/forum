@@ -10,12 +10,11 @@ function my_autoloader($className)
     require('./models/'.$className.'.class.php');
 }
 spl_autoload_register('my_autoloader');
-
 //var_dump($_POST);
 //var_dump($_GET);
-// var_dump($_SESSION);
-// var_dump($_SERVER);
-$traitementList = array('register','login','logout','post','topic','account');
+//var_dump($_SESSION);
+//var_dump($_SERVER);
+$traitementList = array('register','login','logout','post','topic','account','profil');
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');
 $pageList = array('home','category','topic','profil','register','account','admin');
