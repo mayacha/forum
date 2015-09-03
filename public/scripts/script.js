@@ -49,4 +49,13 @@ $('document').ready(function(){
             e.preventDefault();
             $('#avatar').slideToggle(200);
         });
+
+
+    // function getfile(){
+    //     $('#hiddenfile').click(function(e){
+    //                 e.preventDefault();
+                    
+    //     $('#selectedfile').value=$('#hiddenfile').value;
+    //     });
+    // };
 });
