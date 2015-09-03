@@ -1,0 +1,21 @@
+Views :
+	/home/was1/sites/developpement/php/forum/Cani-Goût/views/profil.phtml
+		Modifier la ligne 11 en utilisant les objets : <?=$avatar?> -> $user->getAvatar()
+		Modifier la ligne 23 en utilisant les objets : <?=htmlentities($description)?> -> $user->getDescription()
+		Modifier la ligne 36 en utilisant les objets : <?=htmlentities(ucfirst($login))?> -> $user->getLogin()
+		Modifier la ligne 60 en utilisant les objets : <?=$email?> -> $user->getEmail()
+		Modifier la ligne 70 en utilisant les objets : <?=$birthdate?> -> $user->getBirthdate()
+		Modifier la ligne 82 en utilisant les objets : <?=$contribution?> -> $user->getContribution()
+		Modifier la ligne 93 en utilisant les objets : <?=$commentaires?> -> $user->getComments()
+	/home/was1/sites/developpement/php/forum/Cani-Goût/views/display-admin-category-list.phtml
+		Modifier la ligne 2 en utilisant les objets : <?=htmlentities($name)?> -> $category->getName()
+		Modifier la ligne 3 en utilisant les objets : <?=htmlentities($description)?> -> $category->getDescription()
+	/home/was1/sites/developpement/php/forum/Cani-Goût/views/display-admin-category-form-modif.phtml
+		Modifier la ligne 2 en utilisant les objets : <?=$id?> -> $category->getId()
+		Modifier la ligne 5 en utilisant les objets : <?=$name?> -> $category->getName()
+		Modifier la ligne 9 en utilisant les objets : <?=$description?> -> $category->getName()
+	/home/was1/sites/developpement/php/forum/Cani-Goût/views/navbar-category.phtml
+		Modifier la ligne 1 en utilisant les objets : <?=ucfirst($category)?> -> $category->getName()
+	/home/was1/sites/developpement/php/forum/Cani-Goût/views/display-admin-category-form-delete.phtml
+		Modifier la ligne 2 en utilisant les objets : <?=$id?> -> $category->getId()
+		Modifier la ligne 4 en utilisant les objets : <?=$name?> -> $category->getName()
