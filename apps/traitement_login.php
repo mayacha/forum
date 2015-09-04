@@ -16,22 +16,21 @@ if(isset($_POST['login'], $_POST['password']))
 		$login = $user->getLogin();
 		$id = $user->getId();
 		$id_permission = $user->getIdPermission();
-		$_SESSION['login'] = $login;
-		$_SESSION['id_user'] = $id;
 		$permissionLevel = $manager->getPermissionLevel($id_permission);
-		$_SESSION['permission'] = $permissionLevel;
-
+		
 		//on verifie si l'utilisateur est banni
 		$today= time();
 		$isBanUntil=$manager->getEndBan($user);
 
 			if($isBanUntil<$today)
 			{			
-				$error="Vous avez été banni jusqu'au : ".date('d/m/Y',$end);
-				// on recharge la page actuelle
-				if($_SESSION['permission']!='deleted')
+				
+				if($permissionLevel!='deleted')
 				{
-
+					$_SESSION['login'] = $login;
+					$_SESSION['id_user'] = $id;
+					$_SESSION['permission'] = $permissionLevel;
+					// on recharge la page actuelle
 
 					if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
 					{
