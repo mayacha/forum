@@ -1,3 +1,11 @@
+
+$(".wrapper-logo-admin").toggleClass("animated rollInLeft");
+setInterval(function(){ 
+    $(".wrapper-logo-admin").toggleClass("animated rollInLeft");
+}, 3000);
+
+
+
 /*** NAV ADMIN ***/
 var menuCanChange = true;
 $(".nav-admin .list-group-item").on("click", function(event){

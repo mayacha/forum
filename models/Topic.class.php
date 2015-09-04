@@ -147,6 +147,7 @@ public function __construct($link)
 					throw new Exception('rien !');
 				}
 		}
+	}
 
 	public function searchTopicPosts($id_topic)
 	{

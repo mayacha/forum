@@ -2,6 +2,34 @@ body{
 	font-size: 14px;
 }
 
+@keyframes rollInLeft {
+  0%{
+    opacity: 0;
+    transform: translate3d(-300%, 0, 0) rotate3d(0, 0, 1, -120deg);
+  }33%{
+    opacity: 1;
+    transform: none;
+  }66%{
+    opacity: 1;
+    transform: none;
+  }100%{
+    opacity: 0;
+    transform: translate3d(300%, 0, 0) rotate3d(0, 0, 1, 120deg);
+  }
+}
+.rollInLeft {
+  animation-name: rollInLeft;
+}
+.animated {
+  animation-duration: 3s;
+  animation-fill-mode: both;
+}
+
+
+
+
+
+
 .vmiddle{
     display: inline-block;
     vertical-align: middle;
@@ -13,12 +41,13 @@ body{
 }
 
 .wrapper-logo-admin{
-	width: 300px;
+	opacity: 0;
+	width: 200px;
 	margin: auto;
 }
-.logo-admin, .logo-admin1{
+.logo-admin{
 	display: inline-block;
-	font-size: 150px;
+	font-size: 200px;
 }
 
 /*** ADMIN - NAV ***/
