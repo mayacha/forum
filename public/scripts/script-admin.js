@@ -210,8 +210,9 @@ function deleteCategoryAJAX(id){
     $.post($(".js-category-form-delete").attr("action"),
     { delete: "", id: id},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-delete-cat-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivCategory = "#category-"+id;
             $(idDivCategory).parent().detach();

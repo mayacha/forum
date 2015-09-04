@@ -43,8 +43,7 @@ if(isset($_POST['delete'], $_POST['id'])){
 			echo "success";
 			exit;
 		}catch(Exception $e){
-			$errorCat = $e->getMessage();
-			echo "error";
+			echo $e->getMessage();
 			exit;
 		}
 	}
