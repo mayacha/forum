@@ -1,6 +1,7 @@
 <div class="row singlecategory">
 	<div class="col-xs-12">
-		<h3><?=$name?></h3>
+		<a href="category/<?=htmlentities($category->getName())?>"><h3><?=htmlentities($category->getName())?></h3></a>
+
 		<?php require ('apps/display-SinglelistTopics.php');?>
 	</div>
 

@@ -1,14 +1,15 @@
 <div class="row">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 autor">
-	<?php require ('apps/display-listPosts.php');?>
+		<?=htmlentities($topic->getName())?>
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
-	<?=htmlentities($topic->getName())?>
+	<?php require('apps/listPost_single.php');?>
 
+	
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 infolastpost">
-		<!-- dernier auteur date -->
+		
 	</div>
 </div>
 
-<?php require('apps/listPost_single.php');?>
+<?php require('views/createPost.phtml');?>
