@@ -24,6 +24,23 @@ $('document').ready(function(){
         };
         addEventConnexionAJAX();
 
+    // RECHERCHE
+    $('.search').find('input').keyup(function()
+    {
+        var url = window.location.pathname;
+        var search = url+"?search="+$(this).val();
+        history.pushState({}, "Recherche", search);
+        $.get(search, function(data)
+        {
+            var content = $('.searchResult', '<div>'+data+'</div>');
+            $('.searchResult').html(content);
+            var pagination = $('.pages', '<div>'+data+'</div>');
+            $('.pages').html(pagination);
+        });
+    });
+    $('.search').find('input').val($('.search').find('input').val());
+});  
+
     //formulaires profil
     $('#changelog').click(function(e){
             e.preventDefault();
