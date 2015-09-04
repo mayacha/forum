@@ -19,8 +19,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){
-			$errorUser = $e->getMessage();
-			echo "error";
+			echo $e->getMessage();
 			exit;
 		}
 	}
@@ -41,8 +40,7 @@ if(isset($_POST['ban'], $_POST['id'], $_POST['time'])){
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){
-			$errorUser = $e->getMessage();
-			echo "error";
+			echo $e->getMessage();
 			exit;
 		}
 	}
