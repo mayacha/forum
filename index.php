@@ -10,15 +10,25 @@ function my_autoloader($className)
 }
 spl_autoload_register('my_autoloader');
 
-//var_dump($_POST);
-//var_dump($_GET);
+if(isset($_SESSION['id_user'])){
+	$manager = new UserManager($link);
+	$user = $manager->selectById($_SESSION['id_user']);
+	$endBan = $manager->getEndBan($user);
+	if ($endBan > time()){
+		require('apps/traitement_logout.php');
+		exit;
+	}
+}
+
+var_dump($_POST);
+var_dump($_GET);
 //var_dump($_SESSION);
 //var_dump($_SERVER);
 $traitementList = array('register','login','logout','post','topic','account','profil','search');
 
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');
-$pageList = array('home','category','topic','profil','register','account','admin','singlecategory');
+$pageList = array('home','category','profil','register','account','admin','singlecategory');
 $page = 'home';
 if (isset($_GET['page']) && in_array($_GET['page'], $pageList))
 	$page = $_GET['page'];
