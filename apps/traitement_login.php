@@ -19,10 +19,8 @@ if(isset($_POST['login'], $_POST['password']))
 		$permissionLevel = $manager->getPermissionLevel($id_permission);
 		
 		//on verifie si l'utilisateur est banni
-		$today= time();
 		$isBanUntil=$manager->getEndBan($user);
-
-			if($isBanUntil<$today)
+			if($isBanUntil< time())
 			{			
 				
 				if($permissionLevel!='deleted')
@@ -31,37 +29,29 @@ if(isset($_POST['login'], $_POST['password']))
 					$_SESSION['id_user'] = $id;
 					$_SESSION['permission'] = $permissionLevel;
 					// on recharge la page actuelle
-
-					if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
-					{
-						echo "reload";
-						exit;
-					}
-					else
-					{
-						header('Location: home');
-						exit;
-					}
+					echo "reload";
+					exit;
 				}
 				else
 				{
 					$error="Vous avez supprimé votre compte :(";
+					require('views/navbar-login.phtml');
+					exit;
 				}	
 			}
 			else
 			{
-				$error="Vous avez été banni jusqu'au : ".date('d/m/Y',$isBanUntil);
+				$error="Vous avez été banni jusqu'au : ".date('d/m/Y H:i:s',$isBanUntil);
+				require('views/navbar-login.phtml');
+				exit;
 			}	
 		}
 		catch(Exception $exception)
 		{
 
 			$error = $exception->getMessage();
-			// ajout require navbar-login pour pour voir l'afficher dans la navabr quand il y a une erreur
-			if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
-				require('views/navbar-login.phtml');
-				exit;
-			}
+			require('views/navbar-login.phtml');
+			exit;
 
 		}
 }

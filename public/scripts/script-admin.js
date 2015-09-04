@@ -349,3 +349,15 @@ function deletePostAJAX(id){
 };
 addEventsPost();
 
+
+
+function randomColorHexa(){
+    var res = "";
+    for (var i = 0; i < 6; i++){
+        var type = Math.floor(Math.random()*2);
+        if(type == 0)res += (Math.floor(Math.random()*10)).toString();
+        else res += String.fromCharCode((Math.floor(Math.random()*6))+65);
+    }
+    return res;
+}
+setInterval(function(){$(".logo-admin").css("color", "#"+randomColorHexa());$(".logo-admin1").css("color", "#"+randomColorHexa());}, 300);
