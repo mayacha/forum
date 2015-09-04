@@ -14,7 +14,7 @@ spl_autoload_register('my_autoloader');
 //var_dump($_GET);
 //var_dump($_SESSION);
 //var_dump($_SERVER);
-$traitementList = array('register','login','logout','post','topic','account','profil');
+$traitementList = array('register','login','logout','post','topic','account','profil','search');
 
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');

@@ -13,6 +13,8 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 		$catManager->selectByName($category_name);
 		$id_category=$category->getId();
 		$catManager->searchCatTopics($id_category);
+		$category = str_replace(' ', '_', $category_name);
+		header('Location:category/'.$category_name);
 		}
 		catch(Exception $e)
 		{
@@ -23,10 +25,14 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 	{
 		try
 		{
+		$category_name=$_GET['category'];
 		$topic_name=$_GET['topic'];
 		$topManager->selectByName($category_name);
 		$id_category=$category->getId();
 		$topManager->searchTopicPosts($id_topic);
+		$category = str_replace(' ', '_', $category_name);
+		$topic=str_replace(' ', '_', $topic_name);
+		header('Location:category/'.$category_name.'/'.$topic_name);
 		}
 		catch(Exception $e)
 		{
@@ -35,9 +41,10 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 	}
 	else
 	{
-
+		$page=$_GET['page'];
 		$catManager->searchAllTopics();
 		$topManager->searchAllPosts();
+		header('Location:Cani-Gout/'.$page);
 	}
 }
 ?>

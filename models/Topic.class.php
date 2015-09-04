@@ -1,7 +1,4 @@
 <?php
-
-
-
 class Topic{
 
 private $id;
@@ -139,11 +136,11 @@ public function __construct($link)
 				return $listPost;
 			}
 			else
-
 				{
 					throw new Exception('rien !');
 				}
 		}
+	}	
 
 	public function searchTopicPosts($id_topic)
 	{
