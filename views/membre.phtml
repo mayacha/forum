@@ -1,18 +1,16 @@
 <section class="profil row">
-<h2><span class="glyphicon glyphicon-user"></span><?=htmlentities(ucfirst($login))?> <em>(<?=$PermissionLevel?>)</em></h2>
+<h2><span class="glyphicon glyphicon-user"></span><?=htmlentities(ucfirst($user->getLogin)?> <em>(<?=$PermissionLevel?>)</em></h2>
 
 <div class="col-xs-4 col-md-5">
 	<div class="profItem">
 		<img class="thumbnail" src="public/img/<?=$avatar?>" alt="">
 	</div>
-
-	
 </div>
 
 <div class="col-xs-8 col-md-7">	
 	<div class="profItem">
 		<h4><span class="glyphicon glyphicon-star"></span>Inscrit depuis:</h4>
-		<p> <?=htmlentities($date_register)?></p>
+		<p> <?=htmlentities($user->getDateRegister)?></p>
 	</div>
 	<div class="profItem">
 		<h4><span class="glyphicon glyphicon-star"></span>Description:</h4>

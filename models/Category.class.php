@@ -125,7 +125,7 @@ class Category{
 		}
 	public function searchAllTopics()
 	{
-		$request="SELECT * FROM topic WHERE titre LIKE '%".$search."%' ORDER BY id DESC";
+		$request="SELECT * FROM topic WHERE name LIKE '%".$search."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while($topic=mysqli_fetch_object($result, 'Topic', array($this->link)))
@@ -141,9 +141,10 @@ class Category{
 		
 				
 	}
+
 	public function searchCatTopics($id_category)
 	{
-		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND titre LIKE '%".$search."%' ORDER BY id DESC";
+		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$search."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
 		$found=mysqli_fetch_object($result, 'Topic', array($this->link));
 		

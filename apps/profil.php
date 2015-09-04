@@ -4,7 +4,7 @@ if(isset($_GET['login']))
 	$login=$_GET['login'];
 	$manager= new UserManager($link);
 	$user= $manager-> selectByLogin($login);
-	$id=$user->getId();
+	$user->getId();
 	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
 	else
@@ -13,8 +13,6 @@ if(isset($_GET['login']))
 	$description='Pas de description a afficher';
 	else
 	$description=$user->getDescription();
-	$date_register=$user->getDateRegister();
-	$avatar=$user->getAvatar();
 	$PermissionLevel=$manager->getPermissionLevel($user->getIdPermission());
 	require('views/membre.phtml');
 }
@@ -24,7 +22,6 @@ else
 	$manager= new UserManager($link);
 	$user= $manager-> selectByLogin($login);
 	$id=$user->getId();
-	$email=$user->getEmail();
 	$password=$user->getPassword();
 	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
@@ -34,8 +31,6 @@ else
 	$description='Pas de description a afficher';
 	else
 	$description=$user->getDescription();
-	$date_register=$user->getDateRegister();
-	$avatar=$user->getAvatar();
 	require('views/profil.phtml');
 }
 
