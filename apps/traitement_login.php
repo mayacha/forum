@@ -11,6 +11,7 @@ if(isset($_POST['login'], $_POST['password']))
 		try
 		{
 		$user = $manager->selectByLogin($_POST['login']);
+		$login = $user->getLogin(); // déplacé avant verifPassword pour pouvoir afficher le login si le mot de passe est incorrect
 		$user->verifPassword($_POST['password']);
 		$login = $user->getLogin();
 		$id = $user->getId();
@@ -33,8 +34,13 @@ if(isset($_POST['login'], $_POST['password']))
 		}
 		catch(Exception $exception)
 		{
-
 			$error = $exception->getMessage();
+			// ajout require navbar-login pour pour voir l'afficher dans la navabr quand il y a une erreur
+			if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
+				require('views/navbar-login.phtml');
+				exit;
+			}
+
 		}
 }
 ?>
