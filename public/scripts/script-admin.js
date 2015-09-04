@@ -308,8 +308,9 @@ function validPostAJAX(id){
     $.post($(".js-post-form-valid").attr("action"),
     { valid: "", id: id},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-valid-post-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();
@@ -323,8 +324,9 @@ function modifPostAJAX(id){
     $.post($(".js-post-form-modif").attr("action"),
     { modif: "", id: id, title: $(idTitle).val(), content: $(idContent).val()},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-modif-post-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();
@@ -336,8 +338,9 @@ function deletePostAJAX(id){
     $.post($(".js-post-form-delete").attr("action"),
     { delete: "", id: id},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-delete-post-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();

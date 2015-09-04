@@ -1,6 +1,4 @@
 <?php
-$errorPost = "";
-$successPost = "";
 // validation post
 if(isset($_POST['valid'], $_POST['id'])){
 	$managerF = new Forum($link);
@@ -10,12 +8,10 @@ if(isset($_POST['valid'], $_POST['id'])){
 			$post->setReported("0");
 			$managerP = new Topic($link);
 			$managerP->update($post);
-			$successPost = "Message validé.";
 			echo "succes";
 			exit;
 		}catch(Exception $e){
-			$errorPost = $e->getMessage();
-			echo "error";
+			echo $e->getMessage();
 			exit;
 		}
 	}
@@ -29,9 +25,11 @@ if(isset($_POST['delete'], $_POST['id'])){
 			$post->setDeleted("1");
 			$managerP = new Topic($link);
 			$managerP->update($post);
-			$successPost = "Message supprimé.";
+			echo "success";
+			exit;
 		}catch(Exception $e){
-			$errorPost = $e->getMessage();
+			echo $e->getMessage();
+			exit;
 		}
 	}
 }
@@ -46,9 +44,11 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['title'], $_POST['content'])){
 			$post->setReported("0");
 			$managerP = new Topic($link);
 			$managerP->update($post);
-			$successPost = "Message modifié.";
+			echo "success";
+			exit;
 		}catch(Exception $e){
-			$errorPost = $e->getMessage();
+			echo $e->getMessage();
+			exit;
 		}
 	}
 }
