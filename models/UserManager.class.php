@@ -165,5 +165,6 @@ class UserManager
 		$endTime += ($ban['time'] * 3600);
 		return $endTime;
 	}
+	
 }
 ?>

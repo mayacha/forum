@@ -12,6 +12,7 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 		$id_category=$category->getId();
 
 		$result=$catManager->selectCatTopics($id_category);
+		
 	}
 	if(isset($_Get['topic'], $_Get['category']))
 	{
