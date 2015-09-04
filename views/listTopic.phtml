@@ -3,7 +3,7 @@
 	<?=htmlentities($topic->getAuthor()->getLogin())?>
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
-		<a href="category/<?=htmlentities($category->getName().'/'.$topic->getName())?>">
+		<a href="<?=htmlentities($category->getName().'/'.$topic->getName())?>">
 		<?=htmlentities($topic->getName())?>
 		</a>
 		des clous !
