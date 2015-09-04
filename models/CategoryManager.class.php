@@ -18,7 +18,7 @@ class CategoryManager
 		if($res){
 			return $this->select(mysqli_insert_id($this->link));
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
 	public function delete($id){
@@ -38,9 +38,14 @@ class CategoryManager
 			$category = mysqli_fetch_object($res, 'Category', array($this->link));
 			return $category;
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
+
+
+
+
+
 	public function selectByName($category_name){
 		$request = "SELECT * FROM category WHERE name='".$category_name."'";
 		$res = mysqli_query($this->link, $request);
@@ -48,9 +53,10 @@ class CategoryManager
 			$category = mysqli_fetch_object($res, 'Category', array($this->link));
 			return $category;
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
+
 	public function selectAll(){
 		$request = "SELECT * FROM category";
 		$res = mysqli_query($this->link, $request);
@@ -62,7 +68,7 @@ class CategoryManager
 			}
 			return $resultat;
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
 }

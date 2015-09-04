@@ -1,4 +1,4 @@
-<form action="admin/admin_category" method="post" class="js-category-form-add col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+<form action="admin_category" method="post" class="js-category-form-add col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 	<div class="form-group">
 		<label for="category-add-name" class="sr-only">Titre de la catégorie :</label>
 		<input type="text" class="form-control" name="name" id="category-add-name" value="" placeholder="Titre de la catégorie">
@@ -8,6 +8,8 @@
 		<textarea type="text" class="form-control" name="description" value="" id="category-add-description" placeholder="Description de la catégorie" rows="5"></textarea>
 	</div>
 	<div class="form-group">
-		<button name="create" type="submit" class="btn btn-success">Ajouter</button>
+		<button name="create" type="submit" class="btn btn-success btn-add-category">Ajouter</button>
 	</div>
+	<div class="bg-danger error-add-cat"></div>
+	<div class="bg-success success-add-cat"></div>
 </form>

@@ -1,5 +1,4 @@
 <?php
-require('models/Topic.class.php');
 class Category{
 	// propriétés
 	private $id;
@@ -29,14 +28,14 @@ class Category{
 		if (strlen($name) > 3){
 			$this->name = $name;
 		}else{
-			throw new Exception("Le titre de la catégorie doit contenir au moins 4 caractères.");
+			throw new Exception("Erreur : Le titre de la catégorie doit contenir au moins 4 caractères.");
 		}
 	}
 	public function setDescription($description){
 		if (strlen($description) > 9){
 			$this->description = $description;
 		}else{
-			throw new Exception("La description de la catégorie doit contenir au moins 10 caractères.");
+			throw new Exception("Erreur : La description de la catégorie doit contenir au moins 10 caractères.");
 		}
 	}
 	public function select($id){
@@ -46,7 +45,7 @@ class Category{
 			$topic = mysqli_fetch_object($res, 'Topic', array($this->link));
 			return $topic;
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
 
@@ -68,7 +67,7 @@ class Category{
 			}
 		else
 			{
-				throw new Exception ("topic non renseigné");
+				throw new Exception ("Erreur : Votre requête n'a pas abouti.");
 			}
 		
 	}
@@ -86,6 +85,26 @@ class Category{
 		mysqli_query($this->link, $request);
 	}
 
+
+
+
+	public function selectByName($name)
+	{
+		$request="SELECT * FROM topic WHERE name='".$name."'";
+		$res=mysqli_query($this->link, $request);
+		if($res)
+		{
+			$topic=mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
+		}
+		else
+		{
+			throw new Exception("Error Processing Request");
+			
+		}
+	}
+
+
 	public function selectAll()
 		{
 			$request="SELECT * FROM topic WHERE id_category='".$this->id."'";
@@ -101,7 +120,7 @@ class Category{
 			}
 			else
 			{
-				throw new Exception("plantage");
+				throw new Exception("Erreur : Votre requête n'a pas abouti.");
 			}
 		}
 	public function searchAllTopics()
@@ -117,7 +136,7 @@ class Category{
 		
 		if($result==null)
 		{
-			throw new Exception("Votre requête n'a pas abouti");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 		
 				
@@ -130,7 +149,7 @@ class Category{
 		
 		if($result==null)
 		{
-			throw new Exception("Votre requête n'a pas abouti");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 		else
 		{
