@@ -1,6 +1,4 @@
 <?php
-$errorUser = "";
-$successUser = "";
 $manager = new UserManager($link);
 // modification user
 if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
@@ -9,7 +7,6 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 		try{
 			$user->setIdPermission($_POST['permission']);
 			$manager->update($user);
-			$successUser = "Permission de l'utilisateur modifiée.";
 			$endBan = $manager->getEndBan($user);
 			if ($endBan >= time()){
 				$endBan = date("Y-m-d H:i:s", $endBan);
@@ -30,7 +27,6 @@ if(isset($_POST['ban'], $_POST['id'], $_POST['time'])){
 	if ($user){
 		try{
 			$manager->ban($_POST['id'], $_POST['time']);
-			$successUser = "Utilisateur banni.";
 			$endBan = $manager->getEndBan($user);
 			if ($endBan >= time()){
 				$endBan = date("Y-m-d H:i:s", $endBan);
