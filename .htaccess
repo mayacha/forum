@@ -1,15 +1,18 @@
 RewriteEngine On
 Options +FollowSymLinks
 #ligne suivante à retirer pour empecher l acces aux repertoires
-RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^([a-zA-Z0-9_:\-]+)/?$ index.php?page=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^category/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=category&category=$1 [L]
-RewriteRule ^category/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=category&topic=$1 [L]
-<<<<<<< HEAD
-=======
-RewriteRule ^profil/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=profil&login=$1 [L]
->>>>>>> a5a92f3849417e9e4d30ee076f5ce24c4dc61d68
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^topic/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=topic&topic=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/([a-zA-Z0-9_:\-\.\?\!]+)/?$ index.php?page=admin&page_admin=$1 [L]
 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/(.+)/?$ index.php?page=singlecategory&category=$1&topic=$2 [L]
