@@ -195,8 +195,9 @@ function modifCategoryAJAX(id){
     $.post($(".js-category-form-modif").attr("action"),
     { modif: "", id: id, name: $(idName).val(), description: $(idDescription).val()},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-modif-cat-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivCategory = "#category-"+id;
             $(idDivCategory).parent().html(data);

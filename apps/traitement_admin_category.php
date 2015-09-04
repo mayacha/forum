@@ -28,8 +28,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['name'], $_POST['description'])){
 			require('views/display-admin-category-single.phtml');
 			exit;
 		}catch(Exception $e){
-			$errorCat = $e->getMessage();
-			echo "error";
+			echo $e->getMessage();
 			exit;
 		}
 	}
