@@ -18,8 +18,9 @@ class UserManager
 		$res= mysqli_query($this->link, $request);
 		if ($res === false)
 		{
-			$error="une erreur est survenue";
-			return $error;
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
+			//$error="une erreur est survenue";
+			//return $error;
 		}
 		else
 		{
@@ -47,13 +48,15 @@ class UserManager
 				$prob = substr($message, -6, -1);
 				if($prob == "email")
 				{
-					$error="email non valide";
-					return $error;
+					throw new Exception("Erreur : Adresse mail non valide.");
+					//$error="email non valide";
+					//return $error;
 				}
 				else
 				{
-					$error="une erreur est survenue";
-					return $error;
+					throw new Exception("Erreur : Votre requête n'a pas abouti.");
+					//$error="une erreur est survenue";
+					//return $error;
 				}
 			}
 		}
@@ -70,7 +73,7 @@ class UserManager
 		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
-			throw new Exception("Cet identifiant n'existe pas");
+			throw new Exception("Erreur : Cet identifiant n'existe pas.");
 		}
 		else
 		{
@@ -84,7 +87,7 @@ class UserManager
 		$user = mysqli_fetch_object($res, 'User', array($this->link));
 		if($user==null)
 		{
-			throw new Exception("Ce login n'existe pas");
+			throw new Exception("Erreur : Ce login n'existe pas.");
 		}
 		else
 		{
@@ -102,7 +105,7 @@ class UserManager
 			}
 			return $resultat;
 		}else{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
 	//Pour connaitre le niveau de permission
@@ -128,8 +131,9 @@ class UserManager
 		$res= mysqli_query($this->link, $request);
 			if ($res === false)
 			{
-				$error="une erreur est survenue";
-				return $error;
+				throw new Exception("Erreur : Votre requête n'a pas abouti.");
+				//$error="une erreur est survenue";
+				//return $error;
 			}
 			else
 			{
@@ -145,13 +149,17 @@ class UserManager
 		$res= mysqli_query($this->link, $request);
 		if ($res === false)
 		{
-			throw new Exception("Internal server error");
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}
 	}
 	// récupérer la date de fin d'un ban , format : TIMESTAMP
 	public function getEndBan($user){
 		$request="SELECT * FROM ban WHERE id_user= ".$user->getId()." ORDER BY id DESC";
 		$res= mysqli_query($this->link, $request);
+		if ($res === false)
+		{
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
+		}
 		$ban = mysqli_fetch_assoc($res);
 		$endTime = strtotime($ban['date']);
 		$endTime += ($ban['time'] * 3600);

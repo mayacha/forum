@@ -82,8 +82,9 @@ function modifUserAJAX(id){
     $.post($(".js-user-form-modif").attr("action"),
     { modif: "", id: id, permission: $(idPermission).val()},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-modif-user-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivUser = "#user-"+id;
             $(idDivUser).parent().html(data);
@@ -97,8 +98,9 @@ function banUserAJAX(id){
     $.post($(".js-user-form-ban").attr("action"),
     { ban: "", id: id, time: $(idTime).val()},
     function(data){
-        if(data == "error"){
-        	console.log("error");
+        if(data.substring(0, 6) == "Erreur"){
+        	idErr = "#error-ban-user-"+id;
+        	$(idErr).html(data);
         }else{
         	var idDivUser = "#user-"+id;
             $(idDivUser).parent().html(data);
