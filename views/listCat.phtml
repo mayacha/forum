@@ -1,4 +1,8 @@
-<div class="row">
-<?=$category->getName()?>
-<?php require ('apps/display-listTopics.php');?>
+<div class="row forum">
+	<div class="col-xs-12">
+		<h3><a href="category/<?=htmlentities($category->getName())?>"><?=$category->getName()?></a></h3>
+		<p>yop</p>
+		<?php require ('apps/display-listTopics.php');?>
+	</div>
+
 </div>

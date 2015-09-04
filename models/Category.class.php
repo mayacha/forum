@@ -85,6 +85,26 @@ class Category{
 		mysqli_query($this->link, $request);
 	}
 
+
+
+
+	public function selectByName($name)
+	{
+		$request="SELECT * FROM topic WHERE name='".$name."'";
+		$res=mysqli_query($this->link, $request);
+		if($res)
+		{
+			$topic=mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
+		}
+		else
+		{
+			throw new Exception("Error Processing Request");
+			
+		}
+	}
+
+
 	public function selectAll()
 		{
 			$request="SELECT * FROM topic WHERE id_category='".$this->id."'";

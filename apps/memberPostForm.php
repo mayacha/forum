@@ -1,8 +1,11 @@
 <?php
 
-	// if(isset($_POST['id']))
+
+require('views/memberPostForm.phtml');
+
 	
 		require ('views/createPost.phtml');
 	
+
 
 ?>

@@ -8,7 +8,7 @@ try
 	$i=0;
 	while($i < count($categories))
 	{
-		$category = htmlentities($categories[$i]->getName()); // nom categorie
+		$category = $categories[$i]; // nom categorie
 		require('views/navbar-category.phtml'); // affichage
 		$i++;
 	}
