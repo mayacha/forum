@@ -41,7 +41,7 @@ public function __construct($link)
 //SETTER
 	public function setName($name)
 	{
-		if(strlen($name)>4 && strlen($title)>33)
+		if(strlen($name)>4 && strlen($name)<33)
 			$this->name=$name;
 		else 
 			throw new Exception("Le nom du titre Topic doit être comprise entre 5 et 32 caractères");
@@ -65,16 +65,19 @@ public function __construct($link)
 			$id_topic=$this->id;
 			$post= new Post ($this->link);
 			$post->setTitle($title);
+			$post->setContent($content);
 			$post->setId_topic($id_topic);
-			$post->setId_user($_SESSION['id']);
+			$post->setId_user($_SESSION['id_user']);
 			$title=mysqli_real_escape_string($this->link, $post->getTitle());
 			$content=mysqli_real_escape_string($this->link, $post->getContent());
 			$userID=$post->getId_user();
-			$request="INSERT INTO post (name, title, id_category, id_user) VALUES ('".$name."', '".$title."', '".$id_category."','".$userID.'")';
-			mysqli_query($this->link, $request);
-			if($res) {
+			$request="INSERT INTO post (title, content, id_topic, id_user) VALUES ('".$title."', '".$content."', '".$id_topic."','".$userID."')";
+			echo $request;
+			$res = mysqli_query($this->link, $request);
+			if($res) 
+			{
 				return $this->select(mysqli_insert_id($this->link));
-				}
+			}
 			else
 			{
 				throw new Exception ("Sujet vide !");

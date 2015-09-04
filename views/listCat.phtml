@@ -4,5 +4,12 @@
 		<p>yop</p>
 		<?php require ('apps/display-listTopics.php');?>
 	</div>
-
 </div>
+
+
+<!-- formulaire ajout topic -->
+<?php if($page != "home"){ ?>
+<div class="wrapper-topic-form-add">
+	<?php require('views/display-category-topic-form-add.phtml');?>
+</div>
+<?php } ?>
