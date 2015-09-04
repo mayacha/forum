@@ -1,0 +1,8 @@
+<form action="admin_post" method="post" class="js-post-form-delete col-md-8 col-md-offset-2">
+	<input name="id" value="<?=$post->getId()?>" hidden id="post-delete-id-<?=$user->getId()?>">
+	<div class="form-group">
+		<label>Supprimer le message : </label>
+		<button name="delete" type="submit" class="btn btn-default btn-valid-delete-post">Oui</button>
+		<button class="btn btn-default btn-cancel-delete-post">Non</button>
+	</div>
+</form>

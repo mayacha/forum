@@ -28,7 +28,7 @@ class CategoryManager
 	public function update($category){
 		$name = mysqli_real_escape_string($this->link, $category->getName());
 		$description = mysqli_real_escape_string($this->link, $category->getDescription());
-		$request = "UPDATE category SET name = '".$name."', description = '".$description."';";
+		$request = "UPDATE category SET name = '".$name."', description = '".$description."' WHERE id='".$category->getId()."';";
 		mysqli_query($this->link, $request);
 	}
 	public function select($id){
@@ -42,19 +42,18 @@ class CategoryManager
 		}
 	}
 
-	public function selectByName($name)
-	{
-		$request="SELECT * FROM category WHERE name='".$name."'";
-		$res=mysqli_query($this->link, $request);
-		if($res)
-		{
-			$category=mysqli_fetch_object($res, 'Category', array($this->link));
+
+
+
+
+	public function selectByName($category_name){
+		$request = "SELECT * FROM category WHERE name='".$category_name."'";
+		$res = mysqli_query($this->link, $request);
+		if($res){
+			$category = mysqli_fetch_object($res, 'Category', array($this->link));
 			return $category;
-		}
-		else
-		{
-			throw new Exception("Error Processing Request");
-			
+		}else{
+			throw new Exception("Internal server error");
 		}
 	}
 

@@ -69,9 +69,9 @@ class User{
 		$this->avatar = $avatar;
 	}
 	public function setBirthdate($birthdate){
-		$this->date = $birthdate;
+		$this->birthdate = $birthdate;
 	}
-	public function setDescrition($description){
+	public function setDescription($description){
 		$this->description = $description;
 	}
 	public function setIdPermission($id_permission){

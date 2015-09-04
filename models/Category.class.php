@@ -1,5 +1,4 @@
 <?php
-require('models/Topic.class.php');
 class Category{
 	// propriétés
 	private $id;
@@ -39,8 +38,16 @@ class Category{
 			throw new Exception("La description de la catégorie doit contenir au moins 10 caractères.");
 		}
 	}
-
-	//other
+	public function select($id){
+		$request = "SELECT * FROM topic WHERE id='".intval($id)."'";
+		$res = mysqli_query($this->link, $request);
+		if($res){
+			$topic = mysqli_fetch_object($res, 'Topic', array($this->link));
+			return $topic;
+		}else{
+			throw new Exception("Internal server error");
+		}
+	}
 
 	public function create($name)
 	{
@@ -78,6 +85,7 @@ class Category{
 		mysqli_query($this->link, $request);
 	}
 
+
 	public function select($id)
 	{
 		$request="SELECT * FROM topic WHERE id_category='".intval($id)."'";
@@ -109,6 +117,7 @@ class Category{
 		}
 	}
 
+
 	public function selectAll()
 		{
 			$request="SELECT * FROM topic WHERE id_category='".$this->id."'";
@@ -127,5 +136,38 @@ class Category{
 				throw new Exception("plantage");
 			}
 		}
+	public function searchAllTopics()
+	{
+		$request="SELECT * FROM topic WHERE titre LIKE '%".$search."%' ORDER BY id DESC";
+		$result=mysqli_query($this->link, $request);
+		$found=array();
+		while($topic=mysqli_fetch_object($result, 'Topic', array($this->link)))
+		{
+			$found[]=$topic;
+			return $found;
+		}
+		
+		if($result==null)
+		{
+			throw new Exception("Votre requête n'a pas abouti");
+		}
+		
+				
+	}
+	public function searchCatTopics($id_category)
+	{
+		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND titre LIKE '%".$search."%' ORDER BY id DESC";
+		$result=mysqli_query($this->link, $request);
+		$found=mysqli_fetch_object($result, 'Topic', array($this->link));
+		
+		if($result==null)
+		{
+			throw new Exception("Votre requête n'a pas abouti");
+		}
+		else
+		{
+			return $found;
+		}		
+	}
 }
 ?>

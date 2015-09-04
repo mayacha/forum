@@ -1,84 +1,103 @@
-<section class="profil">
+<section class="profil row">
 <h2><span class="glyphicon glyphicon-user"></span>Votre profil</h2>
 <div class="message">
 	<div class="bg-danger"><p><?=$error?></p></div>
 	<div class="bg-success"><p><?=$success?></p></div>
 
 </div>
-<div class="col-md-4">
-	<img class="thumbnail" src="img/<?=$avatar?>" alt="">
-	<form id="avatar" method="post" enctype="multipart/form-data">
-	<div class="form-group">
-		<input name="changeavatar" type="file">
-		<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-		<button class="btn btn-danger"><span class="glyphicon glyphicon-ok-circle"></span></button>
+<div class="col-xs-4 col-md-5">
+	<div class="profItem">
+		<img class="thumbnail" src="public/img/<?=$avatar?>" alt="">
+		<a class="btn btn-info btn-xs" id="changeavatar" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="avatar" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<input id="hiddenfile" name="avatar" type="file">
+				<!-- <input type="text" id="selectedfile" value="choisissez un fichier" onclick="getfile();"> -->
+				<input type="hidden" name="MAX_FILE_SIZE" value="100000">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
+	</div>
+
+	<div class="profItem">
+		<h4><span class="glyphicon glyphicon-star"></span>Description:</h4>
+		<p> <?=htmlentities($description)?></p>
+		<a class="btn btn-info btn-xs" id="changedescription" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="description" method="post">
+			<div class="form-group">
+				<textarea class="" name="description"></textarea>
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
 	</div>
 </div>
 
-<div class="col-md-8">	
-<h4><span class="glyphicon glyphicon-star"></span>Login : <?=$log?></h4>
-<a class="btn btn-info" id="changelog" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
-<form id="login" method="post">
-	<div class="form-group">
-		<input name="changelog" type="text">
-		<button class="btn btn-danger"><span class="glyphicon glyphicon-ok-circle"></span></button>
+<div class="col-xs-8 col-md-7">	
+	<div class="profItem">
+		<h4><span class="glyphicon glyphicon-star"></span>Login : <?=htmlentities(ucfirst($login))?></h4>
+		<a class="btn btn-info btn-xs" id="changelog" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="login" method="post">
+			<div class="form-group">
+				<input class="" name="changelog" type="text">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
 	</div>
-</form>
-</div>
-<div class="profItem">
-<h4><span class="glyphicon glyphicon-star"></span>Mot de passe</h4>
-<a class="btn btn-info" id="changemdp" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
-<form id="mdp" method="post">
-	<div class="form-group">
-		<input name="exmdp" type="password" placeholder="Mot de passe actuel">
-		<input name="changemdp" type="password" placeholder="Nouveau mot de passe">
-		<input name="checkmdp" type="password" placeholder="Confirmation">
-		<button class="btn btn-danger"><span class="glyphicon glyphicon-ok-circle"></span></button>
-	</div>
-</form>
-</div>
 
-<div class="profItem">
-<h4><span class="glyphicon glyphicon-star"></span>Email : <?=$email?></h4>
-<a class="btn btn-info" id="changemail" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
-<form id="email" method="post">
-	<div class="form-group">
-		<input name="changemail" type="text">
-		<button class="btn btn-danger"><span class="glyphicon glyphicon-ok-circle"></span></button>
+	<div class="profItem">
+		<h4><span class="glyphicon glyphicon-star"></span>Mot de passe</h4>
+		<a class="btn btn-info btn-xs" id="changemdp" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="mdp" method="post">
+			<div class="form-group">
+				<input class="" name="exmdp" type="password" placeholder="Mot de passe actuel">
+				<input class="" name="changemdp" type="password" placeholder="Nouveau mot de passe">
+				<input class="" name="checkmdp" type="password" placeholder="Confirmation">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
 	</div>
-</form>
-</div>
 
-<div class="profItem">
-<h4><span class="glyphicon glyphicon-star"></span>Date de naissance : <?=$birthdate?></h4>
-<a class="btn btn-info" id="changedate" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
-<form id="birth" method="post">
-	<div class="form-group">
-		<input name="changedate" type="date">
-		<button class="btn btn-danger"><span class="glyphicon glyphicon-ok-circle"></span></button>
+	<div class="profItem">
+		<h4><span class="glyphicon glyphicon-star"></span>Email : <?=$email?></h4>
+		<a class="btn btn-info btn-xs" id="changemail" href="">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="email" method="post">
+			<div class="form-group">
+				<input class="" name="changemail" type="text">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
 	</div>
-</form>
+	<div class="profItem">
+		<h4><span class="glyphicon glyphicon-star"></span>Date de naissance : <?=$birthdate?></h4>
+		<a class="btn btn-info btn-xs" id="changedate" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+		<form id="birth" method="post">
+			<div class="form-group">
+				<input class="" name="birthdate" type="date">
+				<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+			</div>
+		</form>
+	</div>
 </div>
 </section>
-<section class="contribArt">
+<!-- <section class="contrib row">
 <h2><span class="glyphicon glyphicon-pencil"></span>Vos contributions <?=$contribution?></h2>
 <div class="contribArt">
-	 <?php require('./apps/display_profilArt.php'); ?>
+	 <?php ; ?>
 </div>
 <nav class="pages">
-	<ul class="pagineur">
-		<?php require('./apps/display_profilArtPagination.php'); ?>
+	<ul class="pagination">
+		<?php ; ?>
 	</ul>
 </nav>
 </section>
 <section class="contribArt">
 <h2><span class="glyphicon glyphicon-thumbs-up"></span>Vos commentaires <?=$commentaires?></h2>
 <div class="contribArt">
-	 <?php require('./apps/display_profilCom.php'); ?>
+	 <?php ; ?>
 </div>
 <nav class="pages">
 	<ul class="pagineur">
-		<?php require('./apps/display_profilComPagination.php'); ?>
+		<?php ; ?>
 	</ul>
 </nav>
-</section>
+</section> -->

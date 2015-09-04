@@ -81,31 +81,52 @@ public function __construct($link)
 			}
 	}
 
-	public function delete ($id)
+	public function update($post)
 	{
-		$request="DELETE FROM post WHERE id='".intval($id)."'";
-		mysqli_query($this->link, $request);
-	}
-
-	public function update ($post)
-	{
-		$content=mysqli_real_escape_string($this->link, $post->getContent());
 		$title=mysqli_real_escape_string($this->link, $post->getTitle());
-		$request="UPDATE post SET content='".$content."', title='".$title."'";
+		$content=mysqli_real_escape_string($this->link, $post->getContent());
+		$reported=mysqli_real_escape_string($this->link, $post->getReported());
+		$deleted=mysqli_real_escape_string($this->link, $post->getDeleted());
+		$request="UPDATE post SET title='".$title."', content='".$content."', reported=".$reported.", deleted=".$deleted." WHERE id = ".$post->getId();
 		mysqli_query($this->link, $request);
-
 	}
 
-
-		public function getAuthor()
+	public function select($id)
+	{
+		$request="SELECT * FROM post WHERE id_topic='".intval($id)."'";
+		$res=mysqli_query($this->link, $request);
+		if($res)
 		{
-			$manager = new UserManager($this->link);
-			$author = $manager->selectById($this->id_user);
-			return $author;
+			$post=mysqli_fetch_object($res, 'Post', array($this->link));
+		return $post;
 		}
-
-		public function selectAll()
+		else 
 		{
+			throw new Exception('aucun post');
+		}
+	}
+
+	public function getCategory()
+	{
+		$manager = new CategoryManager($this->link);
+		$category = $manager->select($this->id_category);
+		return $category;
+	}
+
+	public function getAuthor()
+	{
+		$manager = new UserManager($this->link);
+		$author = $manager->selectById($this->id_user);
+		return $author;
+	}
+
+	public function selectAll()
+	{
+		$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
+		$res=mysqli_query($link, $request);
+		if($res)
+		{
+
 			$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
 			$res=mysqli_query($this->link, $request);
 			if($res)
@@ -118,13 +139,11 @@ public function __construct($link)
 				return $listPost;
 			}
 			else
-			{
-				throw new Exception('rien !');
-			}
+
+				{
+					throw new Exception('rien !');
+				}
 		}
-
-
-
-	
+	}
 }
 ?>

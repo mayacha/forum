@@ -1,0 +1,8 @@
+<form action="admin_post" method="post" class="js-post-form-valid col-md-8 col-md-offset-2">
+	<input name="id" value="<?=$post->getId()?>" hidden id="post-valid-id-<?=$user->getId()?>">
+	<div class="form-group">
+		<label>Valider le message (ne supprime pas le message) : </label>
+		<button name="valid" type="submit" class="btn btn-default btn-valid-valid-post">Oui</button>
+		<button class="btn btn-default btn-cancel-valid-post">Non</button>
+	</div>
+</form>
