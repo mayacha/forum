@@ -12,8 +12,7 @@ if(isset($_POST['create'], $_POST['name'], $_POST['description'])){
 		require('apps/display-admin-categories.php');
 		exit;
 	}catch(Exception $e){
-		$errorCat = $e->getMessage();
-		echo "error";
+		echo $e->getMessage();
 		exit;
 	}
 }

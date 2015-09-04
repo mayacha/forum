@@ -177,9 +177,10 @@ function addCategoryAJAX(){
     $.post($(".js-category-form-add").attr("action"),
     { create: "", name: $("#category-add-name").val(), description: $("#category-add-description").val()},
     function(data){
-        if(data == "error"){
-        	console.log("Internal server error");
+        if(data.substring(0, 6) == "Erreur"){
+        	$(".error-add-cat").html(data);
         }else{
+        	$(".success-add-cat").html("Nouvelle catégorie ajoutée.");
         	$(".js-category-form-add #category-add-name").val("");
         	$(".js-category-form-add #category-add-description").val("");
             $(".wrapper-categories").html(data);
