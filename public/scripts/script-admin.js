@@ -78,10 +78,9 @@ function addEventsUser(){
 };
 //bouton valide modification utilisateur
 function modifUserAJAX(id){
-	var idId = "#user-modif-id-"+id;
 	var idPermission = "#user-modif-permission-"+id;
     $.post($(".js-user-form-modif").attr("action"),
-    { modif: "", id: $(idId).val(), permission: $(idPermission).val()},
+    { modif: "", id: id, permission: $(idPermission).val()},
     function(data){
         if(data == "error"){
         	console.log("error");
@@ -94,10 +93,9 @@ function modifUserAJAX(id){
 };
 //bouton valide modification utilisateur
 function banUserAJAX(id){
-	var idId = "#user-ban-id-"+id;
 	var idTime = "#user-ban-time-"+id;
     $.post($(".js-user-form-ban").attr("action"),
-    { ban: "", id: $(idId).val(), time: $(idTime).val()},
+    { ban: "", id: id, time: $(idTime).val()},
     function(data){
         if(data == "error"){
         	console.log("error");
@@ -149,25 +147,25 @@ function addEventsCategory(){
         event.preventDefault();
         addCategoryAJAX();
     });
-	// bouton valide modif category
+	// bouton valide modif categorie
     $(".btn-valid-modif-category").off().on('click', function(event){
         event.preventDefault();
         var id = $(this).parent().parent().find("input[name=id]").val();
         modifCategoryAJAX(id);
     });
-	// submit valide modif category
+	// submit valide modif categorie
     $(".js-category-form-modif").off().on('submit', function(event){
         event.preventDefault();
         var id = $(this).parent().parent().find("input[name=id]").val();
         modifCategoryAJAX(id);
     });
-	// bouton valide supprime category
+	// bouton valide supprime categorie
     $(".btn-valid-delete-category").off().on('click', function(event){
         event.preventDefault();
         var id = $(this).parent().parent().find("input[name=id]").val();
         deleteCategoryAJAX(id);
     });
-	// submit valide supprime category
+	// submit valide supprime categorie
     $(".js-category-form-delete").off().on('submit', function(event){
         event.preventDefault();
         var id = $(this).parent().parent().find("input[name=id]").val();
@@ -189,13 +187,12 @@ function addCategoryAJAX(){
         }
     });
 };
-//bouton valide modification utilisateur
+//bouton valide modification categorie
 function modifCategoryAJAX(id){
-	var idId = "#category-modif-id-"+id;
 	var idName = "#category-modif-name-"+id;
 	var idDescription = "#category-modif-description-"+id;
     $.post($(".js-category-form-modif").attr("action"),
-    { modif: "", id: $(idId).val(), name: $(idName).val(), description: $(idDescription).val()},
+    { modif: "", id: id, name: $(idName).val(), description: $(idDescription).val()},
     function(data){
         if(data == "error"){
         	console.log("error");
@@ -206,11 +203,10 @@ function modifCategoryAJAX(id){
         }
     });
 };
-//bouton valide supprime utilisateur
+//bouton valide supprime categorie
 function deleteCategoryAJAX(id){
-	var idId = "#category-modif-id-"+id;
-    $.post($(".js-category-form-modif").attr("action"),
-    { delete: "", id: $(idId).val()},
+    $.post($(".js-category-form-delete").attr("action"),
+    { delete: "", id: id},
     function(data){
         if(data == "error"){
         	console.log("error");
@@ -269,7 +265,7 @@ function addEventsPost(){
     $(".btn-valid-valid-post").off().on('click', function(event){
         event.preventDefault();
         var id = $(this).parent().parent().find("input[name=id]").val();
-        validPostAJAX();
+        validPostAJAX(id);
     });
 	// submit valide valide message
     $(".js-post-form-valid").off().on('submit', function(event){
@@ -277,12 +273,63 @@ function addEventsPost(){
         var id = $(this).parent().parent().find("input[name=id]").val();
         validPostAJAX(id);
     });
+	// bouton valide modif message
+    $(".btn-valid-modif-post").off().on('click', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        modifPostAJAX(id);
+    });
+	// submit valide modif message
+    $(".js-post-form-modif").off().on('submit', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        modifPostAJAX(id);
+    });
+	// bouton valide supprime message
+    $(".btn-valid-delete-post").off().on('click', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        deletePostAJAX(id);
+    });
+	// submit valide supprime message
+    $(".js-post-form-delete").off().on('submit', function(event){
+        event.preventDefault();
+        var id = $(this).parent().parent().find("input[name=id]").val();
+        deletePostAJAX(id);
+    });
 };
-//bouton valide supprime utilisateur
+//bouton valide valide message
 function validPostAJAX(id){
-	var idId = "#post-valid-id-"+id;
     $.post($(".js-post-form-valid").attr("action"),
-    { valid: "", id: $(idId).val()},
+    { valid: "", id: id},
+    function(data){
+        if(data == "error"){
+        	console.log("error");
+        }else{
+        	var idDivPost = "#post-"+id;
+            $(idDivPost).parent().detach();
+        }
+    });
+};
+//bouton valide modification message
+function modifPostAJAX(id){
+	var idTitle = "#post-modif-title-"+id;
+	var idContent = "#post-modif-content-"+id;
+    $.post($(".js-post-form-modif").attr("action"),
+    { modif: "", id: id, title: $(idTitle).val(), content: $(idContent).val()},
+    function(data){
+        if(data == "error"){
+        	console.log("error");
+        }else{
+        	var idDivPost = "#post-"+id;
+            $(idDivPost).parent().detach();
+        }
+    });
+};
+//bouton valide supprime message
+function deletePostAJAX(id){
+    $.post($(".js-post-form-delete").attr("action"),
+    { delete: "", id: id},
     function(data){
         if(data == "error"){
         	console.log("error");
