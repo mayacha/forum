@@ -1,1 +1,5 @@
-<li><a href="<?php echo stripAccents($category)?>"><?=ucfirst($category)?></a></li>
+
+<li><a href="category/<?=htmlentities($category->getName())?>"><?=ucfirst(htmlentities($category->getName()))?></a></li>
+
+
+

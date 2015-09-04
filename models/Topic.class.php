@@ -123,19 +123,26 @@ public function __construct($link)
 	public function selectAll()
 	{
 		$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
-		$res=mysqli_query($link, $request);
+		$res=mysqli_query($this->link, $request);
 		if($res)
 		{
-			$listPost=array();
-			while($post=mysqli_fetch_object($res, 'Post', array($this->link)))
+
+			$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
+			$res=mysqli_query($this->link, $request);
+			if($res)
 			{
-				$listPost[]=$post;
+				$listPost=array();
+				while($post=mysqli_fetch_object($res, 'Post', array($this->link)))
+				{
+					$listPost[]=$post;
+				}
+				return $listPost;
 			}
-			return $listPost;
-		}
-		else
-		{
-			throw new Exception('rien !');
+			else
+
+				{
+					throw new Exception('rien !');
+				}
 		}
 	}
 }
