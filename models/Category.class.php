@@ -1,5 +1,4 @@
 <?php
-require('models/Topic.class.php');
 class Category{
 	// propriétés
 	private $id;

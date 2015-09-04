@@ -4,7 +4,6 @@ session_start();
 $link = connectDB();
 $error = "";
 $success = "";
-
 function my_autoloader($className)
 {
     require('./models/'.$className.'.class.php');
@@ -21,11 +20,9 @@ $pageList = array('home','category','topic','profil','register','account','admin
 $page = 'home';
 if (isset($_GET['page']) && in_array($_GET['page'], $pageList))
 	$page = $_GET['page'];
-
 $traitementListAdmin = array('admin_category', 'admin_user', 'admin_post');
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementListAdmin))
 	require('apps/traitement_'.$_GET['page'].'.php');
-
 //si requete ajax on ne passe pas par skel et content
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
 	require('apps/'.$page.'.php');
