@@ -144,6 +144,54 @@ public function __construct($link)
 					throw new Exception('rien !');
 				}
 		}
+
+	public function searchTopicPosts($id_topic)
+	{
+		$request="SELECT * FROM post WHERE id_topic='".$id_topic."' AND content LIKE '%".$search."%' ORDER BY id DESC";
+		$result=mysqli_query($this->link, $request);
+		$found=mysqli_fetch_object($result, 'Post', array($this->link));
+		
+		if($result==null)
+		{
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
+		}
+		else
+		{
+			return $found;
+		}		
+	}	
+	// public function searchAllCatPosts($category_name)
+	// {
+	// 	$manager= new Category();
+	// 	$manager->selectAll($category_name);
+	// 	$t
+	// 	$request="SELECT * FROM post WHERE content LIKE '%".$search."%' ORDER BY id DESC";
+	// 	$result=mysqli_query($this->link, $request);
+	// 	$found=mysqli_fetch_object($result, 'Post', array($this->link));
+		
+	// 	if($result==null)
+	// 	{
+	// 		throw new Exception("Erreur : Votre requête n'a pas abouti.");
+	// 	}
+	// 	else
+	// 	{
+	// 		return $found;
+	// 	}		
+	// }
+	public function searchAllPosts()
+	{
+		$request="SELECT * FROM post WHERE content LIKE '%".$search."%' ORDER BY id DESC";
+		$result=mysqli_query($this->link, $request);
+		$found=mysqli_fetch_object($result, 'Post', array($this->link));
+		
+		if($result==null)
+		{
+			throw new Exception("Erreur : Votre requête n'a pas abouti.");
+		}
+		else
+		{
+			return $found;
+		}		
 	}
 }
 ?>
