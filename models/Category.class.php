@@ -86,20 +86,7 @@ class Category{
 	}
 
 
-	public function select($id)
-	{
-		$request="SELECT * FROM topic WHERE id_category='".intval($id)."'";
-		$res=mysqli_query($this->link, $request);
-		if($res)
-			{
-			$topic=mysqli_fetch_object($res, 'Topic', array($this->link));	
-			return $topic;
-			}
-			else
-			{
-				throw new Exception ('topic inexistant');
-			}
-	}
+
 
 	public function selectByName($name)
 	{
