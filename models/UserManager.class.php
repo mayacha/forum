@@ -150,7 +150,7 @@ class UserManager
 	}
 	// récupérer la date de fin d'un ban , format : TIMESTAMP
 	public function getEndBan($user){
-		$request="SELECT * FROM ban WHERE id_user= ".$user->getId()." ORDER BY id";
+		$request="SELECT * FROM ban WHERE id_user= ".$user->getId()." ORDER BY id DESC";
 		$res= mysqli_query($this->link, $request);
 		$ban = mysqli_fetch_assoc($res);
 		$endTime = strtotime($ban['date']);

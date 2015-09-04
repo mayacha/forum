@@ -11,15 +11,17 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 			$manager->update($user);
 			$successUser = "Permission de l'utilisateur modifiée.";
 			$endBan = $manager->getEndBan($user);
-			if ($endBan != 0 && $endBan > date('now')){
+			if ($endBan >= time()){
 				$endBan = date("Y-m-d H:i:s", $endBan);
 			}else{
-				$endBan == 0;
+				$endBan = 0;
 			}
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){
 			$errorUser = $e->getMessage();
+			echo "error";
+			exit;
 		}
 	}
 }
@@ -31,15 +33,17 @@ if(isset($_POST['ban'], $_POST['id'], $_POST['time'])){
 			$manager->ban($_POST['id'], $_POST['time']);
 			$successUser = "Utilisateur banni.";
 			$endBan = $manager->getEndBan($user);
-			if ($endBan != 0 && $endBan > date('now')){
+			if ($endBan >= time()){
 				$endBan = date("Y-m-d H:i:s", $endBan);
 			}else{
-				$endBan == 0;
+				$endBan = 0;
 			}
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){
 			$errorUser = $e->getMessage();
+			echo "error";
+			exit;
 		}
 	}
 }
