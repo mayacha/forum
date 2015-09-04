@@ -42,7 +42,7 @@ class CategoryManager
 		}
 	}
 	public function selectByName($category_name){
-		$request = "SELECT * FROM category WHERE name='".$category_name)."'";
+		$request = "SELECT * FROM category WHERE name='".$category_name."'";
 		$res = mysqli_query($this->link, $request);
 		if($res){
 			$category = mysqli_fetch_object($res, 'Category', array($this->link));

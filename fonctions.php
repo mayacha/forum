@@ -43,7 +43,7 @@ function uploadAvatar($avatar){
 	     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 	     //si le nom de fichier existe déjà
 	     while(file_exists($dossier . $fichier)) {
-				$fichier = .rand()$fichier;
+				$fichier = rand().$fichier;
 			}
 
 	     if(move_uploaded_file($avatar['tmp_name'], $dossier . $fichier)) //renvoi TRUE
