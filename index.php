@@ -25,11 +25,11 @@ if(isset($_SESSION['id_user'])){
 //var_dump($_GET);
 //var_dump($_SESSION);
 //var_dump($_SERVER);
-$traitementList = array('register','login','logout','post','topic','account','profil','search');
+$traitementList = array('register','login','logout','post','topic','account','profil', 'tchat', 'message');
 
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');
-$pageList = array('home','category','topic','profil','register','account','admin','singlecategory', 'createPost', 'remotePost');
+$pageList = array('home','category','topic','profil','register','account','admin','singlecategory', 'createPost', 'remotePost', 'tchat');
 
 $page = 'home';
 if (isset($_GET['page']) && in_array($_GET['page'], $pageList))

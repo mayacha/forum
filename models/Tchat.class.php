@@ -1,40 +1,54 @@
 <?php
 class Tchat{
-private $id;
-private $date;
-private $id_user;
-private $content;
+	// propriétés
+	private $id;
+	private $message;
+	private $date;
+	private $id_user;
 
-//GETTER
-	public function getId()
-		{
-			return $this->id;
+	private $link;
+ 
+	public function __construct($link){
+		$this->link = $link;
+	}
+
+	/**
+	*   Getter générique
+	*
+	*   @param String $attr : attribute name 
+	*   @return mixed
+	*/
+	public function getAttr($attr){
+		return $this->$attr;
+	}
+	
+	/**
+	*   Setter générique
+	*
+	*   @param String $attr : attribute name 
+	*   @param mixed $val : attribute value
+	*/	
+	public function setAttr($attr, $val){
+		$this->$attr = $val;	
+	}
+
+	/**
+	*   Setter Name
+	*
+	*   @param String $name
+	*/
+	public function setMessage($message){
+		if (strlen($message) > 0){
+			$this->message = $message;
+		}else{
+			throw new Exception("Erreur : Le message est vide.");
 		}
-	public function getDate()
-	{
-		return $this->date;
 	}
-	public function getid_user()
-	{
-		return $this->id_user;
-	}
-	public function getContent()
-	{
-		return $this->content;
-	}
-//SETTER
-	
-	public function setid_user()
-	{
-		$this->id_user=$id_user;
-	}
-	
-	public function setContent()
-	{
-		if($content !="")
-		$this->content=$content;
-		else
-		throw new Exception("un message vide ne vaut pas mieux que pas de messages du tout...")
+
+	public function getAuthor(){
+		$manager = new UserManager($this->link);
+		$author = $manager->selectById($this->id_user);
+		return $author;
 	}
 }
 ?>

@@ -2,8 +2,8 @@
 <form action="admin_user" method="post" class=" col-md-8 col-md-offset-2 form-inline js-user-form-modif">
 	<input name="id" value="<?=$user->getId()?>" hidden id="user-modif-id-<?=$user->getId()?>">
 	<div class="form-group">
-		<label for="user-modif-permission" class="sr-only">Nouvelle permission :</label>
-		<select type="text" class="form-control" id="user-modif-permission-<?=$user->getId()?>" name="permission" placeholder="Titre de la catégorie">
+		<label for="user-modif-permission-<?=$user->getId()?>" class="sr-only">Nouvelle permission :</label>
+		<select class="form-control" id="user-modif-permission-<?=$user->getId()?>" name="permission">
 			<option value="1">Administrateur</option>
 			<option value="2">Modérateur</option>
 			<option value="3">Membre</option>

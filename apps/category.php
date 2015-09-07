@@ -5,7 +5,4 @@ $listTopics = $category->selectAll();
 
 require('views/listCat.phtml');
 
-
-
-
 ?>

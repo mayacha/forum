@@ -9,15 +9,19 @@ if(isset($_GET['search']) && $_GET['search'] !="")
 		$topic_name=$_GET['topic'];
 		$topManager->selectByName($category_name);
 		$id_category=$category->getId();
-		$topManager->searchTopicPosts($id_topic);
+		$found=$topManager->searchTopicPosts($id_topic,$search);
 		$category = str_replace(' ', '_', $category_name);
 		$topic=str_replace(' ', '_', $topic_name);
 		$url=$category.'/'.$topic;
-		foreach($found as $post)
-		{
-			require('views/listPostSingle.phtml');
+			$i=0;
+			while($i<count($found))
+			{
+				$post=$found[$i];
+				require('views/listPostSingle.phtml');
+			$i++;
+			}
+			
 			exit;
-		}
 		// header('Location:category/'.$category_name.'/'.$topic_name);
 		}
 		catch(Exception $e)
@@ -27,9 +31,11 @@ if(isset($_GET['search']) && $_GET['search'] !="")
 }
 else
 {
+
 	foreach($listposts as $post)
 	{
-		require('views/listPostSingle.phtml');
+	$idPost=$post->getId();
+	require('views/listPostSingle.phtml');
 		
 	}
 }
