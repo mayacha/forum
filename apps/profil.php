@@ -3,9 +3,9 @@ if(isset($_GET['login']))
 {
 	$login=$_GET['login'];
 	$manager= new UserManager($link);
-	$user= $manager-> selectByLogin($login);
+	$user= $manager->selectByLogin($login);
 	$user->getId();
-	if($user->getBirthdate()=='0000-00-00')
+	if(strtotime($user->getBirthdate())<=0)
 	$birthdate='Non renseignée';
 	else
 	$birthdate=date('d/m/Y',strtotime($user->getBirthdate()));
@@ -20,10 +20,11 @@ else
 {
 	$login=$_SESSION['login'];
 	$manager= new UserManager($link);
-	$user= $manager-> selectByLogin($login);
+	$user= $manager->selectByLogin($login);
 	$id=$user->getId();
 	$password=$user->getPassword();
-	if($user->getBirthdate()=='0000-00-00')
+	var_dump(strtotime($user->getBirthdate()));
+	if(strtotime($user->getBirthdate())<=0)
 	$birthdate='Non renseignée';
 	else
 	$birthdate=date('d/m/Y',strtotime($user->getBirthdate()));

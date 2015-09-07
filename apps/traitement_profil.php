@@ -69,9 +69,7 @@ if (isset($_POST['description']))
 if (isset($_POST['birthdate']))
 {
 	
-	$user->setBirthdate($_POST['birthdate']);
-	var_dump($user->getBirthdate());
-	var_dump($_POST);
+	$user->setBirthdate(strtotime($_POST['birthdate']));
 }
 
 $manager-> update($user);
