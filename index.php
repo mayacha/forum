@@ -20,8 +20,8 @@ if(isset($_SESSION['id_user'])){
 	}
 }
 
-var_dump($_POST);
-var_dump($_GET);
+//var_dump($_POST);
+//var_dump($_GET);
 //var_dump($_SESSION);
 //var_dump($_SERVER);
 $traitementList = array('register','login','logout','post','topic','account','profil','search');

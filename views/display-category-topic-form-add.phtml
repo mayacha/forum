@@ -1,0 +1,16 @@
+<form action="topic" method="post" class="js-topic-form-add col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+	<input name="id" hidden value="<?=$category->getId();?>">
+	<div class="form-group">
+		<label for="topic-add-name" class="sr-only">Titre du topic :</label>
+		<input type="text" class="form-control" name="name" id="topic-add-name" value="" placeholder="Titre du topic">
+	</div>
+	<div class="form-group">
+		<label for="topic-add-description" class="sr-only">Contenu du message :</label>
+		<textarea type="text" class="form-control" name="message" value="" id="topic-add-description" placeholder="Contenu du message" rows="5"></textarea>
+	</div>
+	<div class="form-group">
+		<button name="create" type="submit" class="btn btn-success btn-add-topic">Ajouter</button>
+	</div>
+	<div class="bg-danger error-add-topic"></div>
+	<div class="bg-success success-add-topic"></div>
+</form>
