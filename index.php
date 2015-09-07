@@ -4,6 +4,7 @@ session_start();
 $link = connectDB();
 $error = "";
 $success = "";
+$search= "";
 function my_autoloader($className)
 {
     require('./models/'.$className.'.class.php');
