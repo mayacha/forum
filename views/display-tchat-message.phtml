@@ -1,0 +1,5 @@
+<p class="message-p <?=$color?>">
+	<span class="date"><?=date("H:i:s", strtotime($chat->getAttr("date")))?></span>
+	<span class="author"><?=htmlentities($chat->getAuthor()->getLogin())?> : </span>
+	<span class="content"><?=htmlentities($chat->getAttr("message"))?></span>
+</p>

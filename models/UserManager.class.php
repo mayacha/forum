@@ -38,8 +38,9 @@ class UserManager
 		$birthdate=$user->getBirthdate();
 		$description=mysqli_real_escape_string($this->link, $user->getDescription());
 		$id_permission=intval($user->getIdPermission());
+		$log_tchat_date=$user->getLogTchatDate();
 
-		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."' ,avatar='".$avatar."', birthdate='".$birthdate."',description='".$description."',id_permission='".$id_permission."' WHERE id = ".$id.";";
+		$request = "UPDATE user SET login='".$login."',email='".$email."', password='".$password."' ,avatar='".$avatar."', birthdate='".$birthdate."',description='".$description."',id_permission='".$id_permission."',log_tchat_date='".$log_tchat_date."' WHERE id = ".$id.";";
 		$res = mysqli_query($this->link, $request);
 		if ($res === false){
 			$message = mysqli_error($this->link);
