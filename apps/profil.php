@@ -2,9 +2,11 @@
 if(isset($_GET['login']))
 {
 	$login=$_GET['login'];
+
 	$manager= new UserManager($link);
 	$user= $manager-> selectByLogin($login);
 	$user->getId();
+
 	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
 	else
@@ -23,6 +25,7 @@ else
 	$user= $manager-> selectByLogin($login);
 	$id=$user->getId();
 	$password=$user->getPassword();
+	$PermissionLevel=$manager->getPermissionLevel($user->getIdPermission());
 	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
 	else

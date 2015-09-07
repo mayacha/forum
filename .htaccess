@@ -12,6 +12,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^topic/(.+)/?$ index.php?page=topic&topic=$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^profil/(.+)/?$ index.php?page=profil&login=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^admin/(.+)/?$ index.php?page=admin&page_admin=$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f

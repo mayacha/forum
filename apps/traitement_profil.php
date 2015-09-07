@@ -56,6 +56,7 @@ if (isset($_POST['changemail']))
 	try
 	{
 		$user->setEmail($_POST['changemail']);
+
 	}
 	catch (Exception $exception)
 	{
@@ -70,8 +71,7 @@ if (isset($_POST['birthdate']))
 {
 	
 	$user->setBirthdate($_POST['birthdate']);
-	var_dump($user->getBirthdate());
-	var_dump($_POST);
+	
 }
 
 $manager-> update($user);

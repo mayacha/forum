@@ -1,5 +1,5 @@
 <section class="profil row">
-<h2><span class="glyphicon glyphicon-user"></span>Votre profil</h2>
+<h2><span class="glyphicon glyphicon-user"></span>Votre profil <em>(<?=$PermissionLevel?> depuis le <?=date('d/m/Y',strtotime($user->getDateRegister()))?>)</em></h2>
 <div class="message">
 	<div class="bg-danger"><p><?=$error?></p></div>
 	<div class="bg-success"><p><?=$success?></p></div>
@@ -7,7 +7,7 @@
 </div>
 <div class="col-xs-4 col-md-5">
 	<div class="profItem">
-		<img class="thumbnail" src="public/img/<?=$user->getAvatar?>" alt="">
+		<img class="thumbnail" src="public/img/<?=$user->getAvatar()?>" alt="">
 		<a class="btn btn-info btn-xs" id="changeavatar" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="avatar" method="post" enctype="multipart/form-data">
 			<div class="form-group">
@@ -34,7 +34,7 @@
 
 <div class="col-xs-8 col-md-7">	
 	<div class="profItem">
-		<h4><span class="glyphicon glyphicon-star"></span>Login : <?=htmlentities(ucfirst($user->getLogin))?></h4>
+		<h4><span class="glyphicon glyphicon-star"></span>Login : <?=htmlentities(ucfirst($user->getLogin()))?></h4>
 		<a class="btn btn-info btn-xs" id="changelog" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="login" method="post">
 			<div class="form-group">
@@ -58,7 +58,7 @@
 	</div>
 
 	<div class="profItem">
-		<h4><span class="glyphicon glyphicon-star"></span>Email : <?=htmlentities($user->getEmail)?></h4>
+		<h4><span class="glyphicon glyphicon-star"></span>Email : <?=htmlentities($user->getEmail())?></h4>
 		<a class="btn btn-info btn-xs" id="changemail" href="">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
 		<form id="email" method="post">
 			<div class="form-group">
