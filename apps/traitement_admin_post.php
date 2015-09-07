@@ -5,9 +5,10 @@ if(isset($_POST['valid'], $_POST['id'])){
 	$post = $managerF->getPostById($_POST['id']);
 	if ($post){
 		try{
-			$post->setReported("0");
+			$post->setReported("0"); // le post n'est plus signalé
 			$managerP = new Topic($link);
 			$managerP->update($post);
+			// le post sera supprimé de l'affichage via javascript
 			echo "succes";
 			exit;
 		}catch(Exception $e){
@@ -25,6 +26,7 @@ if(isset($_POST['delete'], $_POST['id'])){
 			$post->setDeleted("1");
 			$managerP = new Topic($link);
 			$managerP->update($post);
+			// le post sera supprimé de l'affichage via javascript
 			echo "success";
 			exit;
 		}catch(Exception $e){
@@ -41,9 +43,10 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['title'], $_POST['content'])){
 		try{
 			$post->setTitle($_POST['title']);
 			$post->setContent($_POST['content']);
-			$post->setReported("0");
+			$post->setReported("0"); // le post n'est plus signalé apres la modification
 			$managerP = new Topic($link);
 			$managerP->update($post);
+			// le post sera supprimé de l'affichage via javascript
 			echo "success";
 			exit;
 		}catch(Exception $e){

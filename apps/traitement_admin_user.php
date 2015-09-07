@@ -13,6 +13,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['permission'])){
 			}else{
 				$endBan = 0;
 			}
+			// actualise la liste des utilisateurs via AJAX
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){
@@ -33,6 +34,7 @@ if(isset($_POST['ban'], $_POST['id'], $_POST['time'])){
 			}else{
 				$endBan = 0;
 			}
+			// actualise la liste des utilisateurs via AJAX
 			require('views/display-admin-user-single.phtml');
 			exit;
 		}catch(Exception $e){

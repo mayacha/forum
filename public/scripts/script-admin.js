@@ -1,4 +1,4 @@
-
+// animation logo dashboard
 $(".wrapper-logo-admin").toggleClass("animated rollInLeft");
 setInterval(function(){ 
     $(".wrapper-logo-admin").toggleClass("animated rollInLeft");
