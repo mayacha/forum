@@ -34,8 +34,6 @@ $('document').ready(function(){
         {
             var content = $('.searchResult', '<div>'+data+'</div>');
             $('.searchResult').html(content);
-            var pagination = $('.pages', '<div>'+data+'</div>');
-            $('.pages').html(pagination);
         });
     });
     $('.search').find('input').val($('.search').find('input').val());

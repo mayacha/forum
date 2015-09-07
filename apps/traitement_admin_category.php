@@ -4,6 +4,7 @@ $manager = new CategoryManager($link);
 if(isset($_POST['create'], $_POST['name'], $_POST['description'])){
 	try{
 		$category = $manager->create($_POST['name'], $_POST['description']);
+		// actualise la liste des catégories via AJAX
 		require('apps/display-admin-categories.php');
 		exit;
 	}catch(Exception $e){
@@ -19,6 +20,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['name'], $_POST['description'])){
 			$category->setName($_POST['name']);
 			$category->setDescription($_POST['description']);
 			$manager->update($category);
+			// actualise la liste des catégories via AJAX
 			require('views/display-admin-category-single.phtml');
 			exit;
 		}catch(Exception $e){
@@ -33,6 +35,7 @@ if(isset($_POST['delete'], $_POST['id'])){
 	if ($category){
 		try{
 			$manager->delete($_POST['id']);
+			// la catégorie sera supprimée de l'affichage via javascript
 			echo "success";
 			exit;
 		}catch(Exception $e){
