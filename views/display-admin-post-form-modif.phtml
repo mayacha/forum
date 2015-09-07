@@ -2,12 +2,12 @@
 <form action="admin_post" method="post" class="js-post-form-modif col-md-8 col-md-offset-2">
 	<input name="id" value="<?=$post->getId()?>" hidden id="post-modif-id-<?=$post->getId()?>">
 	<div class="form-group">
-		<label for="post-modif-title" class="sr-only">Titre du message :</label>
+		<label for="post-modif-title-<?=$post->getId()?>" class="sr-only">Titre du message :</label>
 		<input type="text" class="form-control" id="post-modif-title-<?=$post->getId()?>" name="title" value="<?=htmlentities($post->getTitle())?>" placeholder="Titre du message">
 	</div>
 	<div class="form-group">
-		<label for="post-modif-content" class="sr-only">Contenu du message :</label>
-		<textarea type="text" class="form-control" id="post-modif-content-<?=$post->getId()?>" name="content" placeholder="Contenu du message" rows="5"><?=htmlentities($post->getContent())?></textarea>
+		<label for="post-modif-content-<?=$post->getId()?>" class="sr-only">Contenu du message :</label>
+		<textarea class="form-control" id="post-modif-content-<?=$post->getId()?>" name="content" placeholder="Contenu du message" rows="5"><?=htmlentities($post->getContent())?></textarea>
 	</div>
 	<div class="form-group">
 		<button name="modif" type="submit" class="btn btn-info btn-valid-modif-post">Modifier</button>

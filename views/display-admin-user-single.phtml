@@ -2,7 +2,7 @@
 <div class="row" id="user-<?=$user->getId()?>">
 	<div class="col-sm-1 vmiddle">
 		<?php if($user->getAvatar() != ""){ ?>
-		<img src="public/img/<?=htmlentities($user->getAvatar())?>" class="img-responsive center-block">
+		<img src="public/img/<?=htmlentities($user->getAvatar())?>" class="img-responsive center-block" alt="">
 		<?php } ?>
 	</div><!--
 	--><div class="col-sm-3 vmiddle"><?=htmlentities($user->getLogin())?> 
