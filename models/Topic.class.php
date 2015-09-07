@@ -91,6 +91,15 @@ public function __construct($link)
 		mysqli_query($this->link, $request);
 	}
 
+
+	public function simpleUpdate($post)
+	{
+		$title=mysqli_real_escape_string($this->link, $post->getTitle());
+		$content=mysqli_real_escape_string($this->link, $post->getContent());
+		$request="UPDATE post SET title='".$title."', content='".$content."' WHERE id = ".$post->getId();
+		mysqli_query($this->link, $request);
+	}
+
 	public function select($id)
 	{
 		$request="SELECT * FROM post WHERE id_topic='".intval($id)."'";
