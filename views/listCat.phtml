@@ -11,7 +11,7 @@
 
 
 <!-- formulaire ajout topic -->
-<?php if($page != "home"){ ?>
+<?php if($page != "home" && isset($_POST['id_user'])){ ?>
 <div class="wrapper-topic-form-add">
 	<?php require('views/display-category-topic-form-add.phtml');?>
 </div>
