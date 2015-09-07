@@ -123,7 +123,7 @@ class Category{
 				throw new Exception("Erreur : Votre requête n'a pas abouti.");
 			}
 		}
-	public function searchAllTopics()
+	public function searchAllTopics($search)
 	{
 		$request="SELECT * FROM topic WHERE name LIKE '%".$search."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
@@ -142,20 +142,21 @@ class Category{
 				
 	}
 
-	public function searchCatTopics($id_category)
+	public function searchCatTopics($id_category,$search)
 	{
 		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$search."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
-		$found=mysqli_fetch_object($result, 'Topic', array($this->link));
+		$found=array();
+		 while($searchresult=mysqli_fetch_object($result, 'Topic', array($this->link)))
+		 {
+		 	$found[]=$searchresult;
+		 	return $found; 
+		 }
 		
 		if($result==null)
 		{
 			throw new Exception("Erreur : Votre requête n'a pas abouti.");
-		}
-		else
-		{
-			return $found;
-		}		
+		}	
 	}
 }
 ?>

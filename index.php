@@ -4,6 +4,7 @@ session_start();
 $link = connectDB();
 $error = "";
 $success = "";
+$search= "";
 function my_autoloader($className)
 {
     require('./models/'.$className.'.class.php');
@@ -24,7 +25,7 @@ if(isset($_SESSION['id_user'])){
 //var_dump($_GET);
 //var_dump($_SESSION);
 //var_dump($_SERVER);
-$traitementList = array('register','login','logout','post','topic','account','profil','search', 'tchat', 'message');
+$traitementList = array('register','login','logout','post','topic','account','profil', 'tchat', 'message');
 
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');

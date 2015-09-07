@@ -32,8 +32,9 @@ $('document').ready(function(){
         history.pushState({}, "Recherche", search);
         $.get(search, function(data)
         {
-            var content = $('.searchResult', '<div>'+data+'</div>');
+            var content = $('.searchResult',data);
             $('.searchResult').html(content);
+            console.log(content);
         });
     });
     $('.search').find('input').val($('.search').find('input').val());
