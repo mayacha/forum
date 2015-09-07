@@ -69,7 +69,7 @@ if (isset($_POST['description']))
 }
 if (isset($_POST['birthdate']))
 {
-	
+
 	$user->setBirthdate($_POST['birthdate']);
 	
 }

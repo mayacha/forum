@@ -146,6 +146,7 @@ class Category{
 	{
 		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$search."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
+		echo $request;
 		$found=array();
 		 while($searchresult=mysqli_fetch_object($result, 'Topic', array($this->link)))
 		 {
