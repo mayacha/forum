@@ -105,6 +105,8 @@ class Post
 		$topic = $manager->select($this->id_topic);
 		return $topic;
 	}
+
+
 }
 
 ?>
