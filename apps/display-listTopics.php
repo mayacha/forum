@@ -1,5 +1,5 @@
 <?php
-var_dump($_GET);
+
 if (isset($_GET['search']) && $_GET['search']!=="")
 {
 	$search = $_GET['search'];
