@@ -1,7 +1,7 @@
 <div class="row listPostSingle">
 			<?php require ('apps/remotePost.php');?>
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 autor">
-	<img src="public/img/<?=$post->getAuthor()->getAvatar()?>" alt="">	
+	<img src="public/img/<?=htmlentities($post->getAuthor()->getAvatar())?>" alt="">
 	<?=htmlentities($post->getAuthor()->getLogin())?>
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
