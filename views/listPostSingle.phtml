@@ -4,7 +4,7 @@
 			<?php require ('apps/remotePost.php');?>
 
 	<img src="public/img/<?=htmlentities($post->getAuthor()->getAvatar())?>" alt="">
-	<?=htmlentities($post->getAuthor()->getLogin())?>
+	<a href="profil/<?=str_replace(" ","_",(htmlentities($post->getAuthor()->getLogin())))?>"><?=htmlentities($post->getAuthor()->getLogin())?></a>
 
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">

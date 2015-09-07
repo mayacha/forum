@@ -1,14 +1,15 @@
 <?php
+
 if (isset($_GET['search']) && $_GET['search']!=="")
 {
 	$search = $_GET['search'];
-	$catManager = new Category($link);
+	$catManager = new CategoryManager($link);
 		try
 		{
 		$category_name=str_replace('_',' ',$_GET['category']);
-		$catManager->selectByName($category_name);
+		$category=$catManager->selectByName($category_name);
 		$id_category=$category->getId();
-		$found=$catManager->searchCatTopics($id_category,$search);
+		$found=$category->searchCatTopics($id_category,$search);
 		$url = str_replace(' ', '_', $category_name);
 		
 			$i=0;

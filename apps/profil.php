@@ -2,10 +2,12 @@
 if(isset($_GET['login']))
 {
 	$login=$_GET['login'];
+
 	$manager= new UserManager($link);
 	$user= $manager->selectByLogin($login);
 	$user->getId();
-	if(strtotime($user->getBirthdate())<=0)
+
+	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
 	else
 	$birthdate=date('d/m/Y',strtotime($user->getBirthdate()));
@@ -23,8 +25,8 @@ else
 	$user= $manager->selectByLogin($login);
 	$id=$user->getId();
 	$password=$user->getPassword();
-	var_dump(strtotime($user->getBirthdate()));
-	if(strtotime($user->getBirthdate())<=0)
+	$PermissionLevel=$manager->getPermissionLevel($user->getIdPermission());
+	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
 	else
 	$birthdate=date('d/m/Y',strtotime($user->getBirthdate()));

@@ -1,5 +1,5 @@
 <section class="profil row">
-<h2><span class="glyphicon glyphicon-user"></span>Votre profil</h2>
+<h2><span class="glyphicon glyphicon-user"></span>Votre profil <em>(<?=$PermissionLevel?> depuis le <?=date('d/m/Y',strtotime($user->getDateRegister()))?>)</em></h2>
 <div class="message">
 	<div class="bg-danger"><p><?=$error?></p></div>
 	<div class="bg-success"><p><?=$success?></p></div>
