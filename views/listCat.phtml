@@ -15,7 +15,6 @@ require('apps/search.php'); ?>
 
 <!-- formulaire ajout topic -->
 <?php 
-var_dump($_POST['id_user']);
 if(($page != "home") && isset($_SESSION['id_user'])){ ?>
 <div class="wrapper-topic-form-add">
 	<?php require('views/display-category-topic-form-add.phtml');?>
