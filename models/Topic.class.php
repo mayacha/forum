@@ -69,7 +69,6 @@ public function __construct($link)
 			$content=mysqli_real_escape_string($this->link, $post->getContent());
 			$userID=$post->getId_user();
 			$request="INSERT INTO post (title, content, id_topic, id_user) VALUES ('".$title."', '".$content."', '".$id_topic."','".$userID."')";
-			echo $request;
 			$res = mysqli_query($this->link, $request);
 			if($res) 
 			{

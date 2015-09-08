@@ -38,9 +38,7 @@ if(isset($_POST['delete'], $_POST['postId']))
 			$topic=$category->select($_POST['idtopic']);
 			$post = $topic->select($_POST['postId']);
 			$topic->DelUpdate($post);
-			echo "success";
 			header('location:'.$category->getName().'/'.$topic->getName());
-			exit;
 		}catch(Exception $e){
 			echo $e->getMessage();
 			exit;
