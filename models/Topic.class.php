@@ -130,6 +130,21 @@ public function __construct($link)
 		}
 	}
 
+	public function selectFirst()
+	{
+		$request="SELECT * FROM post WHERE id_topic='".$this->id."' LIMIT 1";
+		$res=mysqli_query($this->link, $request);
+		if($res)
+		{
+			$post=mysqli_fetch_object($res, 'Post', array($this->link));
+		return $post;
+		}
+		else 
+		{
+			throw new Exception('aucun post');
+		}
+	}
+
 	public function getCategory()
 	{
 		$manager = new CategoryManager($this->link);
