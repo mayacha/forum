@@ -7,6 +7,9 @@
 		<a href="<?=htmlentities(str_replace(' ', '_', ($category->getName()).'/'.$topic->getName()))?>">
 			<?=htmlentities($topic->getName())?>
 		</a>
+		<div class="message">
+			<?=htmlentities(substr($topic->selectFirst()->getContent(), 0, 200))."..."; ?>
+		</div>
 		
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 infolastpost">
