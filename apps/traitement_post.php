@@ -9,7 +9,7 @@ if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'])) //$_SESSI
 		$newtitle=$_POST['newtitle'];
 		$CategoryManager=new CategoryManager($link);
 		$category=$CategoryManager->select($_POST['idcategory']);
-		$userID=$_SESSION['id'];
+		$userID=$_SESSION['id_user'];
 		$topic=$category->select($_POST['idtopic']);
 		$id_topic=$topic->getId();
 		$newTopic=$topic->create($newtitle, $newpost);

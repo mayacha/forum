@@ -1,11 +1,17 @@
 <?php 
 if(isset($_GET['category']))
 require('apps/search.php'); ?>
+
+
 <div class="row forum">
+	<div class="addTopic">
+			<?php require('apps/remoteTopic.php');?>
+	</div>
 	<div class="col-xs-12">
 
-		<h3><a href="category/<?=htmlentities(str_replace(' ', '_', $category->getName()))?>"><?=$category->getName()?></a></h3>
+		<h3 class="glyphicon glyphicon-pushpin"><a href="category/<?=htmlentities(str_replace(' ', '_', $category->getName()))?>"><?=$category->getName()?></a></h3>
 		<p><?=htmlentities($category->getDescription())?></p>
+
 
 		<div class="searchResult">
 			<?php require ('apps/display-listTopics.php');?>
@@ -14,11 +20,3 @@ require('apps/search.php'); ?>
 	</div>
 </div>
 
-
-<!-- formulaire ajout topic -->
-<?php 
-if(($page != "home") && isset($_SESSION['id_user'])){ ?>
-<div class="wrapper-topic-form-add">
-	<?php require('views/display-category-topic-form-add.phtml');?>
-</div>
-<?php } ?>

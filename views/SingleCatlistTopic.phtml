@@ -1,29 +1,25 @@
 <?php require('apps/search.php'); ?>
-<div class="row">
-	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-		<h3><?=htmlentities($topic->getName())?></h3>
+<div class="post-wrapp">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs--12">
+		
+			<h3><?=htmlentities($topic->getName())?></h3>
+		</div>
+		
 	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+	<div class="row addPost">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs--12">
+			<p>Ajouter une recette ?</p><?php require('views/createPost.phtml');?>
+		</div>
+		
+	</div>
+	<div class="row post">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs--12">
+			<div class="searchResult">
+			<?php require('apps/listPost_single.php');?>
+			</div>
+		</div>
+	</div>
+</div>
 
-	</div>
 	
-</div>
-<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	<?php require('views/createPost.phtml');?>
-	
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-		
-	</div>
-	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
-	<div class="searchResult">
-	<?php require('apps/listPost_single.php');?>
-	</div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 infolastpost">
-		
-	</div>
-</div>

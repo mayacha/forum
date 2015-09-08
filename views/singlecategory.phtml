@@ -1,9 +1,11 @@
 
 <div class="row singlecategory">
-	<div class="col-xs-12">
+
+	<div class="col-xs-12 forum">
 		
 		<a href="category/<?=htmlentities(str_replace(' ', '_', $category->getName()))?>"><h3><?=htmlentities($category->getName())?></h3></a>
 		<p><?=htmlentities($category->getDescription())?></p>
+
 
 		<?php require ('apps/display-SinglelistTopics.php');?>
 	</div>
