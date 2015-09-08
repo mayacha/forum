@@ -4,7 +4,7 @@
 	--><div class="col-sm-4 vmiddle"><?=htmlentities($post->getContent())?></div><!--
 	--><div class="col-sm-2 vmiddle"><a href="profil/<?=htmlentities($post->getAuthor()->getLogin())?>"><?=htmlentities($post->getAuthor()->getLogin())?></a></div><!--
 	--><div class="col-sm-3 vmiddle"><?=htmlentities($post->getTopic()->getName())?></div><!--
-	--><div class="col-sm-1 vmiddle"><a href="<?=str_replace(' ', '_', $post->getTopic()->getCategory()->getName())."/".str_replace(' ', '_', $post->getTopic()->getName()."/#".$post->getId())?>">Voir</a></div>
+	--><div class="col-sm-1 vmiddle"><a href="<?=str_replace(' ', '_', $post->getTopic()->getCategory()->getName())."/".str_replace(' ', '_', $post->getTopic()->getName())?>">Voir</a></div>
 </div>
 <div class="row">
 	<div class="col-sm-1 vmiddle"><button class="btn btn-success btn-sm btn-valid-post" title="Valider le message"><span class="glyphicon glyphicon-ok"></span></button></div><!--

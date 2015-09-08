@@ -14,7 +14,14 @@ if(isset($_POST['login'],$_POST['email'],$_POST['password'],$_POST['check-passwo
 			$user->setLogin($_POST['login']);
 			$user->setEmail($_POST['email']);
 			$user->setPassword($_POST['password']);
-			$res= $manager->create($user);
+			$newUser= $manager->create($user);
+
+			$id_permission = $newUser->getIdPermission();
+			$permissionLevel = $manager->getPermissionLevel($id_permission);
+
+			$_SESSION['login'] = $newUser->getLogin();
+			$_SESSION['id_user'] = $newUser->getId();
+			$_SESSION['permission'] = $permissionLevel;
 			header('Location:home');
 		}
 		catch (Exception $exception)
