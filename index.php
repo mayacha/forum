@@ -29,7 +29,7 @@ $traitementList = array('register','login','logout','post','topic','profil', 'tc
 
 if (isset($_GET['page']) && in_array($_GET['page'], $traitementList))
 	require('apps/traitement_'.$_GET['page'].'.php');
-$pageList = array('home','category','topic','profil','register','admin','singlecategory', 'createPost', 'remotePost', 'tchat');
+$pageList = array('home','category','profil','register','admin','singlecategory', 'createPost', 'remotePost', 'tchat');
 
 $page = 'home';
 if (isset($_GET['page']) && in_array($_GET['page'], $pageList))
