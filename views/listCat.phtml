@@ -4,7 +4,7 @@ require('apps/search.php'); ?>
 <div class="row forum">
 	<div class="col-xs-12">
 		<h3><a href="category/<?=htmlentities($category->getName())?>"><?=$category->getName()?></a></h3>
-
+		<p><?=htmlentities($category->getDescription())?></p>
 		<div class="searchResult">
 			<?php require ('apps/display-listTopics.php');?>
 		</div>
