@@ -4,10 +4,9 @@ require('apps/search.php'); ?>
 
 
 <div class="row forum">
-		<!-- formulaire ajout topic -->
-
-		<?php require('apps/remoteTopic.php');?>
-	
+	<div class="addTopic">
+			<?php require('apps/remoteTopic.php');?>
+	</div>
 	<div class="col-xs-12">
 
 		<h3 class="glyphicon glyphicon-pushpin"><a href="category/<?=htmlentities(str_replace(' ', '_', $category->getName()))?>"><?=$category->getName()?></a></h3>
