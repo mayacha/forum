@@ -1,4 +1,4 @@
 
 	<div class="col-xs-12">
-		<a href="<?=htmlentities($topic->getCategory()->getName())?>/<?=htmlentities($topic->getName())?>"><h3><?=htmlentities($topic->getName())?> <em>(catégorie:<?=htmlentities($topic->getCategory()->getName())?>)</em></h3></a>
+		<a href="<?=htmlentities(str_replace(' ', '_', $topic->getCategory()->getName()))?>/<?=htmlentities(str_replace(' ', '_', $topic->getName()))?>"><h3><?=htmlentities($topic->getName())?> <em>(catégorie:<?=htmlentities($topic->getCategory()->getName())?>)</em></h3></a>
 	</div>

@@ -1,10 +1,10 @@
 <div class="row forum">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 autor">
-		<a href="profil/<?=str_replace(" ","_",(htmlentities($topic->getAuthor()->getLogin())))?>"><?=htmlentities($topic->getAuthor()->getLogin())?></a>
+		<a href="profil/<?=htmlentities($topic->getAuthor()->getLogin())?>"><?=htmlentities($topic->getAuthor()->getLogin())?></a>
 		<img src="public/img/<?=htmlentities($topic->getAuthor()->getAvatar())?>" alt="">
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 rules">
-		<a href="<?=htmlentities($category->getName().'/'.$topic->getName())?>">
+		<a href="<?=htmlentities(str_replace(' ', '_', ($category->getName()).'/'.$topic->getName()))?>">
 			<?=htmlentities($topic->getName())?>
 		</a>
 		
