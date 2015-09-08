@@ -8,7 +8,7 @@
 			<?=htmlentities($topic->getName())?>
 		</a>
 		<div class="message">
-			<?=htmlentities(substr($topic->selectFirst()->getContent(), 0, 80)); ?>
+			<?=htmlentities(substr($topic->selectFirst()->getContent(), 0, 80))."..."; ?>
 		</div>
 		
 	</div>
