@@ -4,6 +4,7 @@ $('document').ready(function(){
         $.post('login',
         { login: $("#login").val(), password: $("#password").val()},
         function(data){
+                console.log(data);
             if(data == "reload"){
                 window.location.reload();
             }else{
