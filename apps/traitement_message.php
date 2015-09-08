@@ -49,7 +49,7 @@ if(isset($_POST['create'], $_POST['message'])){
 			$user->setLogTchatDate(date("Y-m-d H:i:s", time()));
 			$userManager->update($user);
 		}catch(Exception $e){
-			var_dump($e);
+			echo $e->getMessage();
 		}
 		exit;
 	}catch(Exception $e){
