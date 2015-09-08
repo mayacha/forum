@@ -24,8 +24,7 @@ class UserManager
 		}
 		else
 		{
-			$success="Bienvenu parmis nous !";
-			return $success;
+			return $this->selectById(mysqli_insert_id($this->link));
 		}
 	}
 	public function update($user)
