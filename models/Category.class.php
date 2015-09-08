@@ -54,9 +54,9 @@ class Category{
 		$id_category=$this->id;
 		$topic=new Topic($this->link);
 		$topic->setIdCategory($id_category);
-		$topic->setName(mysqli_real_escape_string($this->link, $name));
+		$topic->setName($name);
 		$topic->setIdUser($_SESSION['id_user']);
-		$name= $topic->getName();
+		$name= mysqli_real_escape_string($this->link, $topic->getName());
 		$userID=$topic->getIdUser();
 		$idCategory=$topic->getIdCategory();
 		$request="INSERT INTO topic (name, id_category, id_user) VALUES ('".$name."', '".$idCategory."', '".$userID."')";
@@ -90,6 +90,7 @@ class Category{
 
 	public function selectByName($name)
 	{
+		$name=mysqli_real_escape_string($this->link, $name);
 		$request="SELECT * FROM topic WHERE name='".$name."'";
 		$res=mysqli_query($this->link, $request);
 		if($res)
