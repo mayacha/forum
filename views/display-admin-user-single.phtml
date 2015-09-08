@@ -1,25 +1,18 @@
 <!-- Affichage d'un utilisateur dans l'administration -->
 <div class="row" id="user-<?=$user->getId()?>">
 	<div class="col-sm-1 vmiddle">
-		<?php if($user->getAvatar() != ""){ ?>
-		<img src="public/img/<?=htmlentities($user->getAvatar())?>" class="img-responsive center-block" alt="">
-		<?php } ?>
+		<?php require('apps/display-admin-user-single-avatar.php');?>
 	</div><!--
-	--><div class="col-sm-3 vmiddle"><?=htmlentities($user->getLogin())?> 
-	<?php if($endBan != 0){ ?>
-		<span class="text-danger"> (banni)<br /><?=$endBan?></span>
-	<?php } ?>
+ --><div class="col-sm-3 vmiddle"><?=htmlentities($user->getLogin())?> 
+		<?php require('apps/display-admin-user-single-bantime.php');?>
 	</div><!--
-	--><div class="col-sm-4 vmiddle"><?=htmlentities($user->getEmail())?></div><!--
-	--><div class="col-sm-2 vmiddle"><?=htmlentities($manager->getPermissionLevel($user->getIdPermission()))?></div><!--
-	--><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-user" title="Modifier le rang"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
-	--><?php if($manager->getPermissionLevel($user->getIdPermission()) != "admin" && $endBan == 0){ ?><!--
-	--><div class="col-sm-1 vmiddle"><button class="btn btn-warning btn-sm btn-ban-user" title="Bannir l'utilisateur"><span class="glyphicon glyphicon-remove"></span></button></div>
-	<?php } ?>
+ --><div class="col-sm-4 vmiddle"><?=htmlentities($user->getEmail())?></div><!--
+ --><div class="col-sm-2 vmiddle"><?=htmlentities($manager->getPermissionLevel($user->getIdPermission()))?></div><!--
+ --><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-user" title="Modifier le rang"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
+	
+	--><?php require('apps/display-admin-user-single-banbutton.php'); ?>
 </div>
 <div class="row">
 <?php require('views/display-admin-user-form-modif.phtml'); ?>
-<?php if($manager->getPermissionLevel($user->getIdPermission()) != "admin"){ 
-	require('views/display-admin-user-form-ban.phtml');
-} ?>
+<?php require('apps/display-admin-user-form-ban.php'); ?>
 </div>

@@ -6,7 +6,7 @@ try{
 	$user->setLogTchatDate(date("Y-m-d H:i:s", time()));
 	$userManager->update($user);
 }catch(Exception $e){
-	var_dump($e);
+	echo $e->getMessage();
 }
 require('apps/traitement_message.php');
 ?>
