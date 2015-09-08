@@ -239,5 +239,18 @@ public function __construct($link)
 		}		
 
 	}
+
+	public function countPost(){
+		$request="SELECT COUNT(*) FROM post WHERE id_topic=".$this->id."";
+		$result=mysqli_query($this->link, $request);
+		$post=mysqli_fetch_array($result);
+		if($result==null){
+			throw new Exception("Erreur : oups.");
+		}
+		else{
+			$count=$post['COUNT(*)'];
+			return $count;
+		}	
+	}
 }
 ?>
