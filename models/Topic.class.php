@@ -94,15 +94,31 @@ public function __construct($link)
 
 	public function simpleUpdate($post)
 	{
-		$title=mysqli_real_escape_string($this->link, $post->getTitle());
+		// $title=mysqli_real_escape_string($this->link, $post->getTitle());
 		$content=mysqli_real_escape_string($this->link, $post->getContent());
-		$request="UPDATE post SET title='".$title."', content='".$content."' WHERE id = ".$post->getId();
+		$request="UPDATE post SET content='".$content."' WHERE id = ".$post->getId();
 		mysqli_query($this->link, $request);
+	}
+
+	public function DelUpdate($post)
+	{
+		
+		$request="UPDATE post SET deleted='1' WHERE id='".$post->getId()."'";
+		$res=mysqli_query($this->link, $request);
+		if($res)
+		{
+			$post=mysqli_fetch_object($res, 'Post', array($this->link));
+		return $post;
+		}
+		else 
+		{
+			throw new Exception('encore raté !');
+		}
 	}
 
 	public function select($id)
 	{
-		$request="SELECT * FROM post WHERE id_topic='".intval($id)."'";
+		$request="SELECT * FROM post WHERE id='".intval($id)."'";
 		$res=mysqli_query($this->link, $request);
 		if($res)
 		{

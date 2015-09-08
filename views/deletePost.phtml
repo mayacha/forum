@@ -1,8 +1,10 @@
-	<form method="POST" action="apps/traitement_post.php">
+	<form method="POST" action="post">
 		<button type="submit" name="delete">
 			<span class="glyphicon glyphicon-remove">
 			</span>
 		</button>
-			<button name="postId" hidden>
+			<input name="postId" value="<?=$post->getId()?>" hidden>
+			<input name="idtopic" value="<?=$topic->getId()?>" hidden>
+			<input name="idcategory" value="<?=$topic->getIdCategory()?>" hidden>
 	</form>
 
