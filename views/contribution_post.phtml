@@ -1,0 +1,5 @@
+	<div class="col-xs-12">
+		<a href="<?=htmlentities($post->getTopic()->getCategory()->getName())?>/<?=htmlentities($post->getTopic()->getName())?>"><h3><?=htmlentities($post->getTopic()->getName())?> <em>(catégorie:<?=htmlentities($post->getTopic()->getCategory()->getName())?>)</em></h3></a>
+		<h4><?=htmlentities($post->getTitle())?></h4>
+		<p><?=htmlentities($post->getContent())?></p>	
+	</div>

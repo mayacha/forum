@@ -3,23 +3,26 @@ Options +FollowSymLinks
 #ligne suivante à retirer pour empecher l acces aux repertoires
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([a-zA-Z0-9_:\-]+)/?$ index.php?page=$1 [L]
+RewriteRule ^([a-zA-Z0-9_:\-]+)/?$ index.php?page=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^category/(.+)/?$ index.php?page=category&category=$1 [L]
+RewriteRule ^category/(.+)/?$ index.php?page=category&category=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^topic/(.+)/?$ index.php?page=topic&topic=$1 [L]
+RewriteRule ^topic/(.+)/?$ index.php?page=topic&topic=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^admin/(.+)/?$ index.php?page=admin&page_admin=$1 [L]
+RewriteRule ^profil/(.+)/?$ index.php?page=profil&login=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/(.+)/?$ index.php?page=singlecategory&category=$1&topic=$2 [L]
+RewriteRule ^admin/(.+)/?$ index.php?page=admin&page_admin=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)/(.+)/?$ index.php?page=singlecategory&category=$1&topic=$2 [L,QSA]
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/(.+)/createPost/?$ index.php?page=createPost [L]
+RewriteRule ^(.+)/(.+)/createPost/?$ index.php?page=createPost [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/(.+)/remotePost/?$ index.php?page=createPost [L]
+RewriteRule ^(.+)/(.+)/remotePost/?$ index.php?page=createPost [L,QSA]

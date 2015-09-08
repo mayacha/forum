@@ -10,6 +10,7 @@ class User{
 	private $description;
 	private $id_permission;
 	private $date_register;
+	private $log_tchat_date;
 
 	private $link;
  
@@ -46,6 +47,9 @@ class User{
 	public function getPassword(){
 		return $this->password;
 	}
+	public function getLogTchatDate(){
+		return $this->log_tchat_date;
+	}
 
 	// setter
 	public function setLogin($login){
@@ -77,6 +81,10 @@ class User{
 	public function setIdPermission($id_permission){
 		$this->id_permission = intval($id_permission);
 	}
+	public function setLogTchatDate($log_tchat_date){
+		$this->log_tchat_date = $log_tchat_date;
+	}
+
 
 	// other
 	public function verifPassword($password){
