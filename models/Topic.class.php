@@ -69,7 +69,6 @@ public function __construct($link)
 			$content=mysqli_real_escape_string($this->link, $post->getContent());
 			$userID=$post->getId_user();
 			$request="INSERT INTO post (title, content, id_topic, id_user) VALUES ('".$title."', '".$content."', '".$id_topic."','".$userID."')";
-			echo $request;
 			$res = mysqli_query($this->link, $request);
 			if($res) 
 			{
@@ -172,8 +171,8 @@ public function __construct($link)
 
 	public function searchTopicPosts($id_topic,$search)
 	{
-		$safesearch=mysqli_real_escape_string($search);
-		$request="SELECT * FROM post WHERE id_topic='".$id_topic."' AND content LIKE '%".$safesearch."%' ORDER BY id DESC";
+		$safesearch=mysqli_real_escape_string($this->link, $search);
+		$request="SELECT * FROM post WHERE id_topic='".$id_topic."' AND content LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while ($searchresult=mysqli_fetch_object($result, 'Post', array($this->link))) 
@@ -187,34 +186,18 @@ public function __construct($link)
 			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}		
 	}	
-	// public function searchAllCatPosts($category_name)
-	// {
-	// 	$manager= new Category();
-	// 	$manager->selectAll($category_name);
-	// 	$t
-	// 	$request="SELECT * FROM post WHERE content LIKE '%".$search."%' ORDER BY id DESC";
-	// 	$result=mysqli_query($this->link, $request);
-	// 	$found=mysqli_fetch_object($result, 'Post', array($this->link));
-		
-	// 	if($result==null)
-	// 	{
-	// 		throw new Exception("Erreur : Votre requête n'a pas abouti.");
-	// 	}
-	// 	else
-	// 	{
-	// 		return $found;
-	// 	}		
-	// }
+
 	public function searchAllPosts()
 	{
-		$request="SELECT * FROM post WHERE content LIKE '%".$search."%' ORDER BY id DESC";
+		$safesearch=mysqli_real_escape_string($this->link, $search);
+		$request="SELECT * FROM post WHERE content LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while($searchresult=mysqli_fetch_object($result, 'Post', array($this->link)))
 		{
 			$found[]=$searchresult;
-			return $found;
 		}
+		return $found;
 		
 		if($result==null)
 		{
@@ -224,7 +207,7 @@ public function __construct($link)
 
 	public function getUserPosts($user_id)
 	{
-		$request="SELECT * FROM post WHERE id_user=".$user_id." ORDER BY id DESC";
+		$request="SELECT * FROM post WHERE id_user='".$user_id."'";
 		$result=mysqli_query($this->link, $request);
 		$contribution=array();
 		while($post=mysqli_fetch_object($result,'Post',array($this->link)))

@@ -13,7 +13,7 @@ if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'])) //$_SESSI
 		$topic=$category->select($_POST['idtopic']);
 		$id_topic=$topic->getId();
 		$newTopic=$topic->create($newtitle, $newpost);
-		header('Location:'.$category->getName().'/'.$topic->getName());
+		header('Location:'.str_replace(" ","_", $category->getName()).'/'.str_replace(" ","_",$topic->getName()));
 	}
 	catch(Exception $e)
 	{
@@ -38,9 +38,7 @@ if(isset($_POST['delete'], $_POST['postId']))
 			$topic=$category->select($_POST['idtopic']);
 			$post = $topic->select($_POST['postId']);
 			$topic->DelUpdate($post);
-			echo "success";
-			header('location:'.$category->getName().'/'.$topic->getName());
-			exit;
+			header('Location:'.str_replace(" ","_", $category->getName()).'/'.str_replace(" ","_",$topic->getName()));
 		}catch(Exception $e){
 			echo $e->getMessage();
 			exit;
@@ -61,7 +59,7 @@ if(isset($_POST['updatepostContent'], $_POST['validation']))
 		$post=$topic->select($_POST['postId']);
 		$post->setContent($_POST['updatepostContent']);
 		$updatePost=$topic->simpleUpdate($post);
-		header('location:'.$category->getName().'/'.$topic->getName());
+		header('Location:'.str_replace(" ","_", $category->getName()).'/'.str_replace(" ","_",$topic->getName()));
 	}
 	catch (Exception $e)
 	{

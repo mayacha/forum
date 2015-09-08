@@ -1,6 +1,6 @@
 <?php
 
-$topic = $category->selectByName($_GET['topic']);
+$topic = $category->selectByName(str_replace('_', ' ', $_GET['topic']));
 $listposts = $topic->selectAll();
 
 

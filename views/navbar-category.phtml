@@ -1,5 +1,5 @@
 
-<li><a href="category/<?=htmlentities($category->getName())?>"><?=ucfirst(htmlentities($category->getName()))?></a></li>
+<li><a href="category/<?=htmlentities(str_replace(' ', '_', $category->getName()))?>"><?=ucfirst(htmlentities($category->getName()))?></a></li>
 
 
 

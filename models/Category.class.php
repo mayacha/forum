@@ -125,16 +125,15 @@ class Category{
 		}
 	public function searchAllTopics($search)
 	{
-		$safesearch=mysqli_real_escape_string($search);
-		$request="SELECT * FROM topic WHERE name LIKE '%".$safesearch."%' ORDER BY id DESC";
+		$safesearch=mysqli_real_escape_string($this->link,$search);
+		$request="SELECT * FROM topic WHERE name LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while($topic=mysqli_fetch_object($result, 'Topic', array($this->link)))
 		{
 			$found[]=$topic;
-			return $found;
 		}
-		
+		return $found;
 		if($result==null)
 		{
 			throw new Exception("Erreur : Votre requête n'a pas abouti.");
@@ -145,15 +144,16 @@ class Category{
 
 	public function searchCatTopics($id_category,$search)
 	{
-		$safesearch=mysqli_real_escape_string($this->link, $search);
-		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$safesearch."%' ORDER BY id DESC";
+
+		$safesearch=mysqli_real_escape_string($this->link,$search);
+		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		 while($searchresult=mysqli_fetch_object($result, 'Topic', array($this->link)))
 		 {
 		 	$found[]=$searchresult;
-		 	return $found; 
 		 }
+		 return $found; 
 		
 		if($result==null)
 		{
