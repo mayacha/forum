@@ -125,7 +125,8 @@ class Category{
 		}
 	public function searchAllTopics($search)
 	{
-		$request="SELECT * FROM topic WHERE name LIKE '%".$search."%' ORDER BY id DESC";
+		$safesearch=mysqli_real_escape_string($search);
+		$request="SELECT * FROM topic WHERE name LIKE '%".$safesearch."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while($topic=mysqli_fetch_object($result, 'Topic', array($this->link)))
@@ -144,7 +145,8 @@ class Category{
 
 	public function searchCatTopics($id_category,$search)
 	{
-		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$search."%' ORDER BY id DESC";
+		$safesearch=mysqli_real_escape_string($search);
+		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$safesearch."%' ORDER BY id DESC";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		 while($searchresult=mysqli_fetch_object($result, 'Topic', array($this->link)))
@@ -157,6 +159,47 @@ class Category{
 		{
 			throw new Exception("Erreur : Votre requête n'a pas abouti.");
 		}	
+	}
+
+
+	public function getUserTopics($user_id)
+	{
+		$request="SELECT * FROM topic WHERE id_user='".$user_id."' ORDER BY id DESC";
+		$result=mysqli_query($this->link, $request);
+		$contribution=array();
+		while($topic=mysqli_fetch_object($result,'Topic',array($this->link)))
+		{
+			$contribution[]=$topic;
+		}
+		return $contribution;
+		if($result==null)
+		{
+			throw new Exception("Erreur : oups.");
+		}		
+	}
+
+	public function getCategory()
+	{
+		$manager = new CategoryManager($this->link);
+		$category = $manager->select($this->id_category);
+		return $category;
+	}
+
+	public function countUserTopic($user_id)
+	{
+		$request="SELECT COUNT(*) FROM topic WHERE id_user=".$user_id."";
+		$result=mysqli_query($this->link, $request);
+		$topic=mysqli_fetch_assoc($result);
+		if($result==null)
+		{
+			throw new Exception("Erreur : oups.");
+		}
+		else
+		{
+			$count=$topic['COUNT(*)'];
+			return $count;
+		}		
+
 	}
 }
 ?>

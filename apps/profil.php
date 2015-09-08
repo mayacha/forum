@@ -5,7 +5,7 @@ if(isset($_GET['login']))
 
 	$manager= new UserManager($link);
 	$user= $manager->selectByLogin($login);
-	$user->getId();
+	$id=$user->getId();
 
 	if($user->getBirthdate()=='0000-00-00')
 	$birthdate='Non renseignée';
@@ -16,6 +16,12 @@ if(isset($_GET['login']))
 	else
 	$description=$user->getDescription();
 	$PermissionLevel=$manager->getPermissionLevel($user->getIdPermission());
+
+	$manager= new Topic($link);
+	$countP=$manager->countUserPost($id);
+	$manager= new Category($link);
+	$countT=$manager->countUserTopic($id);
+
 	require('views/membre.phtml');
 }
 else
@@ -34,6 +40,13 @@ else
 	$description='Pas de description a afficher';
 	else
 	$description=$user->getDescription();
+
+	$manager= new Topic($link);
+	$countP=$manager->countUserPost($id);
+
+	$manager= new Category($link);
+	$countT=$manager->countUserTopic($id);
+
 	require('views/profil.phtml');
 }
 

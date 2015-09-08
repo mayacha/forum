@@ -79,25 +79,15 @@
 	</div>
 </div>
 </section>
-<!-- <section class="contrib row">
-<h2><span class="glyphicon glyphicon-pencil"></span>Vos contributions <?=$contribution?></h2>
+<section class="contrib row">
+<h2><span class="glyphicon glyphicon-pencil"></span>Les topics que vous avez crées <em>(<?=$countT?>)</em></h2>
 <div class="contribArt">
-	 <?php ; ?>
+	 <?php require('apps/contribution_topic.php'); ?>
 </div>
-<nav class="pages">
-	<ul class="pagination">
-		<?php ; ?>
-	</ul>
-</nav>
 </section>
-<section class="contribArt">
-<h2><span class="glyphicon glyphicon-thumbs-up"></span>Vos commentaires <?=$commentaires?></h2>
+<section class="contrib row">
+<h2><span class="glyphicon glyphicon-thumbs-up"></span>Les topics auquels vous avez participé <em>(<?=$countP?>)</em></h2>
 <div class="contribArt">
-	 <?php ; ?>
+	 <?php require('apps/contribution_post.php'); ?>
 </div>
-<nav class="pages">
-	<ul class="pagineur">
-		<?php ; ?>
-	</ul>
-</nav>
-</section> -->
+</section>
