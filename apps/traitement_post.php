@@ -1,52 +1,73 @@
 <?php
-if(isset($_POST['titre'], $_POST['content'], $_POST['idTopic'], $_SESSION['id']))
+
+// CREATE POST
+if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'])) //$_SESSION['id'] au lieu de $_SESSION['id_user']
 {
-	if($_POST['content']!="")
+	try
 	{
-		// $content=mysqli_real_escape_string($_POST['content']);
-		// $titre=mysqli_real_escape_string($_POST['titre']);
-		// $idUSer=intval($_SESSION['id']);
-		// $idTopic=intval($_POST('idTopic']);
-		$topic=new Topic($link);
-		$newTopic=$topic->create();
+		$newpost=$_POST['newpost'];
+		$newtitle=$_POST['newtitle'];
+		$CategoryManager=new CategoryManager($link);
+		$category=$CategoryManager->select($_POST['idcategory']);
+		$userID=$_SESSION['id'];
+		$topic=$category->select($_POST['idtopic']);
+		$id_topic=$topic->getId();
+		$newTopic=$topic->create($newtitle, $newpost);
+		header('Location:'.$category->getName().'/'.$topic->getName());
+	}
+	catch(Exception $e)
+	{
+		echo $e->getMessage();
+		exit;
 	}
 
 }
 
-if(isset($_POST['delete'], $_POST['id']))
+
+
+//DELETED
+
+if(isset($_POST['delete'], $_POST['postId']))
 {
-	$managerF = new Forum($link);
-	$post = $managerF->getPostById($_POST['id']);
-	if ($post)
-	{
+	
 		try
 		{
-			$post->setDeleted("1");
-			$managerP = new Topic($link);
-			$managerP->update($post);
+		
+			$CategoryManager=new CategoryManager($link);
+			$category=$CategoryManager->select($_POST['idcategory']);
+			$topic=$category->select($_POST['idtopic']);
+			$post = $topic->select($_POST['postId']);
+			$topic->DelUpdate($post);
 			echo "success";
+			header('location:'.$category->getName().'/'.$topic->getName());
 			exit;
 		}catch(Exception $e){
 			echo $e->getMessage();
 			exit;
 		}
-	}
+	
 }
 
-if(isset($_SESSION['id'], $_POST('editPost')), $_POST('postId'))
+//UPDATE POST
+
+
+if(isset($_POST['updatepostContent'], $_POST['validation']))
 {
-	$post=new Post($link);
-	$editpostId=$post->selectById($_POST['postId']);
-	require ('apps/updatePost.phtml');
-
-	if(isset($_POST('updatepostTitle'), $_POST['updatepostContent']), $_POST['validation'])
+	try
 	{
-		$post=new Post($link);
-		$postcontent=$post->setContent($_POST['updatepostContent']);
-		$postTitle=$post->setTitle($_POST['updatepostTitle']);
-		$topic=new Topic($link);
+		$CategoryManager=new CategoryManager($link);
+		$category=$CategoryManager->select($_POST['idcategory']);
+		$topic=$category->select($_POST['idtopic']);
+		$post=$topic->select($_POST['postId']);
+		$post->setContent($_POST['updatepostContent']);
 		$updatePost=$topic->simpleUpdate($post);
-
+		header('location:'.$category->getName().'/'.$topic->getName());
 	}
-
+	catch (Exception $e)
+	{
+		echo $e->getMessage();
+	}
 }
+
+?>
+

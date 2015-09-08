@@ -6,7 +6,7 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 	$catManager = new CategoryManager($link);
 		try
 		{
-		$category_name=str_replace('_',' ',$_GET['category']);
+		$category_name=$_GET['category'];
 		$category=$catManager->selectByName($category_name);
 		$id_category=$category->getId();
 		$found=$category->searchCatTopics($id_category,$search);

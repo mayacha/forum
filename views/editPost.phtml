@@ -1,7 +1,17 @@
-<form method="POST" method="apps/traitement_post.php">
-	<button type="submit" name="editPost">
+<form method="POST" action="post">
+	<button type="submit" name="btt-editPost" id="buttonEdit" class="js-button">
 		<span class="glyphicon glyphicon-pencil">
 		</span>
 	</button>
-			<button name="postId" hidden>
-</form>
+	<div  class="inv" id="<?$post->getId()?>">
+		<textarea name="updatepostContent"><?=$post->getContent()?></textarea>
+			<input type="submit" name="validation">
+	</div>
+	
+	
+			<input name="postId" value="<?=$post->getId()?>" hidden>
+			<input name="idtopic" value="<?=$topic->getId()?>" hidden>
+			<input name="idcategory" value="<?=$topic->getIdCategory()?>" hidden>
+		<!-- 	<input name="postContent" id="postContent" value="<?=$post->getContent()?>" hidden>
+			<input type="text" name="postTitle" id="postTitle" value="<?=$post->getTitle()?>" hidden> -->
+</form> 

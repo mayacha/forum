@@ -1,11 +1,10 @@
 <?php
 
-if(isset($_SESSION['id']))
+if(isset($_SESSION['id_user']))
 {
-	$post= new Post($link);
 	$idPostUser=$post->getId_user();
 
-	if ($_SESSION['id']=$idPostUSer)
+	if ($_SESSION['id_user']==$idPostUser)
 	{
 	require('views/deletePost.phtml');
 	require('views/editPost.phtml');
