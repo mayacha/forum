@@ -40,7 +40,17 @@ else
 
 	foreach($listposts as $post)
 	{
-
+		if(!isset($_SESSION['login']))
+		{
+			$author=htmlentities(ucfirst($post->getAuthor()->getLogin()));
+		}
+		else
+		{
+			$postauthor=htmlentities($post->getAuthor()->getLogin());
+			$authorprofil="<a href=\"profil/".$postauthor."\">";
+			$author=$authorprofil.ucfirst($postauthor)."</a>";
+		}
+		
 	$idPost=$post->getId();
 	$idPostUser=$post->getId_user();
 
