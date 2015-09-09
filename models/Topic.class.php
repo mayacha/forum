@@ -182,6 +182,7 @@ public function __construct($link)
 	{
 		$safesearch=mysqli_real_escape_string($this->link, $search);
 		$request="SELECT * FROM post WHERE id_topic='".$this->id."' AND content LIKE '%".$safesearch."%'";
+		echo($request);
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while ($searchresult=mysqli_fetch_object($result, 'Post', array($this->link))) 

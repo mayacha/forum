@@ -33,8 +33,6 @@ if(isset($_GET['category'],$_GET['topic']))
 			$error=$e->getMessage();
 		}
 	}
-
-
 	$i=0;
 	while($i<count($found))
 	{

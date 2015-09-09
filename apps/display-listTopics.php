@@ -8,7 +8,7 @@ if(isset($_GET['category']))
 	if (isset($_GET['search']) && $_GET['search']!=="")
 	{
 		$search = $_GET['search'];
-		
+	
 			try
 			{
 				
@@ -18,7 +18,6 @@ if(isset($_GET['category']))
 			{
 				$error=$e->getMessage();
 			}
-		exit;
 	}
 	else
 	{
