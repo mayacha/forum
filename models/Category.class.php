@@ -81,7 +81,7 @@ class Category{
 	public function update($topic)
 	{
 		$name=mysqli_real_escape_string($this->link, $topic->getName());
-		$request="UPDATE topic SET name='".$name."'";
+		$request="UPDATE topic SET name='".$name."'";// WHERE
 		mysqli_query($this->link, $request);
 	}
 
@@ -188,7 +188,7 @@ class Category{
 
 	public function countUserTopic($user_id)
 	{
-		$request="SELECT COUNT(*) FROM topic WHERE id_user=".$user_id."";
+		$request="SELECT COUNT(*) AS count FROM topic WHERE id_user=".$user_id."";
 		$result=mysqli_query($this->link, $request);
 		$topic=mysqli_fetch_assoc($result);
 		if($result==null)
@@ -197,7 +197,7 @@ class Category{
 		}
 		else
 		{
-			$count=$topic['COUNT(*)'];
+			$count=$topic['count'];
 			return $count;
 		}		
 
