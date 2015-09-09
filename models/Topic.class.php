@@ -163,11 +163,6 @@ public function __construct($link)
 	{
 		$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
 		$res=mysqli_query($this->link, $request);
-		if($res)
-		{
-
-			$request="SELECT * FROM post WHERE id_topic='".$this->id."'";
-			$res=mysqli_query($this->link, $request);
 			if($res)
 			{
 				$listPost=array();
@@ -181,13 +176,12 @@ public function __construct($link)
 				{
 					throw new Exception('rien !');
 				}
-		}
 	}
 
-	public function searchTopicPosts($id_topic,$search)
+	public function searchTopicPosts($search)
 	{
 		$safesearch=mysqli_real_escape_string($this->link, $search);
-		$request="SELECT * FROM post WHERE id_topic='".$id_topic."' AND content LIKE '%".$safesearch."%'";
+		$request="SELECT * FROM post WHERE id_topic='".$this->id."' AND content LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		while ($searchresult=mysqli_fetch_object($result, 'Post', array($this->link))) 

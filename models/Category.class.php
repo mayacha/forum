@@ -143,11 +143,11 @@ class Category{
 				
 	}
 
-	public function searchCatTopics($id_category,$search)
+	public function searchCatTopics($search)
 	{
 
 		$safesearch=mysqli_real_escape_string($this->link,$search);
-		$request="SELECT * FROM topic WHERE id_category='".$id_category."' AND name LIKE '%".$safesearch."%'";
+		$request="SELECT * FROM topic WHERE id_category='".$this->id."' AND name LIKE '%".$safesearch."%'";
 		$result=mysqli_query($this->link, $request);
 		$found=array();
 		 while($searchresult=mysqli_fetch_object($result, 'Topic', array($this->link)))

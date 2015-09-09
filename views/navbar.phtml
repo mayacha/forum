@@ -18,23 +18,10 @@
 			<!-- FIN menu principal -->
 		    <!-- menu déroulant inscription+connexion/utilisateur/admin -->
 			<ul class="nav navbar-nav navbar-right">
-				<?php if(!isset($_SESSION['login'])){ ?>
-				<li><a href="register">S'inscrire</a></li>
-				<?php }?>
+				<?php require('apps/register-link.php'); ?>
 		        <li class="dropdown dropdown-module">
-				<?php if(isset($_SESSION['login'], $_SESSION['permission'])){ 
-						if($_SESSION['permission'] == "admin"){
-	        				require('views/navbar-admin.phtml');
-						}
-						else
-						{
-	        				require('views/navbar-user.phtml');
-						}
-        			}
-        			else
-        			{
-        				require('views/navbar-login.phtml');
-        			} ?>
+				<?php require('apps/navbar-permission.php');?>
+        			
 				</li>
 		    </ul>
 		    <!-- FIN menu déroulant connexion/utilisateur/admin -->

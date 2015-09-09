@@ -13,8 +13,7 @@ if(isset($_POST['login'], $_POST['password']))
 		$user->verifPassword($_POST['password']);
 		$login = $user->getLogin();
 		$id = $user->getId();
-		$id_permission = $user->getIdPermission();
-		$permissionLevel = $manager->getPermissionLevel($id_permission);
+		$permissionLevel = $manager->getPermissionLevel($user->getIdPermission());
 		
 		//on verifie si l'utilisateur est banni
 		$isBanUntil=$manager->getEndBan($user);

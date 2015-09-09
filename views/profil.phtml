@@ -18,18 +18,6 @@
 				</div>
 			</form>
 		</div>
-
-		<div class="profItem">
-			<h4><span class="glyphicon glyphicon-star"></span>Description:</h4>
-			<p> <?=htmlentities($description)?></p>
-			<a class="btn btn-info btn-xs" id="changedescription" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
-			<form id="description" method="post">
-				<div class="form-group">
-					<textarea class="" name="description"></textarea>
-					<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
-				</div>
-			</form>
-		</div>
 	</div>
 
 	<div class="col-xs-8 col-md-7">	
@@ -73,6 +61,19 @@
 			<form id="birth" method="post">
 				<div class="form-group">
 					<input class="" name="birthdate" type="date">
+					<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<div class="profItem">
+			<h4><span class="glyphicon glyphicon-star"></span>Description:</h4>
+			<p> <?=htmlentities($description)?></p>
+			<a class="btn btn-info btn-xs" id="changedescription" href="#">Modifier  <span class="glyphicon glyphicon-cog"></span></a>
+			<form id="description" method="post">
+				<div class="form-group">
+					<textarea class="" name="description"></textarea>
 					<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok-circle"></span></button>
 				</div>
 			</form>
