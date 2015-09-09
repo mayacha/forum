@@ -55,17 +55,16 @@ if(isset($_GET['category'],$_GET['topic']))
 			$authorprofil="<a href=\"profil/".$postauthor."\">";
 			$author=$authorprofil.ucfirst($postauthor)."</a>";
 		}
-		
-		//masque post deleted
-		$delstyle="";
-		$postStatut=$post->getDeleted();
-			if($postStatut==1)
-			{
-				$content="message effacé";
-				$delstyle="deletestyle";
-				$post->setContent($content);
-			}
 
+//masque post deleted
+	$delstyle="";
+	$postStatut=$post->getDeleted();
+		if($postStatut==1)
+		{
+			$content="message effacé";
+			$delstyle="deletestyle";
+			$post->setContent($content);
+		}
 		require('views/listPostSingle.phtml');
 		$i++;
 	}

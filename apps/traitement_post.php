@@ -1,17 +1,18 @@
 <?php
 
 // CREATE POST
-if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'])) //$_SESSION['id'] au lieu de $_SESSION['id_user']
+if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'], $_POST['idtopic'], $_POST['idcategory'])) //$_SESSION['id'] au lieu de $_SESSION['id_user']
 {
 	try
 	{
 		$newpost=$_POST['newpost'];
 		$newtitle=$_POST['newtitle'];
-		$CategoryManager=new CategoryManager($link);
-		$category=$CategoryManager->select($_POST['idcategory']);
 		$userID=$_SESSION['id_user'];
-		$topic=$category->select($_POST['idtopic']);
-		$id_topic=$topic->getId();
+		$idcategory=$_POST['idcategory'];
+		$id_topic=$_POST['idtopic'];
+		$CategoryManager=new CategoryManager($link);
+		$category=$CategoryManager->select($idcategory);
+		$topic=$category->select($id_topic);
 		$newTopic=$topic->create($newtitle, $newpost);
 		header('Location:'.str_replace(" ","_", $category->getName()).'/'.str_replace(" ","_",$topic->getName()));
 	}
@@ -27,7 +28,7 @@ if(isset($_POST['newtitle'], $_POST['newpost'], $_SESSION['id_user'])) //$_SESSI
 
 //DELETED
 
-if(isset($_POST['delete'], $_POST['postId']))
+if(isset($_POST['delete'], $_POST['postId'], $_POST['idtopic'], $_POST['idcategory']))
 {
 	
 		try
@@ -49,7 +50,7 @@ if(isset($_POST['delete'], $_POST['postId']))
 //UPDATE POST
 
 
-if(isset($_POST['updatepostContent'], $_POST['validation']))
+if(isset($_POST['updatepostContent'], $_POST['validation'], $_POST['idcategory'], $_POST['idtopic']))
 {
 	try
 	{

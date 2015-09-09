@@ -1,12 +1,15 @@
 <?php 
-
-$categoryManager=new CategoryManager($link);
-$listcategories=$categoryManager->selectAll();
-foreach($listcategories as $category)
-{
-	require('views/listCat.phtml');
-}
-
+		
+		$categoryManager=new CategoryManager($link);
+		$listcategories=$categoryManager->selectAll();
+		if($category)
+		{
+			foreach($listcategories as $category)
+			{
+				require('views/listCat.phtml');
+			}
+		}
+	
 
 
 ?>
