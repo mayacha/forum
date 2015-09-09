@@ -15,6 +15,7 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 			$i=0;
 				while($i<count($found))
 			{
+				$topic=$found[$i];
 				if(!isset($_SESSION['login']))
 				{
 					$author=htmlentities(ucfirst($topic->getAuthor()->getLogin()));
@@ -23,9 +24,9 @@ if (isset($_GET['search']) && $_GET['search']!=="")
 				{
 					$postauthor=htmlentities($topic->getAuthor()->getLogin());
 					$authorprofil="<a href=\"profil/".$postauthor."\">";
-					$author=$authorprofil.ucfirst($postauthor);
+					$author=$authorprofil.ucfirst($postauthor)."</a>";
 				}
-				$topic=$found[$i];
+
 				require('views/listTopic.phtml');
 			$i++;
 			}
@@ -49,7 +50,7 @@ else
 		{
 			$postauthor=htmlentities($topic->getAuthor()->getLogin());
 			$authorprofil="<a href=\"profil/".$postauthor."\">";
-			$author=$authorprofil.ucfirst($postauthor);
+			$author=$authorprofil.ucfirst($postauthor)."</a>";
 		}
 		require('views/listTopic.phtml');
 	}

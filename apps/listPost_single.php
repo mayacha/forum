@@ -15,6 +15,17 @@ if(isset($_GET['search']) && $_GET['search'] !="")
 			while($i<count($found))
 			{
 				$post=$found[$i];
+
+				if(!isset($_SESSION['login']))
+				{
+					$author=htmlentities(ucfirst($post->getAuthor()->getLogin()));
+				}
+				else
+				{
+					$postauthor=htmlentities($post->getAuthor()->getLogin());
+					$authorprofil="<a href=\"profil/".$postauthor."\">";
+					$author=$authorprofil.ucfirst($postauthor)."</a>";
+				}
 				require('views/listPostSingle.phtml');
 			$i++;
 			}
