@@ -93,6 +93,8 @@ function modifUserAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-modif-user-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivUser = "#user-"+id;
             $(idDivUser).parent().html(data);
@@ -109,6 +111,8 @@ function banUserAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-ban-user-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivUser = "#user-"+id;
             $(idDivUser).parent().html(data);
@@ -189,6 +193,8 @@ function addCategoryAJAX(){
     function(data){
         if(data.substring(0, 6) == "Erreur"){
         	$(".error-add-cat").html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	$(".success-add-cat").html("Nouvelle catégorie ajoutée.");
         	$(".js-category-form-add #category-add-name").val("");
@@ -208,6 +214,8 @@ function modifCategoryAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-modif-cat-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivCategory = "#category-"+id;
             $(idDivCategory).parent().html(data);
@@ -223,6 +231,8 @@ function deleteCategoryAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-delete-cat-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivCategory = "#category-"+id;
             $(idDivCategory).parent().detach();
@@ -319,6 +329,8 @@ function validPostAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-valid-post-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();
@@ -335,6 +347,8 @@ function modifPostAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-modif-post-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();
@@ -349,6 +363,8 @@ function deletePostAJAX(id){
         if(data.substring(0, 6) == "Erreur"){
         	idErr = "#error-delete-post-"+id;
         	$(idErr).html(data);
+        }else if(data == "logout"){
+            window.location.pathname = "Cani-Gout/logout";
         }else{
         	var idDivPost = "#post-"+id;
             $(idDivPost).parent().detach();

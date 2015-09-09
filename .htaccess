@@ -19,10 +19,3 @@ RewriteRule ^admin/(.+)/?$ index.php?page=admin&page_admin=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)/(.+)/?$ index.php?page=singlecategory&category=$1&topic=$2 [L,QSA]
-
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/(.+)/createPost/?$ index.php?page=createPost [L,QSA]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)/(.+)/remotePost/?$ index.php?page=createPost [L,QSA]
