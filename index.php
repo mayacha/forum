@@ -1,7 +1,9 @@
 <?php
 require('fonctions.php');
 session_start();
-$link = connectDB();
+$link = @mysqli_connect($host, $username, $passwd, $dbname);
+if (!$link)
+    die('Erreur de connexion (' . mysqli_connect_errno() . ') '. mysqli_connect_error());
 $error = "";
 $success = "";
 $search= "";

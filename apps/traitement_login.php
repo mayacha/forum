@@ -1,8 +1,6 @@
 <?php
 // initialisation des variables pour l'affichage du formulaire de connexion (pour partie AJAX)
 $login="";
-$error= "";
-$success = "";
 
 // si le formulaire est envoyé
 if(isset($_POST['login'], $_POST['password']))
