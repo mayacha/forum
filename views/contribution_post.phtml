@@ -1,6 +1,6 @@
 	<div class="col-xs-12">
 		<a href="<?=htmlentities(str_replace(' ', '_', $post->getTopic()->getCategory()->getName()))?>/<?=htmlentities(str_replace(' ', '_', $post->getTopic()->getName()))?>"><h3><?=htmlentities($post->getTopic()->getName())?> <em>(catégorie:<?=htmlentities($post->getTopic()->getCategory()->getName())?>)</em></h3></a>
-		<div class="fondcontrib">
+		<div class="fondcontrib post">
 			<h4><?=htmlentities($post->getTitle())?></h4>
 		<p><?=htmlentities($post->getContent())?></p>	
 	</div>

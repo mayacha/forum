@@ -45,11 +45,12 @@ else
 	$idPostUser=$post->getId_user();
 
 //masque post deleted
-	
+	$delstyle="";
 	$postStatut=$post->getDeleted();
 		if($postStatut==1)
 		{
 			$content="message effacé";
+			$delstyle="deletestyle";
 			$post->setContent($content);
 		}
 
