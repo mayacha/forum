@@ -51,8 +51,7 @@ else
 			$author=$authorprofil.ucfirst($postauthor)."</a>";
 		}
 		
-	$idPost=$post->getId();
-	$idPostUser=$post->getId_user();
+
 
 //masque post deleted
 	$delstyle="";
