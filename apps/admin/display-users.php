@@ -9,7 +9,7 @@ foreach($users as $user){
 		}else{
 			$endBan = 0;
 		}
-		require('views/display-admin-user-list.phtml');
+		require('views/admin/user/display-list.phtml');
 	}
 }
 ?>

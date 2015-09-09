@@ -1,5 +1,5 @@
 <?php
 if($manager->getPermissionLevel($user->getIdPermission()) != "admin"){ 
-	require('views/display-admin-user-form-ban.phtml');
+	require('views/admin/user/display-form-ban.phtml');
 }
 ?>

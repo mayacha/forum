@@ -1,18 +1,18 @@
 <!-- Affichage d'un utilisateur dans l'administration -->
 <div class="row" id="user-<?=$user->getId()?>">
 	<div class="col-sm-1 vmiddle">
-		<?php require('apps/display-admin-user-single-avatar.php');?>
+		<?php require('apps/admin/display-user-single-avatar.php');?>
 	</div><!--
  --><div class="col-sm-3 vmiddle"><?=htmlentities($user->getLogin())?> 
-		<?php require('apps/display-admin-user-single-bantime.php');?>
+		<?php require('apps/admin/display-user-single-bantime.php');?>
 	</div><!--
  --><div class="col-sm-4 vmiddle"><?=htmlentities($user->getEmail())?></div><!--
  --><div class="col-sm-2 vmiddle"><?=htmlentities($manager->getPermissionLevel($user->getIdPermission()))?></div><!--
  --><div class="col-sm-1 vmiddle"><button class="btn btn-info btn-sm btn-modif-user" title="Modifier le rang"><span class="glyphicon glyphicon-pencil"></span></button></div><!--
 	
-	--><?php require('apps/display-admin-user-single-banbutton.php'); ?>
+	--><?php require('apps/admin/display-user-single-banbutton.php'); ?>
 </div>
 <div class="row">
-<?php require('views/display-admin-user-form-modif.phtml'); ?>
-<?php require('apps/display-admin-user-form-ban.php'); ?>
+<?php require('views/admin/user/display-form-modif.phtml'); ?>
+<?php require('apps/admin/display-user-form-ban.php'); ?>
 </div>

@@ -5,7 +5,7 @@ if(isset($_POST['create'], $_POST['name'], $_POST['description'])){
 	try{
 		$category = $manager->create($_POST['name'], $_POST['description']);
 		// actualise la liste des catégories via AJAX
-		require('apps/display-admin-categories.php');
+		require('apps/admin/display-categories.php');
 		exit;
 	}catch(Exception $e){
 		echo $e->getMessage();
@@ -21,7 +21,7 @@ if(isset($_POST['modif'], $_POST['id'], $_POST['name'], $_POST['description'])){
 			$category->setDescription($_POST['description']);
 			$manager->update($category);
 			// actualise la liste des catégories via AJAX
-			require('views/display-admin-category-single.phtml');
+			require('views/admin/category/display-single.phtml');
 			exit;
 		}catch(Exception $e){
 			echo $e->getMessage();

@@ -1,10 +1,12 @@
 function init(){
-	$(".message").focus();
-	afficheNouveauxMessages();
-	window.setInterval(function(){
+	if(window.location.pathname == "/Cani-Gout/tchat"){
+		$(".message").focus();
 		afficheNouveauxMessages();
-		afficheUtilisateursOnline();
-	}, 1000);
+		window.setInterval(function(){
+			afficheNouveauxMessages();
+			afficheUtilisateursOnline();
+		}, 1000);
+	}
 }
 //affiche les messages non affichés
 function afficheNouveauxMessages(){
